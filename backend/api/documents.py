@@ -1,34 +1,39 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException, BackgroundTasks, Request
 from typing import List, Dict
 import shutil
 import os
 import uuid
 from pypdf import PdfReader
-from knowledge.graph_provider import GraphProvider
-from knowledge.vector_provider import VectorProvider
-from core.gemini_client import GeminiClient
 
-router = APIRouter(prefix="/api/v1/documents", tags=["documents"])
+router = APIRouter(tags=["documents"])
 
 UPLOAD_DIR = "data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# Global providers (in a real app, use dependency injection)
-# We will initialize these in main.py and pass them or use a singleton pattern
-# For now, we'll instantiate them here if they are stateless enough, 
-# OR better, we rely on the main app to pass them. 
-# But to keep it simple and working with the existing main.py structure, 
-# let's import the singletons if possible, or re-instantiate (careful with connections).
-
-# Actually, let's just re-instantiate for now as they seem to manage their own connections.
-# Ideally, we should refactor main.py to use `app.state.graph_provider`.
-gemini_client = GeminiClient() # Re-uses env vars
-graph_provider = GraphProvider(gemini_client=gemini_client)
-vector_provider = VectorProvider()
-
 @router.post("/upload")
-async def upload_document(file: UploadFile = File(...)):
+async def upload_document(request: Request, file: UploadFile = File(...), mode: str = Form("append")):
+    # Get providers from app.state (shared with main.py)
+    vector_provider = request.app.state.vector_provider
+    graph_provider = request.app.state.graph_provider
+    
     try:
+        # Handle replace mode - clear all existing data
+        if mode == "replace":
+            # Clear uploaded files
+            if os.path.exists(UPLOAD_DIR):
+                for filename in os.listdir(UPLOAD_DIR):
+                    file_path_to_delete = os.path.join(UPLOAD_DIR, filename)
+                    if os.path.isfile(file_path_to_delete):
+                        os.remove(file_path_to_delete)
+            
+            # Clear Vector DB
+            await vector_provider.clear()
+            
+            # Clear Graph DB
+            await graph_provider.clear()
+            
+            print("🔄 Replace mode: Cleared all existing data")
+        
         file_id = str(uuid.uuid4())
         file_ext = os.path.splitext(file.filename)[1].lower()
         file_path = os.path.join(UPLOAD_DIR, f"{file_id}_{file.filename}")

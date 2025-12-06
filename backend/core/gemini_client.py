@@ -1,17 +1,19 @@
 import google.generativeai as genai
-from google.generativeai import GenerativeModel, GenerationConfig
+from google.generativeai.types import HarmCategory, HarmBlockThreshold, GenerationConfig
+from core.tools import get_tool_registry, ToolResult
 import os
 from typing import Optional, List
 import asyncio
 
 import json
 import hashlib
+from core.config import current_settings
 
 class GeminiClient:
-    def __init__(self, project_id: str = None, location: str = "us-central1", model_name: str = "gemini-2.0-flash-exp"):
+    def __init__(self, project_id: str = None, location: str = "us-central1", model_name: str = None):
         self.project_id = project_id
         self.location = location
-        self.model_name = model_name
+        self.model_name = model_name or current_settings.llm_model
         self.api_key = os.getenv("GEMINI_API_KEY")
         self.cache_file = ".gemini_cache.json"
         self.cache = self._load_cache()
@@ -21,9 +23,9 @@ class GeminiClient:
                 raise ValueError("GEMINI_API_KEY not found in environment variables")
                 
             genai.configure(api_key=self.api_key)
-            self.model = GenerativeModel(model_name)
+            self.model = genai.GenerativeModel(self.model_name)
             self.is_mock = False
-            print(f"Successfully initialized Gemini API with model: {model_name}")
+            print(f"Successfully initialized Gemini API with model: {self.model_name}")
         except Exception as e:
             print(f"Warning: Failed to initialize Gemini API ({e}). Using Mock Client.")
             self.is_mock = True
@@ -53,7 +55,7 @@ class GeminiClient:
         Answer:
         """
         try:
-            return await self.generate_content(prompt, temperature=0.2)
+            return await self.generate_content(prompt, temperature=current_settings.temperature)
         except Exception as e:
             print(f"Answer generation failed: {e}")
             return "Failed to generate answer."

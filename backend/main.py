@@ -20,7 +20,7 @@ load_dotenv(".env.local")
 
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import documents, a2a
+from api import documents, a2a, settings
 
 app = FastAPI(title="DKMES API", version="1.0.0")
 
@@ -35,6 +35,7 @@ app.add_middleware(
 
 # Include Routers
 app.include_router(documents.router, prefix="/api/v1/documents")
+app.include_router(settings.router)  # Settings API
 app.include_router(a2a.router)  # No prefix for /a2a as per A2A spec
 
 
@@ -456,6 +457,13 @@ async def get_trace_detail(trace_id: str):
     if not detail:
         raise HTTPException(status_code=404, detail="Trace not found")
     return detail
+
+
+@app.get("/api/v1/activity-stats")
+async def get_activity_stats(days: int = 7):
+    """Get aggregated activity statistics for dashboard charts."""
+    stats = tracer.get_activity_stats(days=days)
+    return stats
 
 
 # ============================================================================

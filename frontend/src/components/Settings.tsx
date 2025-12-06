@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Save, RefreshCw, Cpu, Database, Layers } from 'lucide-react';
+import { Save, Cpu, Database, Layers } from 'lucide-react';
 import './Settings.css'; // We'll create a basic CSS file or inline styles
 
 interface SystemSettings {

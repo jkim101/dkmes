@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .venv/
 .env
+.env.local
 
 # Node
 node_modules/
@@ -13,3 +14,14 @@ dist/
 # IDE
 .vscode/
 .idea/
+
+# Data files (large files)
+*.db
+*.sqlite3
+backend/data/chroma/
+backend/data/uploads/
+agent_beta/data/chroma_beta/
+agent_beta/data/*.db
+
+# Cache
+.gemini_cache.json

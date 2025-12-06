@@ -156,3 +156,112 @@ class TraceLogger:
         
         conn.close()
         return result
+
+    def get_activity_stats(self, days: int = 7) -> Dict[str, Any]:
+        """Get aggregated activity statistics for dashboard charts."""
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        # Calculate cutoff timestamp
+        cutoff = time.time() - (days * 24 * 60 * 60)
+        
+        # 1. Query Activity by Hour (last 24h for hourly, or daily for weekly)
+        if days <= 1:
+            # Hourly breakdown for last 24 hours
+            cursor.execute("""
+                SELECT 
+                    strftime('%H', datetime(timestamp, 'unixepoch', 'localtime')) as period,
+                    COUNT(*) as count
+                FROM traces 
+                WHERE timestamp > ?
+                GROUP BY period
+                ORDER BY period
+            """, (cutoff,))
+        else:
+            # Daily breakdown
+            cursor.execute("""
+                SELECT 
+                    strftime('%Y-%m-%d', datetime(timestamp, 'unixepoch', 'localtime')) as period,
+                    COUNT(*) as count
+                FROM traces 
+                WHERE timestamp > ?
+                GROUP BY period
+                ORDER BY period
+            """, (cutoff,))
+        
+        query_timeline = [{"period": row["period"], "count": row["count"]} for row in cursor.fetchall()]
+        
+        # 2. RAG Strategy Distribution (from metadata)
+        cursor.execute("""
+            SELECT metadata FROM traces WHERE timestamp > ?
+        """, (cutoff,))
+        
+        strategy_counts = {"vector": 0, "graph": 0, "hybrid": 0, "unknown": 0}
+        for row in cursor.fetchall():
+            try:
+                meta = json.loads(row["metadata"]) if row["metadata"] else {}
+                strategy = meta.get("strategy", meta.get("rag_strategy", "unknown"))
+                if strategy in strategy_counts:
+                    strategy_counts[strategy] += 1
+                else:
+                    strategy_counts["unknown"] += 1
+            except:
+                strategy_counts["unknown"] += 1
+        
+        strategy_distribution = [
+            {"name": k, "value": v} for k, v in strategy_counts.items() if v > 0
+        ]
+        
+        # 3. Latency Statistics
+        cursor.execute("""
+            SELECT 
+                AVG(latency) as avg_latency,
+                MIN(latency) as min_latency,
+                MAX(latency) as max_latency,
+                COUNT(*) as total_queries
+            FROM traces 
+            WHERE timestamp > ? AND status = 'success' AND latency > 0
+        """, (cutoff,))
+        
+        latency_row = cursor.fetchone()
+        latency_stats = {
+            "avg": round(latency_row["avg_latency"] or 0, 2),
+            "min": round(latency_row["min_latency"] or 0, 2),
+            "max": round(latency_row["max_latency"] or 0, 2),
+            "total": latency_row["total_queries"] or 0
+        }
+        
+        # 4. Latency trend by period
+        if days <= 1:
+            cursor.execute("""
+                SELECT 
+                    strftime('%H', datetime(timestamp, 'unixepoch', 'localtime')) as period,
+                    AVG(latency) as avg_latency
+                FROM traces 
+                WHERE timestamp > ? AND status = 'success' AND latency > 0
+                GROUP BY period
+                ORDER BY period
+            """, (cutoff,))
+        else:
+            cursor.execute("""
+                SELECT 
+                    strftime('%Y-%m-%d', datetime(timestamp, 'unixepoch', 'localtime')) as period,
+                    AVG(latency) as avg_latency
+                FROM traces 
+                WHERE timestamp > ? AND status = 'success' AND latency > 0
+                GROUP BY period
+                ORDER BY period
+            """, (cutoff,))
+        
+        latency_trend = [{"period": row["period"], "latency": round(row["avg_latency"], 2)} for row in cursor.fetchall()]
+        
+        conn.close()
+        
+        return {
+            "query_timeline": query_timeline,
+            "strategy_distribution": strategy_distribution,
+            "latency_stats": latency_stats,
+            "latency_trend": latency_trend
+        }
+
