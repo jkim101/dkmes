@@ -96,12 +96,6 @@ npm run dev
 
 ---
 
-## 📬 Contact
-
-**Jihoon Kim** - jkim101@github
-
----
-
 <p align="center">
   <i>"지식은 연결될 때 비로소 힘을 발휘합니다."</i>
 </p>

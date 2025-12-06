@@ -96,12 +96,6 @@ npm run dev
 
 ---
 
-## 📬 Contact
-
-**Jihoon Kim** - jkim101@github
-
----
-
 <p align="center">
   <i>"Knowledge gains power when connected."</i>
 </p>
