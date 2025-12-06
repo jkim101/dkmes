@@ -1,0 +1,3015 @@
+1 
+
+ 
+2 
+Knowledge Management 
+System and Practices 
+ 
+ 
+ 
+A Theoretical and Practical Guide for Knowledge Management in 
+Your Organization 
+ 
+Emil Hajric 
+  
+ 
+3 
+ 
+  
+Copyright © 2018 Emil Hajric 
+All Rights Reserved 
+ 
+4 
+Table Of Contents 
+ 
+Table Of Contents 3 
+Introduction 9 
+Introducing Knowledge Management 10 
+Knowledge, Information and Data 13 
+Defining Knowledge, Information, Data 14 
+Perspectives on Knowledge, Information, Data 14 
+Defining Data, Information, and Knowledge 15 
+The Different Types of Knowledge 17 
+Explicit Knowledge 18 
+Tacit Knowledge 19 
+Embedded Knowledge 20 
+What is Knowledge Management? 21 
+Knowledge Management Definition 23 
+Why is Knowledge Management Useful? 25 
+Information Management vs Knowledge Management 27 
+Information and IM: 28 
+Knowledge and KM: 28 
+Organizational Knowledge 30 
+Introducing Organizational Knowledge 31 
+Organizational Knowledge Resources 31 
+Implications for KM 32 
+The SECI Model and Knowledge Conversion 33 
+The SECI Model Knowledge Creation Spiral 33 
+Organizational Memory and Knowledge Repositories 36 
+Organizational Learning 39 
+Introducing Organizational Learning 41 
+ 
+5 
+What is Organizational Learning? 41 
+Organizational Learning Pitfalls 42 
+Different Approaches to Organizational Learning 42 
+Organizational Learning Theory: Company Perspective 43 
+Organizational Learning Theory: The Three Types of Learning 44 
+Conclusion 45 
+Organizational Learning and Communities of Practice 46 
+What are Communities of Practice? 46 
+Learning Within Communities of Practice 46 
+The Implications to KM 47 
+Organizational Culture and Leadership 49 
+The Significance of Organizational Culture 51 
+What is Organizational Culture? 51 
+Organizational Culture and Knowledge Sharing 52 
+The Problems with Managing Organizational Culture 53 
+Leadership and "The Learning Organization" 54 
+The Learning Organization 54 
+The Role of Leadership 55 
+Knowledge Management Models 57 
+Building Knowledge Management Frameworks and Models 58 
+Three Knowledge Management Models 61 
+The KM Process Framework by Bukowitz and Williams (1999) 61 
+The KM Matrix by Gamble and Blackwell (2001) 62 
+The Knowledge Management Process Model by Botha et al (2008) 63 
+My Integrated Model 65 
+Conclusion 68 
+Knowledge Management Processes 69 
+Introduction Knowledge Management Processes 71 
+Knowledge Discovery and Detection 72 
+Facilitating Knowledge Discovery and Detection 73 
+Knowledge Organization & Assessment 75 
+ 
+6 
+Act: Knowledge Sharing 77 
+Explicit Knowledge and Knowledge Sharing 77 
+Explicit Knowledge Sharing and IT 78 
+Can Explicit Knowledge Sharing Systems Yield Competitive Advantage? 79 
+Tacit Knowledge Sharing 79 
+Tacit Knowledge Sharing and IT 81 
+Embedded Knowledge Sharing 82 
+Conclusion 83 
+Act: Managing Knowledge Reuse 85 
+Three Roles for Knowledge Reuse 85 
+Knowledge Reuse Situations 86 
+Problems and Recommendations for Managing knowledge reuse 87 
+Act: Knowledge Creation 90 
+Managing Knowledge Creation 90 
+IT and Knowledge Creation 92 
+Conclusion 92 
+Knowledge Acquisition 93 
+Customers 93 
+Suppliers 94 
+Competitors 95 
+Partners/alliances 95 
+Mergers & Acquisitions 96 
+Other expertise 97 
+Knowledge Management Strategy 99 
+Introduction to Knowledge Management Strategy 101 
+Invest: Managing Organizational Structures 103 
+Types of Organizational Structures 103 
+Invest: Corporate Culture Change 105 
+Defining and Mapping Organizational Culture 105 
+Managing Corporate Culture Change 106 
+Invest: Knowledge Retention 108 
+Knowledge Retention Strategy 109 
+ 
+7 
+Success Factors and DOs and DON'Ts of KR 111 
+Invest: Knowledge Management and Core Competencies 112 
+Invest: Managing the External Knowledge Network 114 
+Invest: Knowledge Management Systems 116 
+What are Knowledge Management Systems? 116 
+Problems and Failure Factors 117 
+Promoting Acceptance and Assimilation 118 
+Summary: Knowledge Management Best Practices 122 
+Determining the Organization's Knowledge and Know-how 122 
+Practical Knowledge Management Best Practices 123 
+Strategic Knowledge Management Best Practices: 125 
+Knowledge Management Tools by Category (IT Based) 128 
+Introduction to Knowledge Management Tools 129 
+Groupware Systems & Knowledge Management 2.0 131 
+Web 2.0, Enterprise 2.0, & Knowledge Management 2.0 131 
+Considerations for Groupware Acquisition/Design 132 
+Groupware Implementation Issues 133 
+The Intranet & Extranet 135 
+The Role of the Intranet 135 
+Successful Intranet Implementation 136 
+The Extranet 137 
+Warehousing Data: The Data Warehouse, Data Mining, and OLAP 138 
+Warehousing Data: Design and Implementation 139 
+OLAP 140 
+What is Data Mining? 140 
+Data Visualization 141 
+Decision Support Systems 143 
+Content Management Systems 145 
+Document Management Systems 147 
+Search & Categorization for Knowledge Retrieval 150 
+Knowledge Management Resources (Non-IT-Based) 152 
+Knowledge Management Resources and Techniques 154 
+ 
+8 
+Cross-functional project teams 155 
+Knowledge Management Training 157 
+Consultancy: 157 
+Storytelling 158 
+Mentoring 161 
+Knowledge Management Failure 163 
+Knowledge Management Failure Factors 164 
+The Issue of Definition 164 
+KM Failure Factors 165 
+No Universal Definition of Knowledge Management 166 
+Knowledge Management Careers and Skills 169 
+Careers in Knowledge Management 171 
+KM Programs 171 
+Knowledge Management Positions and Roles 172 
+Knowledge Management Skills 174 
+The Skills of Knowledge Workers 174 
+Knowledge Managers and the CKO 175 
+References 177 
+References 179 
+About Me 199 
+ 
+  
+ 
+9 
+ 
+Introduction 
+ 
+ 
+This is a knowledge management book covering the theories, frameworks, 
+models, tools, and supporting disciplines that are relevant to both the student and 
+the practitioner. The goal of this book is to provide a comprehensive overview of 
+knowledge management by examining its objectives, scope, strategy, best 
+practices, knowledge management tools, and so on. The book is structured very 
+much like a textbook, with introductory concepts at the top, more subject-specific 
+discussions in the latter half. 
+  
+ 
+10 
+ 
+ 
+Introducing Knowledge 
+Management 
+ 
+  
+
+ 
+11 
+Knowledge management is essentially 
+about getting the right knowledge to the 
+right person at the right time. This in itself 
+may not seem so complex, but it implies a 
+strong tie to corporate strategy, 
+understanding of where and in what forms 
+knowledge exists, creating processes that 
+span organizational functions, and ensuring 
+that initiatives are accepted and supported 
+by organizational members. Knowledge 
+management may also include new 
+knowledge creation, or it may solely focu s 
+on knowledge sharing, storage, and 
+refinement. For a more comprehensive 
+discussion and definition, see my knowledge management definition. 
+It is important to remember that knowledge management is not about 
+managing knowledge for knowledge's sake. The overall objective is to create value 
+and leverage and refine the firm's knowledge assets to meet organizational goals. 
+Implementing knowledge management thus has several dimensions including: 
+Strategy: Knowledge management strategy must be dependent on corporate 
+strategy. The objective is to manage, share, and create relevant knowledge assets 
+that will help meet tactical and strategic requirements. 
+Organizational Culture:  The organizational culture influences the way people 
+interact, the context within which knowledge is created, the resistance they will 
+have towards certain changes, and ultimately the way they share (or the way they 
+do not share) knowledge. 
+Organizational Processes: The right processes, environments, and systems that 
+enable KM to be implemented in the organization. 
+Management & Leadership:  KM requires competent and experienced 
+leadership at all levels. There are a wide variety of KM-related roles that an 
+organization may or may not need to implement, including a CKO, knowledge 
+
+ 
+12 
+managers, knowledge brokers and so on. More on this in the section on KM 
+positions and roles. 
+Technology: The systems, tools, and technologies that fit the organization's 
+requirements - properly designed and implemented. 
+Politics: The long-term support to implement and sustain initiatives that involve 
+virtually all organizational functions, which may be costly to implement (both from 
+the perspective of time and money), and which often do not have a directly visible 
+return on investment. 
+In the past, failed initiatives were often due to an excessive focus on primitive 
+knowledge management tools and systems, at the expense of other areas. While it 
+is still true that KM is about people and human interaction, KM systems have come 
+a long way and have evolved from being an optional part of KM to a critical 
+component. Today, such systems can allow for the capture of unstructured 
+thoughts and ideas, can create virtual conferencing allowing close contact 
+between people from different parts of the world, and so on. This issue will also be 
+addressed throughout the site, and particularly in the knowledge management 
+strategy section. 
+At this point, the articles presented on this site focus on the first five 
+dimensions. For now, at least, the political dimension is beyond the scope of this 
+site. 
+Throughout the site, I will explain and discuss known theories, occasionally 
+contributing with some of my own frameworks. I will also discuss the potential role 
+of knowledge management systems from a broad perspective, and in the section 
+on KM tools I will provide specific advice on this topic. I have tried to organize the 
+site as logically as possible, moving from a general introduction to knowledge and 
+KM to introducing key subjects like organizational memory, learning, and culture. 
+The later sections discuss several models and frameworks as well as knowledge 
+management initiatives, strategy, and systems, before finally presenting an 
+overview of various tools and techniques. 
+  
+ 
+13 
+ 
+ 
+Knowledge, 
+Information and Data 
+  
+
+ 
+14 
+Defining Knowledge, Information, Data 
+Before one can begin to talk about knowledge management (KM), one must 
+start by clearly defining the meaning of the word "knowledge". It is important to 
+understand what constitutes knowledge and what falls under the category of 
+information or data. Unfortunately, this is a more difficult task than may be 
+apparent at first. Within everyday language, within specific fields, and even within 
+the same disciplines, the word "knowledge" often takes on a variety of meanings. 
+Perspectives on Knowledge, Information, Data 
+In everyday language we use knowledge all the time. Sometimes we mean 
+know-how, while other times we are talking about wisdom. On many occasions we 
+even use it to refer to information. Part of the difficulty of defining knowledge 
+arises from its relationship to two other concepts, namely data and information. 
+These two terms are often regarded as lower denominations of knowledge, but 
+the exact relationship varies greatly from one example to another. 
+Within more technologically oriented disciplines- particularly involving 
+information systems- knowledge is often treated very similarly to information. It is 
+seen as something one can codify and transmit, and where IT plays a pivotal role in 
+knowledge sharing. For instance, the encyclopedia at fact-archive.com defines it 
+as: "information that has a purpose or use." 
+This kind of simplistic view of knowledge was particularly widespread during the 
+90s when information technology became increasingly more common. However 
+even today, some KM systems are little more than information management 
+systems using knowledge as a virtual synonym for information. 
+To illustrate, Theirauf (1999) defines the three components as follows: data is 
+the lowest point, an unstructured collection of facts and figures; information is the 
+next level, and it is regarded as structured data; finally, knowledge is defined as 
+"information about information". 
+However, increasingly one sees definitions that treat knowledge as a more 
+complex and personal concept that incorporate more than just information. The 
+ 
+15 
+Longman online dictionary has one definition that begins to approach the way that 
+knowledge is usually regarded within KM. It states "the information, skills, and 
+understanding that you have gained through learning or experience." Although still 
+closely associated with information, concepts like skills, understanding, and 
+experience begin to surface. 
+Defining Data, Information, and Knowledge 
+Here, I have included the definitions that will be used throughout this book. 
+Data: Facts and figures which relay something specific, but which are not 
+organized in any way and which provide no further information regarding patterns, 
+context, etc. I will use the definition for data presented by Thierauf (1999): 
+"unstructured facts and figures that have the least impact on the typical manager." 
+Information: For data to become information, it must be contextualized, 
+categorized, calculated and condensed (Davenport & Prusak 2000). Information 
+thus paints a bigger picture; it is data with relevance and purpose (Bali et al 2009). 
+It may convey a trend in the environment, or perhaps indicate a pattern of sales 
+
+ 
+16 
+for a given period of time. Essentially information is found "in answers to 
+questions that begin with such words as who, what, where, when, and how many" 
+(Ackoff 1999). 
+IT is usually invaluable in the capacity of turning data into information, 
+particularly in larger firms that generate large amounts of data across multiple 
+departments and functions. The human brain is mainly needed to assist in 
+contextualization. 
+Knowledge: Knowledge is closely linked to doing and implies know-how and 
+understanding. The knowledge possessed by each individual is a product of his 
+experience and encompasses the norms by which he evaluates new inputs from 
+his surroundings (Davenport & Prusak 2000). I will use the definition presented by 
+Gamble and Blackwell (2001), based closely on a previous definition by Davenport 
+& Prusak: 
+"Knowledge is a fluid mix of framed experience, values, contextual information, 
+expert insight, and grounded intuition that provides an environment and 
+framework for evaluating and incorporating new experiences and information. It 
+originates and is applied in the mind of the knowers. In organizations it often 
+becomes embedded not only in documents or repositories, but also in 
+organizational routines, practices and norms." 
+In order for KM to succeed, one needs a deep understanding of what constitutes 
+knowledge. Now that we have set clear boundaries between knowledge, 
+information, and data, it is possible to go one step further and look at the forms in 
+which knowledge exists and the different ways that it can be accessed, shared, and 
+combined. I will discuss this in the section titled "The Different Kinds of 
+Knowledge". 
+  
+ 
+17 
+ 
+The Different Types of Knowledge 
+Understanding the different forms that knowledge can exist in, and thereby 
+being able to distinguish between various types of knowledge, is an essential step 
+for knowledge management (KM). For example, it should be fairly evident that the 
+knowledge captured in a document would need to be managed (i.e. stored, 
+retrieved, shared, changed, etc.) in a totally different way than that gathered over 
+the years by an expert craftsman. 
+Over the centuries many attempts have been made to classify knowledge, and 
+different fields have focused on different dimensions. This has resulted in 
+numerous classifications and distinctions based in philosophy and even religion. 
+Though not directly related to our purpose here, the Wikipedia article on 
+knowledge provides some interesting background reading (go to article). 
+Within business and KM, two types of knowledge are usually defined, namely 
+explicit and tacit knowledge. The former refers to codified knowledge, such as that 
+found in documents, while the latter refers to non-codified and often 
+personal/experience-based knowledge. 
+KM and organizational learning theory almost always take root in the interaction 
+and relationship between these two types of knowledge. This concept has been 
+introduced and developed by Nonaka in the 90's (e.g. Nonaka 1994) and remains a 
+theoretical cornerstone of this discipline. Botha et al (2008) point out that tacit 
+and explicit knowledge should be seen as a spectrum rather than as definitive 
+points. Therefore, in practice, all knowledge is a mixture of tacit and explicit 
+elements rather than being one or the other. However, in order to understand 
+knowledge, it is important to define these theoretical opposites. 
+Some researchers make a further distinction and talk of embedded knowledge. 
+This way, one differentiates between knowledge embodied in people and that 
+embedded in processes, organizational culture, routines, etc. (Horvath 2000). 
+Gamble and Blackwell (2001) use a scale consisting of represented-embodied-
+embedded knowledge, where the first two closely match the explicit-tacit. 
+ 
+18 
+Without question, the most important distinction within KM is between explicit 
+and tacit knowledge. However, I find that the embedded dimension is a valuable 
+addition, since the managerial requirements for this type of knowledge are quite 
+different. For this reason, the discussions on this site will, when relevant, use all 
+three categorizations of knowledge but the focus will always be primarily on the 
+explicit-tacit dimension. 
+Below I present an overview of these three categories, as well as a short 
+discussion on the way knowledge management systems (KMS) can/cannot be used 
+to manage them. 
+Explicit Knowledge 
+This type of knowledge is formalized and codified and is sometimes referred to 
+as know-what (Brown & Duguid 1998). It is therefore fairly easy to identify, store, 
+and retrieve (Wellman 2009). This is the type of knowledge most easily handled b y 
+KMS, which are very effective at facilitating the storage, retrieval, and modification 
+of documents and texts. 
+From a managerial perspective, the greatest challenge with explicit knowledge is 
+similar to information. It involves ensuring that people have access to what they 
+need; that important knowledge is stored; and that the knowledge is reviewed, 
+updated, or discarded. 
+Many theoreticians regard explicit knowledge as being less important (e.g. 
+Brown & Duguid 1991, Cook & Brown 1999, Bukowitz & Williams 1999, etc.). It  is 
+considered simpler in nature and cannot contain the rich experience-based know-
+how that can generate lasting competitive advantage. 
+Although this is changing to some limited degree, KM initiatives driven by 
+technology have often had the flaw of focusing almost exclusively on this type of 
+knowledge. As discussed previously, in fields such as IT there is often a lack of a 
+more sophisticated definition. This has therefore created many products labeled 
+as KM systems, which in actual fact are/were nothing more than information and 
+explicit knowledge management software. 
+Explicit knowledge is found in: databases, memos, notes, documents, etc. (Botha 
+et al. 2008) 
+ 
+19 
+Tacit Knowledge 
+This type of knowledge was originally defined by Polanyi in 1966. It is sometimes 
+referred to as know-how (Brown & Duguid 1998) and refers to intuitive, hard to 
+define knowledge that is largely experience based. Because of this, tacit 
+knowledge is often context dependent and personal in nature. It is hard to 
+communicate and deeply rooted in action, commitment, and involvement (Nonaka 
+1994). 
+Tacit knowledge is also regarded as being the most valuable source of 
+knowledge, and the most likely to lead to breakthroughs in the organization 
+(Wellman 2009). Gamble & Blackwell (2001) link the lack of focus on tacit 
+knowledge directly to the reduced capability for innovation and sustained 
+competitiveness. 
+KMS have a very hard time handling this type of knowledge. An IT system relies 
+on codification, which is something that is difficult/impossible for the tacit 
+knowledge holder. 
+ 
+20 
+Using a reference by Polanyi (1966), imagine trying to write an article that would 
+accurately convey how one reads facial expressions. It should be quite apparent 
+that it would be near impossible to convey our intuitive understanding gathered 
+from years of experience and practice. Virtually all practitioners rely on this type of 
+knowledge. An IT specialist for example will troubleshoot a problem based on his 
+experience and intuition. It would be very difficult for him to codify his knowledge 
+into a document that could convey his know-how to a beginner. This is one reason 
+why experience in a particular field is so highly regarded in the job market. 
+The exact extent to which IT systems can aid in the transfer and enhancement of 
+tacit knowledge is a rather complicated discussion. For now, suffice it to say that 
+successful KM initiatives must place a very strong emphasis on the tacit dimension, 
+focusing on the people and processes involved, and using IT in a supporting role. 
+Tacit knowledge is found in: the minds of human stakeholders. It includes 
+cultural beliefs, values, attitudes, mental models, etc. as well as skills, capabilities 
+and expertise (Botha et al 2008). On this site, I will generally limit tacit knowledge 
+
+ 
+21 
+to knowledge embodied in people and refer separately to embedded knowledge 
+(as defined below), whenever making this distinction is relevant. 
+Embedded Knowledge 
+Embedded knowledge refers to the knowledge that is locked in processes, 
+products, culture, routines, artifacts, or structures (Horvath 2000, Gamble & 
+Blackwell 2001). Knowledge is embedded either formally, such as through a 
+management initiative to formalize a certain beneficial routine, or informally as 
+the organization uses and applies the other two knowledge types. 
+The challenges in managing embedded knowledge vary considerably and will 
+often differ from embodied tacit knowledge. Culture and routines can be both 
+difficult to understand and hard to change. Formalized routines on the other hand 
+may be easier to implement and management can actively try to embed the fruits 
+of lessons learned directly into procedures, routines, and products. 
+IT's role in this context is somewhat limited but it does have some useful 
+applications. Broadly speaking, IT can be used to help map organizational 
+knowledge areas; as a tool in reverse engineering of products (thus trying to 
+uncover hidden embedded knowledge); or as a supporting mechanism for 
+processes and cultures. However, it has also been argued that IT can have a 
+disruptive influence on culture and processes, particularly if implemented 
+improperly. 
+Due to the difficulty in effectively managing embedded knowledge, firms that 
+succeed may enjoy a significant competitive advantage. 
+Embedded knowledge is found in: rules, processes, manuals, organizational 
+culture, codes of conduct, ethics, products, etc. It is important to note, that while 
+embedded knowledge can exist in explicit sources (i.e. a rule can be written in a 
+manual), the knowledge itself is not explicit, i.e. it is not immediately apparent 
+why doing something this way is beneficial to the organization. 
+ 
+22 
+ 
+ 
+What is Knowledge 
+Management? 
+  
+
+ 
+23 
+The full scope of knowledge management (KM) is not something that is 
+universally accepted. However, before one looks at the differences in the 
+definitions, let's the similarities. 
+KM is about making the right knowledge available to the right people. It is about 
+making sure that an organization can learn, and that it will be able to retrieve and 
+use its knowledge assets in current applications as they are needed. In the words 
+of Peter Drucker it is "the coordination and exploitation of organizational 
+knowledge resources, in order to create benefit and competitive advantage" 
+(Drucker 1999). 
+Where the disagreement sometimes occurs is in conjunction with the creation of 
+new knowledge. Wellman (2009) limits the scope of KM to lessons learned and the 
+techniques employed for the management of what is already known. He argues 
+that knowledge creation is often perceived as a separate discipline and generally 
+falls under innovation management. 
+Bukowitz and Williams (1999) link KM directly to tactical and strategic 
+requirements. Its focus is on the use and enhancement of knowledge-based assets 
+to enable the firm to respond to these issues. According to this view, the answer 
+to the question "what is knowledge management" would be significantly broader. 
+A similarly broad definition is presented by Davenport & Prusak (2000), which 
+states that KM "is managing the corporation's knowledge through a systematically 
+and organizationally specified process for acquiring, organizing, sustaining, 
+applying, sharing and renewing both the tacit and explicit knowledge of employees 
+to enhance organizational performance and create value." 
+I will also choose to answer the question "what is knowledge management" in 
+the broader perspective, encompassing not just the exploitation and management 
+of existing knowledge assets, but the also the initiatives involved in the creation 
+and acquisition of new knowledge. In the next article, I will arrive at a specific 
+knowledge management definition. 
+  
+ 
+24 
+Knowledge Management Definition 
+ 
+Based on the discussion in the previous section, my knowledge management 
+definition is as follows: 
+Knowledge management is the systematic management of an organization's 
+knowledge assets for the purpose of creating value and meeting tactical & 
+strategic requirements; it consists of the initiatives, processes, strategies, and 
+systems that sustain and enhance the storage, assessment, sharing, refinement, 
+and creation of knowledge. 
+Knowledge management (KM) therefore implies a strong tie to organizational 
+goals and strategy, and it involves the management of knowledge that is useful for 
+some purpose and which creates value for the organization. 
+Expanding upon the previous knowledge management definition, KM involves 
+the understanding of: 
+Where and in what forms knowledge exists; what the organization needs to 
+know; how to promote a culture conducive to learning, sharing, and knowledge 
+creation; how to make the right knowledge available to the right people at the 
+right time; how to best generate or acquire new relevant knowledge; how to 
+manage all of these factors so as to enhance performance in light of the 
+organization's strategic goals and short-term opportunities and threats. 
+KM must therefore create/provide the right tools, people, knowledge, structures 
+(teams, etc.), culture, etc. so as to enhance learning; it must understand the value 
+and applications of the new knowledge created; it must store this knowledge and 
+make it readily available for the right people at the right time; and it must 
+continuously assess, apply, refine, and remove organizational knowledge in 
+conjunction with concrete long and short-term factors. 
+From this knowledge management definition, we can see that it depends upon 
+the management of the organization's knowledge creation and conversion 
+mechanisms; organizational memory and retrieval facilities; organizational 
+ 
+25 
+learning; and organizational culture. These concepts will be explored in more 
+detail in the following sections. 
+  
+ 
+26 
+Why is Knowledge Management Useful? 
+ 
+I have been asked to write this piece by someone who was not entirely familiar 
+with the knowledge management (KM) discipline. Looking back at the work I 
+presented on this site, I can see how a beginner, and particularly a manager new 
+to the subject, might not easily understand why knowledge management is useful 
+for their particular situation. 
+I will keep this concise and to the point. Knowledge management is responsible 
+for understanding: 
+● What your organization knows. 
+● Where this knowledge is located, e.g. in the mind of a specific expert, a 
+specific department, in old files, with a specific team, etc. 
+● In what form this knowledge is stored e.g. the minds of experts, on paper, 
+etc. 
+● How to best transfer this knowledge to relevant people, so as to be able to 
+take advantage of it or to ensure that it is not lost. E.g. setting up a 
+mentoring relationship between experienced experts and new employees, 
+implementing a document management system to provide access to key 
+explicit knowledge. 
+● The need to methodically assess the organization's actual know-how vs the 
+organization's needs and to act accordingly, e.g. by hiring or firing, by 
+promoting specific in-house knowledge creation, etc. 
+So, why is knowledge management useful? It is useful because it places a focus 
+on knowledge as an actual asset, rather than as something intangible. In so doing, 
+it enables the firm to better protect and exploit what it knows, and to improve and 
+focus its knowledge development efforts to match its needs. 
+In other words: 
+● It helps firms learn from past mistakes and successes. 
+● It better exploits existing knowledge assets by re-deploying them in areas 
+where the firm stands to gain something, e.g. using knowledge from one 
+ 
+27 
+department to improve or create a product in another department, 
+modifying knowledge from a past process to create a new solution, etc. 
+● It promotes a long-term focus on developing the right competencies and 
+skills and removing obsolete knowledge. 
+● It enhances the firm's ability to innovate. 
+● It enhances the firm's ability to protect its key knowledge and 
+competencies from being lost or copied. 
+Unfortunately, KM is an area in which companies are often reluctant to invest 
+because it can be expensive to implement properly, and it is extremely difficult to 
+determine a specific ROI. Moreover, KM is a concept the definition of which is not 
+universally accepted, and for example within IT one often sees a much shallower, 
+information-oriented approach. Particularly in the early days, this has led to many 
+"KM" failures and these have tarnished the reputation of the subject as a whole. 
+Sadly, even today, probably about one in three blogs that I read on this subject 
+have absolutely nothing to do with the KM that I was taught back in business 
+school. I will discuss this latter issue in greater detail in the future. 
+discuss this latter issue in greater detail in the future. 
+  
+ 
+28 
+Information Management vs Knowledge Management 
+ 
+This has always been a bit of a tricky subject, because knowledge and 
+information are used interchangeably by so many people. Therefore, you will often 
+find KM solutions even today which are essentially nothing more than information 
+or document management systems, i.e. which handle data, information, or 
+perhaps even explicit knowledge, but which do not touch the most essential part 
+of KM - tacit knowledge. 
+Below you can find an infographic of the main differences, with a short 
+explanation below. Please keep in mind that IM in many ways is a useful tool for 
+KM, in that information can help create and refine knowledge, but as a discipline it 
+is a different one. 
+ 
+
+ 
+29 
+ 
+ 
+As I showed in the previous sections, knowledge and information are actually 
+quite different, as is tacit and explicit knowledge. So, while information and data 
+management are certainly very useful, particularly as information sources are 
+growing at exponential rates and with the new focus on big data, it is not 
+synonymous with KM. 
+So, what exactly is the difference? 
+Information and IM: 
+● Focus on data and information 
+● Deal with unstructured and structured facts and figures. 
+● Benefit greatly from technology, since the information being conveyed is 
+already codified and in an easily transferrable form. 
+● Focus on organizing, analyzing, and retrieving - again due to the codified 
+nature of the information. 
+● Is largely about know-what, i.e. it offers a fact that you can then use to 
+help create useful knowledge, but in itself that 
+● fact does not convey a course of action (e.g. sales of product x are up 25% 
+last quarter). 
+● Is easy to copy - due to its codified and easily transferrable nature. 
+Knowledge and KM: 
+● Focus on knowledge, understanding, and wisdom 
+● Deal with both codified and uncodified knowledge. Uncodified knowledge - 
+the most valuable type of knowledge - is found in the minds of 
+practitioners and is unarticulated, context-based, and experience-based. 
+● Technology is extremely useful, but KM's focus is on people and processes. 
+IT is great for transferring explicit, codified knowledge, but it's role in the 
+transfer of deeper, internalized knowledge is more complex. Since this kind 
+of knowledge is passed from person to person, through interaction, 
+collaboration, mentoring, etc. and preferably in an unstructured 
+ 
+30 
+environment, IT tools for KM have to support this function. They are 
+therefore not merely passing on information, but also act as tools to bring 
+people together, to enhance communication, to allow the storage and 
+transfer of unstructured thoughts and notes, etc. 
+● Focus on locating, understanding, enabling, and encouraging - by creating 
+environments, cultures, processes, etc. where knowledge is shared and 
+created. 
+● Is largely about know-how, know-why, and know-who 
+● Is hard to copy - at least regarding the tacit elements. The connection to 
+experience and context makes tacit knowledge extremely difficult to copy. 
+This is why universities cannot produce seasoned practitioners - there are 
+some things (the most important things) that you simply cannot teach 
+from a textbook (or other codified source of information/explicit 
+knowledge). These are learnt in the field and understood on an intuitive 
+level. You cannot easily copy or even understand this intuition without the 
+right experience, context, etc. - and it is this intuition that represents the 
+most valuable organizational knowledge. 
+  
+ 
+31 
+ 
+ 
+Organizational 
+Knowledge 
+  
+
+ 
+32 
+ 
+ 
+Introducing Organizational Knowledge 
+ 
+In an earlier section we identified the three different types of knowledge that 
+can exist in an organization. Now I will take a closer look at the scope 
+organizational knowledge and its significance to the knowledge management (KM) 
+process. 
+Organizational Knowledge Resources 
+Business knowledge can exist on several different levels: 
+Individual: Personal, often tacit knowledge/know-how of some sort. It can also 
+be explicit, but it must be individual in nature, e.g. a private notebook. 
+Groups/community: Knowledge held in groups but not shared with the rest of 
+the organization. Companies usually consist of communities (most often informally 
+created) which are linked together by common practice. These communities of 
+practice (Lave & Wenger 1991) may share common values, language, procedures, 
+know-how, etc. They are a source of learning and a repository for tacit, explicit, 
+and embedded knowledge. 
+Structural: Embedded knowledge found in processes, culture, etc. This may be 
+understood by many or very few members of the organization. E.g. the knowledge 
+embedded in the routines used by the army may not be known by the soldiers 
+who follow these routines. At times, structural knowledge may be the remnant of 
+past, otherwise long forgotten lessons, where the knowledge of this lesson exists 
+exclusively in the process itself. 
+Organizational: The definition of organizational knowledge is yet another 
+concept that has very little consensus within literature. Variations include the 
+extent to which the knowledge is spread within the organization, as well as the 
+actual make-up of this knowledge. Hatch (2010) defines it as: "When group 
+knowledge from several subunits or groups is combined and used to create new 
+ 
+33 
+knowledge, the resulting tacit and explicit knowledge can be called organizational 
+knowledge." 
+Others present a broader perspective: "individual knowledge, shared 
+knowledge, and objectified knowledge are different aspects or views of 
+organizational knowledge" (Ekinge & Lennartsson 2000). As always, texts 
+emphasizing an IT based outlook once again offer shallower, information-based 
+definitions, e.g. Virvou & Nakamura 2008, "Information internalized by means of 
+research, study or experience that has value to the organization". 
+For the purpose of this site I will adopt a broad, knowledge-based perspective. 
+Organizational knowledge is therefore defined as: all the knowledge resources 
+within an organization that can be realistically tapped by that organization.  It can 
+therefore reside in individuals and groups or exist at the organizational level. 
+Extra-organizational: Defined here as: Knowledge resources existing outside the 
+organization which could be used to enhance the performance of the organization. 
+They include explicit elements like publications, as well as tacit elements found in 
+communities of practice that span beyond the organization's borders. 
+Implications for KM 
+In order to enhance organizational knowledge, KM must therefore be involved 
+across the entire knowledge spectrum. It must help knowledge development at all 
+levels and facilitate & promote its diffusion to individuals, groups, and/or across 
+the entire firm, in accordance with the organization's requirements. KM must 
+manage organizational knowledge storage and retrieval capabilities and create an 
+environment conducive to learning and knowledge sharing. Similarly, it must be 
+involved in tapping external sources of knowledge whenever these are necessary 
+for the development of the organizational knowledge resources. 
+To a large degree, KM is therefore dependent on the understanding and 
+management of organizational learning, organizational memory, knowledge 
+sharing, knowledge creation, and organizational culture. 
+  
+ 
+34 
+The SECI Model and Knowledge Conversion 
+ 
+Arguably the most important contributor to this subject has been Ikujiro 
+Nonaka. He worked extensively with the concepts of explicit knowledge and tacit 
+knowledge and drew attention to the way Western firms tend to focus too much 
+on the former (Nonaka & Takeuchi 1996). This sentiment has since been echoed 
+throughout organisational learning and knowledge management (KM) literature 
+(e.g. Cook & Brown 1999, Kreiner 1999, Tsoukas & Valdimirou 2001, etc.). 
+Nonaka and Takeuchi introduced the SECI model (Nonaka & Takeuchi 1996) 
+which has become the cornerstone of knowledge creation and transfer theory. 
+They proposed four ways that knowledge types can be combined and converted, 
+showing how knowledge is shared and created in the organization. The model is 
+based on the two types of knowledge outlined above. 
+Socialization: Tacit to tacit. Knowledge is passed on through practice, guidance, 
+imitation, and observation. 
+Externalization: Tacit to explicit. This is deemed as a particularly difficult and 
+often particularly important conversion mechanism. Tacit knowledge is codified 
+into documents, manuals, etc. so that it can spread more easily through the 
+organization. Since tacit knowledge can be virtually impossible to codify, the 
+extent of this knowledge conversion mechanism is debatable. The use of metaphor 
+is cited as an important externalization mechanism. 
+Combination: Explicit to explicit. This is the simplest form. Codified knowledge 
+sources (e.g. documents) are combined to create new knowledge. 
+Internalization: Explicit to tacit. As explicit sources are used and learned, the 
+knowledge is internalized, modifying the user's existing tacit knowledge. 
+The SECI Model Knowledge Creation Spiral 
+In this model, knowledge is continuously converted and created as users 
+practice, collaborate, interact, and learn. The process should be seen as a 
+continuous, dynamic, swirl of knowledge rather than a static model. It is basically a 
+ 
+35 
+visual representation of overlapping, continuous processes that take place - or 
+should take place - in an organization. 
+ 
+Below I have included a graphical representation of this concept as presented in 
+the SECI model: 
+ 
+A great deal of effort has been put into investigating its practical applicability (with mixed results), but 
+in recent years the appl icability of the model has been linked strongly to culture, both organizational 
+and national. The issue is whether culture is more than just an element in a KM model, i.e. culture- in-
+the-model, but rather acts as a limiting factor for a model, i.e. culture-of- the-model (Andreeva & 
+Ikhilchik 2011). The issue of culture as a limiting factor for KM models is an issue I will incorporate 
+into the site in the future and provide a link from this article to the new sections. 
+Nonetheless, the SECI model remains at t he core of knowledge conversion theory within KM, and this 
+almost universal attraction to the model may in itself be an indication that some aspects of it appeal to 
+virtually all cultures (Andreeva & Ikhilchik 2011). 
+
+ 
+36 
+  
+ 
+37 
+Organizational Memory and Knowledge Repositories 
+ 
+Traditional memory is associated with the individual's ability to acquire, retain, 
+and retrieve knowledge. Within business this concept is extended beyond the 
+individual, and organizational memory therefore refers to the collective ability to 
+store and retrieve knowledge and information. 
+So how does one define organizational memory? Any definition would need to 
+span all the different repositories in which a company may store knowledge. This 
+includes the more formal records, as well as tacit and embedded knowledge 
+located in people, organizational culture, and processes. 
+Walsh and Ungson (1991) offer some deeper insight into the workings of 
+organizational memory. They look at how and organization's history can influence 
+current decision making. They how shared understandings evolve, becoming part 
+of an organizational whole which may remain constant even after key individuals 
+have left the firm. This is done through the formation of collective interpretations 
+regarding the outcome of decision making. The information defining the decision's 
+stimulus and response is stored in information, and it affects present decisions 
+when it is retrieved. 
+Walsh and Ungson (1991) define a number of stages in the organizational 
+memory process and outline five retention facilities: 
+● Acquisition: Organizational memory consists of the accumulated 
+information regarding past decisions. This information is not centrally 
+stored, but rather it is split across different retention facilities. Each time a 
+decision is made, and the consequences are evaluated, some information 
+is added to the organizational memory. 
+● Retention: Past experiences can be retained in any of the five different 
+repositories: 
+o Individuals 
+o Culture: The language and frameworks that exist within an organization 
+and form shared interpretations. 
+ 
+38 
+o Transformations: The procedures and formalized systems that the 
+organization employs. These systems reflect the firm's past experiences 
+and are repositories for embedded knowledge. 
+o Structures: These link the individual to other individuals and to the 
+environment. Social interaction is conditioned by mutual expectations 
+between individuals based on their roles within the organization. The 
+interaction sequences for a pattern over time and begin to extend to an 
+organizational level. This can take place both through formal and informal 
+structure and it constitutes a social memory which stores information 
+about an organization's perception of the environment. 
+o External activities: The surroundings of the organization where knowledge 
+and information can be stored. E.g. former employees, government bodies, 
+competitors, etc. 
+● Retrieval: This can either be controlled or automatic. The latter refers to 
+the intuitive and essentially effortless process of accessing organizational 
+memory, usually as part of an established sequence of action. Controlled 
+refers to the deliberate attempt to access stored knowledge. 
+As one can see, the three stages presented here are essential to the learning 
+process of the firm. Much like an individual, the firm must be able to access and 
+use past experiences so as to avoid repeating mistakes and to exploit valuable 
+knowledge. Unlike an individual however, OM is not centrally stored and resides 
+throughout the firm and even beyond it. The process of retrieving 
+knowledge/information will inevitably vary depending on the retention facility that 
+one is trying to access. For example, written documentation may be accessed 
+through IT while cultural memory is accessed through the understanding and/or 
+application of the norms and procedures of the working environment. 
+A further distinction regarding the type of knowledge retained in the organization 
+is offered by Ramage and Reif (1996). They separate the documented aspects from 
+the subtler knowledge that belongs to individuals as a result of their role as 
+members of the organization: 
+● Artifacts of Cooperation: These are the hard indicators which are visible 
+and examinable. They include products, records of collaboration, and 
+ideas. The latter refers to minutes of meetings, reports, FAQs, and other 
+ 
+39 
+items that record common knowledge. These are easily storable and 
+presumably also more easily accessible. 
+● Knowledge of the Organization Qua Entity: This type of knowledge cannot 
+be stored in the same way as the artifacts of cooperation. It includes 
+knowledge of the political system, of the culture, and of how things are 
+normally done within the firm. It can include the knowledge of who is an 
+expert, of where a particular person is, and on who to contact for a specific 
+problem. 
+This definition is useful as a way of understanding the knowledge categories and 
+the potential management challenge that organizational memory, and ultimately 
+knowledge management (KM) would pose. 
+Furthermore, as is the case with many KM related disciplines, one finds a distinct 
+difference in the way organizational memory is perceived between IT practitioners 
+and business theoreticians. In the words of Wellman (2009): "The IT path 
+emphasizes the acquisition and storage of organizational knowledge including data 
+warehousing, document management, and search tools. The organization 
+development (OD) path emphasizes tacit knowledge, coaching, social interactions, 
+and encouraging ad hoc knowledge exchange." 
+IT based models thus tend to focus on more concrete, definable memory and less 
+on people, culture, and informal structures. Essentially, they focus more on 
+artifacts of cooperation. 
+Since this site deals with organizational memory within the context of KM, it is not 
+necessary to arrive at a specific definition or model. Instead it is important to 
+understand the scope of organizational memory, its varied and often complex 
+retention facilities, and the types of knowledge available. In later sections, I will 
+investigate more closely the specific role that IT can have in supporting, 
+promoting, and enhancing organizational memory. 
+  
+ 
+40 
+ 
+ 
+Organizational Learning 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+41 
+ 
+  
+  
+ 
+42 
+ 
+Introducing Organizational Learning 
+ 
+What is Organizational Learning? 
+Learning is the way we create new knowledge and improve ourselves. Although 
+there is ample debate regarding the mechanisms and scope of learning, in its 
+simplest form this is no different for organizations. Botha et al. describe the 
+organizational learning process as follows: 
+ 
+ 
+As one can see organizational learning is based on applying knowledge for a 
+purpose and learning from the process and from the outcome. Brown and Duguid 
+(1991) describe organizational learning as "the bridge between working and 
+innovating." This once again links learning to action, but it also implies useful 
+improvement. 
+The implications to knowledge management are three-fold: 
+
+ 
+43 
+ 
+● One must understand how to create the ideal organizational learning 
+environment 
+● One must be aware of how and why something has been learned. 
+● One must try to ensure that the learning that takes place is useful to the 
+organization 
+Organizational Learning Pitfalls 
+Senge (1990) argues that often it is failure that provides the richest learning 
+experience, which is something that organizations need to understand and use 
+more effectively. He criticizes the way we reward success and look down upon 
+failure as something that can be detrimental to the long-term health of the 
+organization. Levitt and March (1996) further argue that success is ambiguous and 
+depends on how it is interpreted. This interpretation may not only vary 
+significantly between different groups within the organization but may change 
+over time as success indicators and levels of aspiration change. 
+Levitt and March (1996) also discuss superstitious learning. This occurs when 
+positive or negative results are associated with the wrong actions. Success and 
+failure can both generate superstitious learning. If a firm does well, the routines 
+that they followed are linked to this success and are subsequently reinforced. The 
+opposite is true for failure. In such cases, the organization thinks that it has 
+learned when in fact it has not. Real organizational learning would have resulted 
+from the examination of the information generated from their actions rather than 
+from relatively arbitrary success or failure criteria. 
+Different Approaches to Organizational Learning 
+Generally speaking, there are two approaches to organizational learning. Th e 
+first view looks at the firm as a whole and s learning from a cognitive perspective. 
+In a way, the firm is treated like a large brain composed of the individual members 
+of the organization. The second view looks at learning as community based, where 
+the firm's practitioners create knowledge in their own networks called 
+communities of practice (Lave & Wenger 1991). 
+ 
+44 
+These views should be seen as complementary rather than contradictory. The 
+next two sub-sections will organizational learning theory from these two 
+perspectives. 
+  
+ 
+45 
+Organizational Learning Theory: Company 
+Perspective 
+ 
+Two of the most noteworthy contributors to the field of organizational learning 
+theory have been Chris Argrys and Donald Schon. Organizational learning (OL), 
+according to Argrys & Schon is a product of organizational inquiry. This means that 
+whenever expected outcome differs from actual outcome, an individual (or group) 
+will engage in inquiry to understand and, if necessary, solve this inconsistency. In 
+the process of organizational inquiry, the individual will interact with other 
+members of the organization and learning will take place. Learning is therefore a 
+direct product of this interaction. 
+Argrys and Schon emphasize that this interaction often goes well beyond 
+defined organizational rules and procedures. Their approach to organizational 
+learning theory is based on the understanding of two (often conflicting) modes of 
+operation: 
+ 
+
+ 
+46 
+ 
+Espoused theory : This refers to the formalized part of the organization. Every 
+firm will tend to have various instructions regarding the way employees should 
+conduct themselves in order to carry out their jobs (e.g. problem solving). These 
+instructions are often specific and narrow in focus, confining the individual to a set 
+path. An example of espoused theory might be "if the computer does not work, try 
+rebooting it and then contact the IT department." 
+Theory-in-use: This is the actual way things are done. Individuals will rarely 
+follow espoused theory and will rely on interaction and brainstorming to solve a 
+problem. Theory in use refers to the loose, flowing, and social way that employees 
+solve problems and learn. An example of this might be the way someone actually 
+solves a problem with their computer by troubleshooting solutions, researching on 
+forums, asking co-workers for opinions, etc. 
+The fact that there is a mismatch between these two approaches is potentially 
+problematic if the company enforces its espoused theory. In order to create an 
+environment conducive to learning, firms are encouraged to accept theory in use, 
+and make it easy for the individual to interact with his working environment in an 
+undefined and unstructured way. Essentially, they should provide the right 
+environment for organizational inquiry to take place, unconstrained by formal 
+procedures. 
+Levitt and March (1996) expand further on the dynamics of organizational 
+learning theory. Their view presents the organization as routine-based, history 
+dependent, and target oriented. While lessons from history are stored in the 
+organizational memory, the event itself is often lost. They note that past lessons 
+are captured by routines "in a way that makes the lessons, but not the history, 
+accessible to organizations and organizational members." The problem most 
+organizations face is that it is usually better to have the event rather than the 
+interpretation. However, this is often too costly (both financially and time-wise) to 
+be feasible. 
+OL is transmitted through socialization, education, imitation and so on, and can 
+change over time as a result of interpretations of history. 
+ 
+47 
+Organizational Learning Theory: The Three Types of Learning 
+Argrys and Schon (1996) identify three levels of learning which may be present 
+in the organization: 
+ 
+● Single loop learning:  Consists of one feedback loop when strategy is 
+modified in response to an unexpected result (error correction). E.g. when 
+sales are down, marketing managers inquire into the cause, and tweak the 
+strategy to try to bring sales back on track. 
+● Double loop learning:  Learning that results in a change in theory- in-use. 
+The values, strategies, and assumptions that govern action are changed to 
+create a more efficient environment. In the above example, managers 
+might rethink the entire marketing or sales process so that there will be no 
+(or fewer) such fluctuations in the future. 
+● Deuterolearning: Learning about improving the learning system itself. This 
+is composed of structural and behavioral components which determine 
+how learning takes place. Essentially deuterolearning is therefore "learning 
+how to learn." 
+This can be closely linked to Senge's concept of the learning organization, 
+particularly in regard to improving learning processes and 
+understanding/modifying mental models. 
+Effective learning must therefore include all three, continuously improving the 
+organization at all levels. However, while any organization will employ single loop 
+learning, double loop and particularly deuterolearning are a far greater challenge. 
+Conclusion 
+From organizational learning theory we can infer the following issues which may 
+affect knowledge management and knowledge management systems: 
+
+ 
+48 
+● OL is dependent on allowing organizational inquiry to take place according 
+to theory-in-use, not espoused theory. 
+● OL is a complex mechanism, resulting often in the storage of 
+interpretations of past events, rather than the events themselves. 
+● OL can take place on three different levels. While single loop learning 
+comes natural to any individual/organization, special attention must be 
+paid to the double-loop and deuterolearning 
+  
+ 
+49 
+Organizational Learning and Communities of Practice 
+ 
+What are Communities of Practice? 
+Communities of practice is a term originally developed by Lave and Wenger 
+(1991). It describes a learning theory with a strong relationship to the social 
+construction of knowledge. The community of practice (sometimes incorrectly 
+referred to as "communities of practices") consists of members who interact with 
+each other for their pursuit of a common practice. It is therefore this collective 
+social practice that links individuals together across official organizational 
+boundaries and departments and makes up the community. 
+It is important to note that these are not teams. A community of practice can be 
+defined as "a group of professionals informally bound to one another through 
+exposure to a common class of problems, common pursuit of solutions, and 
+thereby themselves embodying a store of knowledge" (Stewart 2001 in Botha et al 
+2008). 
+For further reading and a very detailed overview on the workings and 
+composition of communities of practice, see this article by Etienne Wenger (one of 
+the founders of the term). 
+Learning Within Communities of Practice 
+Learning is seen as deriving from the social process of becoming a practitioner, 
+as it gives the individual a social context of being an integrated part of a 
+community. The social construction of identity shapes each person's view and 
+interpretation of the world. Learning and the creation of new knowledge can then 
+take place within the context dependent forum of the community and can be 
+shared through social practice. 
+Lave and Wenger (1991) introduce the concept of legitimate peripheral learning 
+(LPP). LPP links learning to participation within a community of practice. Th e 
+objective is not to acquire any specific knowledge, but instead to be granted 
+access to the community and its culture and language. As a newcomer learns the 
+ 
+50 
+formal and informal culture and values of the community, he becomes a legitimate 
+member. Essentially, he moves form peripheral to full participation. 
+Brown and Duguid (1991) further investigate organizational learning from a 
+community perspective. They refer to canonical and non-canonical practice- which 
+are concepts similar to espoused theory and theory- in-use described in the 
+previous section. Canonical practice refers to adherence to formal rules and 
+procedures, while non-canonical refers to the informal routines that dominate day 
+to day procedures. Brown and Duguid warn against strict canonical focus as it 
+inhibits the problem-solving capabilities of the organization. They stress that it is 
+unstructured dialogue, particularly through storytelling, that leads to innovation 
+and problem solving. 
+Storytelling functions as a wisdom repository and is instrumental in the creation 
+of new knowledge. This is closely linked to Levitt and March's concept of history 
+dependent learning where the interpretations of events (rather than the actual 
+events) are remembered and passed on. It is also somewhat reminiscent of 
+Nonaka's externalization process, when tacit knowledge is made explicit often 
+through the use of metaphor. 
+Garfield (2018) presents a number of principles concerning communities in 
+organizations, including: 
+● They must be independent of organizational structure. 
+● They are not teams, sites, blogs, etc.; they are people who interact, and 
+they are based on topics. 
+● Community membership cannot be forced; it must be voluntary. 
+● Communities should span organizational, functional and geographic 
+boundaries. 
+● Communities require a "critical mass" of members. 
+● Communities must be nurtured. 
+The Implications to KM 
+Botha et al (2008) summarize the key factors regarding communities of practice 
+as follows: 
+● Learning is a social phenomenon 
+ 
+51 
+● Knowledge is integrated into the culture, values, and language of the 
+community 
+● Learning and community membership are inseparable 
+● We learn by doing and therefore knowledge and practice are inseparable. 
+● Empowerment is key to learning: The best learning environments are 
+created when there are real consequences to the individual and his 
+community of practice. 
+Management must understand the advantages, disadvantages, and limitations 
+of communities of practice. For example, because they are so loosely defined it 
+may be very hard to identify them when a problem needs to be solved- to resolve 
+this some companies today are mapping their communities of practice (Botha 
+2008). Another issue could be the problem of transferring and combining 
+knowledge across the firm. Due to the close ties to "doing" as well as the cultural 
+elements, this may require innovative solutions- e.g. using temporary cross 
+functional project teams that can leverage knowledge from different areas, apply 
+it, learn, and the redistribute the new knowledge back into the individual 
+members' communities. 
+All this should underline the importance of recognizing and supporting 
+communities of practice. Knowledge management (KM) initiatives and systems 
+must therefore be supportive, non-disruptive, and must not enforce canonical 
+practice. 
+  
+ 
+52 
+ 
+Organizational Culture 
+and Leadership 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+53 
+ 
+  
+ 
+54 
+The Significance of Organizational Culture 
+ 
+In this article I will look at organizational culture and its impact on KM processes. 
+The other article in this section s leadership and the learning organization, as 
+outlined by Peter Senge. 
+What is Organizational Culture? 
+The social elements of knowledge that have been underlined in previous 
+sections are at least partially dependent on organizational and community culture. 
+Organizational culture determines values and beliefs which are an integral part of 
+what one chooses to see and absorb (Davenport & Prusak 2000). It includes a 
+shared perception of reality, regarding how things are and how things should be. 
+Furthermore, community and group culture determine the willingness and 
+conditions for knowledge sharing with other members of the organization. 
+Knowledge, and knowledge sharing, are thus inseparable from organizational 
+culture. 
+Wellman (2009) essentially describes culture as "the way it is around here." To 
+illustrate the perseverance of organizational culture he presents an interesting 
+allegory which I will summarize below: 
+“Put five apes in a cage. Then dangle a banana from the ceiling of that cage and 
+place a ladder under it. Whenever an ape attempts to climb the ladder to reach the 
+banana, spray all of them with cold water. After a few times, the apes will 
+associate climbing the ladder with being sprayed with cold water. One can now 
+turn off the cold water. 
+Then, replace one of the original apes with a new one. This new ape will 
+undoubtedly try to get to the banana, but if he tries he will be attacked by the 
+others. He will have no idea why this is so but will soon learn that he must not 
+climb the ladder. Next replace yet another ape. When he approaches the ladder all 
+the apes will attack him. One of these apes has no idea why he may not climb the 
+ 
+55 
+ladder, but he participates in the punishment enthusiastically. Soon the new ape 
+will also learn not to climb the ladder. 
+ 
+In this way, one can continue until all the original apes are replaced. At this 
+stage, none of them know why they must not climb the ladder, but none will do so, 
+and all will attack anyone that tries. All of this because "that's the way it has 
+always been around here." 
+Strange as it may seem, this kind of cultural learning can be identified time and 
+again in real world organizations. Wellman points out that at times this can be 
+beneficial and detrimental. Hard wiring a reaction can push the organization into 
+action quickly against a perceived threat. The problem is that this "instinctive 
+response may be inappropriate for the current environment but may be triggered 
+nonetheless" (Wellman 2009). 
+All in all, organizational culture can be split into levels (Schein 1992): 
+● Artifacts: These represent the visible elements such as processes, 
+structures, goals, climate, dress codes, furniture, etc. An outsider can see 
+them but may not understand why things are the way things are. 
+● Espoused values: The values espoused by the leaders. They most often are 
+grounded in shared assumptions (see below) of how the company should 
+be run. If there is a significant mismatch between the leadership espoused 
+values and this perception, the organization may be in trouble. 
+● Assumptions: These are the actual values of the culture. They refer to the 
+(often tacit) views of the world itself (e.g. human nature). Again, these 
+assumptions should need to correlate at least to a certain degree to the 
+espoused leadership values for the organization to function smoothly. 
+Organizational Culture and Knowledge Sharing 
+The importance of a knowledge sharing culture as an enabler for the transfer 
+and creation of knowledge is directly addressed by such authors as Bukowitz & 
+Williams (1999), Davenport and Prusak (2000), and Gamble and Blackwell (2001). 
+In order to make knowledge management initiatives work in practice, the 
+employees within the firm must be willing to share their knowledge with others. 
+ 
+56 
+Leaders must understand the culture both on an organizational and community 
+level. While culture often exists on an organizational level, each community may 
+have its own norms, perspectives, and collective understandings. Their willingness 
+to share and to seek knowledge will be influenced by these collective views. 
+ 
+One major influence on a culture's knowledge sharing willingness is the issue of 
+reciprocity (Davenport & Prusak 2000). This refers to the individual's need to 
+perceive a current or future return on the knowledge he chooses to share. This 
+could be in the form of direct compensation of some kind; it could be something 
+intangible like enhancing the individual's reputation; but it can also be the 
+knowledge that the favor will be returned the next time he requires assistance. 
+Finally, internal competition is yet another aspect of organizational culture that 
+may interfere with the knowledge sharing and knowledge creation process. 
+The Problems with Managing Organizational Culture 
+The problems with managing culture can be summed up as follows: 
+● Culture reaffirms itself by rejecting misfits and promoting those that 
+adhere to the norms of the organization (Gamble & Blackwell 2001). 
+● Culture often consists of learned responses that are hard wired into the 
+organization. The actual events that sparked this "lesson" may be long 
+forgotten (Wellman 2009). This is very similar to the concept of 
+organizational learning according to Levitt and March (1996) which 
+indicates that organizations are far more likely to remember 
+interpretations of events rather than the event itself. 
+● Culture contains falsehoods. Past lessons are applied often without 
+understanding them and their reasons for being. 
+All this makes organization culture extremely difficult to change and manage. 
+For more on this, see the section titled corporate culture change. 
+  
+ 
+57 
+Leadership and "The Learning Organization" 
+ 
+The term "learning organization", not to be confused with organizational 
+learning, was popularized by Peter Senge. It describes an organization with an 
+ideal learning environment, perfectly in tune with the organization's goals. Such an 
+organization is a place "where people continually expand their capacity to create 
+the results they truly desire, where new and expansive patterns of thinking are 
+nurtured, where collective aspiration is set free, and where people are continually 
+learning to see the whole (reality) together." (Senge 1992). 
+This subsection will focus largely on the work of Peter Senge, and it will serve as 
+a basis for understanding: 
+1. The ideal organizational environment for learning, knowledge 
+management (KM), innovation, etc., as described through the term "the 
+learning organization". 
+2. The leadership qualities necessary for promoting and encouraging this 
+ideal environment. 
+The Learning Organization 
+According to Senge, the learning organization depends upon the mastery of five 
+dimensions: 
+Systems thinking: The notion of treating the organization as a complex system 
+composed of smaller (often complex) systems. This requires an understanding of 
+the whole, as well as the components, not unlike the way a doctor should 
+understand the human body. Some of the key elements here are recognizing the 
+complexity of the organization and having a long-term focus. Senge advocates the 
+use of system maps that show how systems connect.  
+Personal mastery: Senge describes this as a process where an individual strives 
+to enhance his vision and focus his energy, and to be in a constant state of 
+learning.  
+ 
+58 
+Mental models:  "Deeply ingrained assumptions, generalizations, or even 
+pictures and images that influence how we understand the world and how we take 
+action" (Senge 1990). These must be recognized and challenged so as to allow for 
+new ideas and changes.  
+Building shared vision:  Shared vision is a powerful motivator. A leader's vision 
+does not necessarily become shared by those below him. The key here is to pass 
+on a picture of the future. To influence using dialogue, commitment, and 
+enthusiasm, rather than to try to dictate. Storytelling is one possible tool that can 
+be used here.  
+Team learning:  The state where team members think together to achieve 
+common goals. It builds on shared vision, adding the element of collaboration. 
+The Role of Leadership 
+Senge emphasized the role of the leader in the creation of this learning 
+organization. He defined three leadership roles (1990) that would reshape the old-
+fashioned approach to be the boss. These are: 
+Leader as Designer: Senge likens this to be the designer of a ship rather than its 
+captain. He defined it in three ways: 
+● Creating a common vision with shared values and purpose. 
+● Determining the "policies, strategies, and structures that translate guiding 
+ideas into business decisions." 
+● Creating effective learning processes which will allow for continuous 
+improvement of the policies, strategies, and structures. 
+Leader as Teacher:  The leader here is seen as a coach that works with the 
+mental models present in the organization. He must understand the (usually tacit) 
+concepts of reality and restructure these views "to see beyond the superficial 
+conditions and events [and] into the underlying causes of the problems." 
+Leader as Steward:  This is the vaguest of the three and refers largely to the 
+attitude of the leader. He emphasizes the importance of a leader that feels he is 
+part of something greater; whose desire is first and foremost not to lead, but to 
+serve this greater purpose of building better organizations and reshaping the way 
+businesses operate. 
+ 
+59 
+The first two roles outlined by Senge shed a lot of light into the requirements of 
+effective KM and organizational learning. 
+  
+ 
+60 
+ 
+Knowledge 
+Management Models 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+61 
+ 
+  
+ 
+62 
+ 
+Building Knowledge Management Frameworks and 
+Models 
+ 
+At this stage we have had a look at the components and definitions that related 
+to knowledge management (KM). This section deals with knowledge management 
+frameworks and models. The old saying that a picture paints a thousand words is 
+very much applicable in this case. A good model can integrate various elements 
+and show relationships in a way that is much harder to do in writing. 
+But first, what are the components of a knowledge management framework? At 
+the most basic level, KM consists of the following steps: 
+● Identification of needs 
+● Identification of knowledge resources 
+● Acquisition, creation, or elimination of knowledge related 
+resources/processes/environments 
+● Retrieval, application and sharing of knowledge 
+● Storage of knowledge 
+It is important to note that none of these processes are independent and all of 
+them are affected by countless factors. This is why knowledge management 
+frameworks are typically very different and can be presented in a wide variety of 
+ways. 
+For instance, some models are sequential (as above), and seek to provide a 
+better overview at the expense of "realism". Other models display overlapping 
+processes in an attempt to simulate what actually occurs inside an organization. 
+The problem with the latter is that they are often hard to grasp and can only 
+convey limited information so as not to become incomprehensible. In the 
+following section I will provide examples of both. 
+Since KM is closely related or dependent on other disciplines (such as strategy, 
+information management, project management, etc.) and it is enabled by a wide 
+range of processes and systems, a model can become very complex indeed. 
+ 
+63 
+This is why there is no such thing as an integrated and fully detailed knowledge 
+management framework, i.e. one that captures all relevant aspects with 
+appropriate detail. Each model must choose its focus and origin, as well as its 
+limitations. 
+There are essentially three questions that a knowledge management framework 
+may choose to answer: 
+● What/How 
+● Why 
+● When 
+"What/how" refers to the actual processes of knowledge management. 
+"Why" refers to an indication of the reasons behind using one method or the 
+other. 
+"When" refers to the timing for using one method or another and is very closely 
+related to "why". 
+The latter two questions are usually tackled in more strategic oriented models 
+that take a broader perspective. What/how is usually dealt with in process-
+oriented models that focus on an understanding of the tools available to the 
+manager. These kinds of models are generally more common particularly since the 
+role of knowledge management can be defined far more narrowly than I have 
+chosen to do on this site. 
+In the following section I will a few solid KM models dealing with all the aspects I 
+have discussed above. However, before I conclude, I will present a very useful 
+framework outlined by Botha et al (2008) titled the "knowledge management 
+broad categories". 
+You don´t know 
+ 
+Knowledge Discovery Explore, research, create 
+You know Knowledge Repository 
+(Knowledge Base) 
+Knowledge sharing and 
+transfer 
+ Knowledge you have Knowledge you don’t 
+have 
+ 
+64 
+Here, one can see the role of knowledge management from a broad perspective 
+(very similar to the one adopted on this site), i.e. which includes more than just 
+knowledge sharing/access/etc, but also new knowledge creation. These categories 
+provide a solid overview of the components of any knowledge management 
+framework focusing on the what/how question. 
+  
+ 
+65 
+Three Knowledge Management Models 
+ 
+In this section I will explain three knowledge management (KM) models that 
+take three very different approaches to KM. 
+The KM Process Framework by Bukowitz and Williams (1999) 
+ 
+This KM model depicts the process that defines the strategy for management to 
+build, divest, and enhance knowledge assets. It is a model that emphasizes the 
+"why" and "when" aspects. The strengths of this model rest on its strategic focus, 
+which essentially puts knowledge management action into context. It is also worth 
+
+ 
+66 
+noting that the notion of "divestment" is included - something which is often 
+missing from KM models. 
+ 
+KM initiatives are the result of the response to tactical and strategic changes and 
+needs. The model provides a great overview of the strategy behind KM but it does 
+not include any deeper insight into what initiatives are suitable in a given instance. 
+The KM Matrix by Gamble and Blackwell (2001) 
+This KM model presents a general theoretical framework, as well as specific 
+guidelines for implementation. 
+The KM process is split into four stages. First management must locate the 
+sources of knowledge. Then they must organize this knowledge so as to assess the 
+firm's strengths and weaknesses and determine its relevance and reusability. This 
+is followed by socialization, where various techniques are used to help share and 
+
+ 
+67 
+disseminate it to whomever needs it in the organization. Finally, the knowledge is 
+internalized through use. 
+As all sequential models, the steps are not to be taken literally, but they do 
+provide an excellent overview of the role of the KM manager. However, one 
+limitation of this model is its focus. First of all, the overall strategic role outline by 
+Bukowitz and Williams is not included. Secondly, KM's role here is limited to 
+knowledge sharing, omitting the processes of knowledge acquisition/creation and 
+divestment. This is a perfectly legitimate approach to KM where the focus is on the 
+sharing and retrieval of existing knowledge, but it does not fulfill the scope of the 
+knowledge management definition outlined on this site. 
+ 
+68 
+The Knowledge Management Process Model by Botha et al (2008) 
+This model attempts to offer a more realistic overview of the KM process. The 
+three broad categories overlap and interact with one another. Like Gamble & 
+Blackwell, the focus is on managerial initiatives. Here too the strategic focus (the 
+"when" and the "why" as opposed to the "what") is omitted. It is noteworthy that 
+this model does include the creation of new knowledge as a specific KM initiative. 
+The model further shows which of the three categories are more people 
+oriented and which are more technology focused. Whether or not knowledge 
+sharing should be largely technology focused is certainly debatable and it is 
+something that I will address in future sections. However, for better or for worse, 
+this is largely how organizations tend to approach the issue i.e. as a technological 
+rather than organizational and social challenge. 
+We have now looked at three models that take very different approaches to KM. 
+There is one other important aspect relating to KM that has not been directly dealt 
+
+ 
+69 
+with by these models. I am referring now to the measurement of effects that lets 
+management know whether the implemented initiatives are achieving the desired 
+results. This is dependent upon data and information management but is 
+paramount for future KM initiatives. 
+Based on these models, as well as on the topics discussed on this site so far, I 
+will present my version of an integrated knowledge management model. 
+  
+ 
+70 
+My Integrated Model 
+ 
+The integrated knowledge management model that I have created combines the 
+main aspects of the topics discussed on this site into a model that focuses on the 
+strategic perspective. The integrated knowledge management model attempts to 
+link both process and strategy, while offering specific initiatives at different stages. 
+The model also outlines the relationship of information and information 
+management systems to knowledge management (KM). 
+
+ 
+71 
+ 
+The integrated knowledge management model draws upon elements presented 
+by Bukowitz & Williams, Gamble & Blackwell, Botha et al, and Nonaka & Takeuchi. 
+It also includes the concept of organizational memory as defined earlier. 
+The dark gray elements represent KM initiatives, the yellow boxes represent 
+corporate strategy, while the teal boxes depict data and information systems and 
+repositories. The process is initiated from the tactical and strategic considerations, 
+illustrating the way KM strategy goes hand in hand with corporate strategy. The 
+non-bolded elements in the gray oval indicate the knowledge related processes 
+that go on within the organization as it operates, and which management 
+affects/enhances through its initiatives. 
+● Detect & Discover: Search for existing knowledge as well as hidden 
+knowledge within information and data. 
+● Organize & Assess: Organization and assessment of knowledge assets. 
+Knowledge is categorized, evaluated, and made easier to access (by 
+providing maps etc.). 
+● KM Tactical initiatives: 
+o Act - Reuse: If the firm can use existing knowledge to meet a tactical 
+opportunity or threat, the role of KM is to identify this knowledge and 
+enable it to be used. This means that if it is required by a different 
+person/group, then KM is responsible for making it available to all 
+relevant parties. 
+o Knowledge reuse thus combines the previous points on detection and 
+organization with a new aspect: knowledge sharing. 
+o Act - Create/acquire: If the right knowledge resources do not exist, the 
+firm may create or acquire them, assuming the right processes and 
+systems are in place to support this. For example, the knowledge may 
+be acquired from partners if the right relationships are in place. 
+knowledge creation depends on the right internal environments that 
+allow for combination and conversion of knowledge assets. 
+o Failure to act: This is not really a KM initiative in itself, but it does have 
+some implications. In the event that a firm fails to act there is still a 
+lesson to be learned. Management must evaluate if this is something 
+ 
+72 
+that needs to be addressed in the future. This decision is fed back into 
+the loop, affecting future strategic choices. 
+● KM Strategic Initiatives: 
+o Invest: Support or implement. Here I refer to the organizational 
+structures, culture, knowledge retention, competencies, external 
+network, and systems that direct, affect, and/or enable the KM 
+initiatives discussed above in the long term. Strategic initiatives may, for 
+example, involve creating a knowledge sharing culture, restructuring the 
+firm, establishing a beneficial partnership, or implementing a new IT 
+system. If the right environment, system, etc. is already in place, 
+management must make sure to continuously support it. It is important 
+to note that some of these do not fall solely within KM, and they are all 
+fields of study in their own right. However, in this case, we are 
+interested solely in the way these broader strategic initiatives shape the 
+focus and direction of KM in the long term. 
+o Divest: When knowledge assets become obsolete they need to be 
+removed. KM is responsible for maintaining relevant knowledge assets. 
+The differentiation between tactical and strategic initiatives should not be seen 
+as categorical, and in reality, projects and initiatives will often have mixed goals. 
+The integrated knowledge management model itself should be seen as 
+continuously looping, with new or modified knowledge and information being fed 
+into organizational memory and information repositories each time. 
+All processes are thus supported by information systems. They play an 
+important role in tracking progress and feeding that information back into the 
+system. This way, each time the integrated knowledge management model is run, 
+it is based on different information, understanding, knowledge, and circumstances 
+than the last time. As with all sequential models, none of this should be taken 
+absolutely literally. 
+Although this is called an "integrated" knowledge management model, it is not 
+intended to be all-encompassing. Since KM is such a broad discipline, one could 
+continue to add elements until the model was so complex that it had no meaning. 
+ 
+73 
+Conclusion 
+In this section and the preceding ones, I have looked at various KM models and 
+presented my version of an integrated knowledge management model. 
+Although not intended to represent all possible areas, the integrated knowledge 
+management model does cover the major requirements of a model as defined 
+earlier. To recap, these are: 
+● Identification of needs 
+● Identification of knowledge resources 
+● Acquisition, creation, or elimination of knowledge related 
+resources/processes/environments 
+● Retrieval, application and sharing of knowledge 
+● Storage of knowledge 
+It also addresses (at least to some degree) the 3 main approaches to knowledge 
+management, also outlined in earlier sections, namely: what/how, why, when. 
+Finally, the model ties in information, strategy, and organizational memory, 
+building on the work of past authors. 
+The following section will knowledge management processes and knowledge 
+management strategy in-depth. The section will be modelled after the categories 
+presented in this integrated knowledge management model. 
+  
+ 
+74 
+ 
+Knowledge 
+Management Processes 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+75 
+ 
+  
+ 
+76 
+Introduction Knowledge Management Processes  
+ 
+This section will deal with the actual knowledge management processes. So far, I 
+have presented an introduction to knowledge management as well as several 
+frameworks. Now it is time to talk about the different processes and initiatives. 
+This section, as well as the subsequent one on knowledge management strategy, 
+will be structured according to the layout of the integrated knowledge 
+management model presented earlier. 
+Under the initiative referred to as "act", the integrated model outlines a series 
+of knowledge management processes. They will be used as headings for the 
+subsections presented here and can be accessed through the menu on the left. 
+These are: 
+● Knowledge Discovery & Detection 
+● Knowledge Organization & Assessment 
+● Knowledge Sharing 
+● Knowledge Reuse 
+● Knowledge Creation 
+● Knowledge Acquisition 
+These form the backbone of knowledge management processes as they outline 
+all aspects involved in the actual management of knowledge. 
+At the end of the section on knowledge management strategy, a subsection 
+titled knowledge management best practices will summarize all the aspects 
+discussed thus far. 
+  
+ 
+77 
+Knowledge Discovery and Detection 
+ 
+In this subsection, I will the knowledge management (KM) initiatives involved in 
+knowledge discovery & detection. 
+This step deals with discovering the knowledge that a firm possesses all over the 
+organization, as well as the patterns in the information available that hide 
+previously undetected pockets of knowledge. 
+Once knowledge is created, it exists within the organization. However, before it 
+can be reused or shared it must be properly recognized and categorized. This 
+subsection deals with the former aspect, while the following subsection deals with 
+the latter. 
+● Explicit Knowledge: This is largely a process of sorting through documents 
+and other records, as well as discovering knowledge within existing data 
+and knowledge repositories. For the latter, IT can be used to uncover 
+hidden knowledge by looking at patterns and relationships within data and 
+text. The main tools/practices in this case include intelligence gathering, 
+data mining (finding patterns in large bodies of data and information), and 
+text mining (text analysis to search for knowledge, insights, etc.). 
+Intelligence gathering is closely linked to expert systems (Bali et al 2009) 
+where the system tries to capture the knowledge of an expert, though the 
+extent to which they are competent for this task is questionable (Botha et 
+al 2008). 
+● Tacit knowledge: Discovering and detecting tacit knowledge is a lot more 
+complex and often it is up to the management in each firm to gain an 
+understanding of what their company's experts actually know. Since tacit 
+knowledge is considered as the most valuable in relation to sustained 
+competitive advantage, this is a crucial step, a step that often simply 
+involves observation and awareness. There are several qualitative and 
+quantitative tools/practices that can help in the process; these include 
+knowledge surveys, questionnaires, individual interviews, group 
+interviews, focus groups, network analysis, and observation. IT can be used 
+ 
+78 
+to help identify experts and communities. Groupware systems and other 
+social/professional networks as well as expert finders can point to people 
+who are considered experts and may also give an indication of the 
+knowledge these people/groups possess. 
+● Embedded knowledge: This implies an examination and identification of 
+the knowledge trapped inside organizational routines, processes, products 
+etc., which has not already been made explicit. Management must 
+essentially ask "why do we do something a certain way?" This type of 
+knowledge discovery involves observation and analysis, and the use of 
+reverse engineering and modeling tools. 
+It is important to note that the sources of knowledge that a firm has access to 
+may extend well outside the organization. This type of knowledge, which was 
+introduced in the previous subsection on "Understanding Organizational 
+Knowledge" is called extra-organizational knowledge. This can exist in both formal 
+and informal settings. The former refers to management driven initiatives like 
+partnerships, while the latter refers to the informal networks of individual 
+members. We are interested in the former, which can be located and managed at 
+least to some degree. Gamble and Blackwell identify several such sources: 
+● Alliances 
+● Suppliers 
+● Customers 
+At this stage, we are still only discussing knowledge discovery and detection, so 
+these relationships will not be explored in detail (see knowledge acquisition and 
+external knowledge networks for more). Knowledge from alliances and partners 
+can exist in joint projects, shared knowledge/experts ’ operational data and so on. 
+Suppliers and customers can provide product feedback, trends, developments etc. 
+Within their respective limitations, similar tools as above can be used to identify 
+the knowledge and/or knowledge sources. 
+IT can be used in this context both as a means of feedback, communication, and 
+cooperation between partners, and also as a way to gather, analyze, and "mine" 
+data and information. 
+ 
+79 
+Facilitating Knowledge Discovery and Detection 
+Useful to this process is the adoption of practices that make knowledge easier to 
+detect. For example, teams could be asked to document aspects of their work with 
+a certain language and presentation standard. Generalists could be used to help 
+organize this process, as well as to document the expertise of the individual team 
+members (which can be used later to promote tacit knowledge socialization). A 
+rundown of how management should prepare knowledge in specific situations is 
+presented in the final segment of the Knowledge Reuse subsection. 
+  
+ 
+80 
+Knowledge Organization & Assessment 
+ 
+The idea that firms should categorize their knowledge assets is not a new one 
+(Horvath 2000, Bukowitz & Williams 1999). In order to determine what resources, 
+they have at their disposal and to pin point strengths and weaknesses, 
+management needs to organize the knowledge into something manageable. 
+Knowledge organization involves activities that "classify, map, index, and 
+categorize knowledge for navigation, storage, and retrieval" (Botha et al. 2008). 
+Markus (2001) assigns the role of preparing, sanitizing, and organizing this 
+knowledge to a "knowledge intermediary". This may be a knowledge manager, or 
+it may also be the actual producer of the knowledge. The point is, that in order for 
+knowledge to be shared (either for reuse in a business situation or as a tool for 
+knowledge creation), it must be prepared in such a way that it can be identified, 
+retrieved, and understood by the knowledge user. 
+Explicit knowledge organization:  IT is generally encouraged as a means of 
+organizing and retrieving (Gamble and Blackwell 2001, Botha et al 2008, etc.). IT 
+based systems use taxonomies and ontologies to classify and organize knowledge 
+and information (Bali et al 2009). These are categorization methods that create a 
+logical, hierarchical knowledge map, allowing the user to navigate by category. 
+However, taxonomies are very expensive to create (Botha et al 2008). It is relevant 
+to note here that although explicit knowledge is not considered as valuable as tacit 
+knowledge, due to its sheer volume, an effective method of classification and 
+retrieval is often essential. Other tools include libraries and data marts (Gamble & 
+Blackwell 2001). 
+Tacit knowledge organization:  Use of focus groups, expertise guides, social 
+network analysis, and knowledge coordinators (Gamble and Blackwell 2001 and 
+Liebowitz 2009). The role of the latter is to understand in which context the tacit 
+knowledge was created. Expertise locators, such as corporate yellow pages, social 
+network analysis and other knowledge maps can be used to pinpoint the location 
+and categorize the valuable expertise of tacit knowledge sources (a.k.a. experts). 
+ 
+81 
+They can also shed light into how widespread certain tacit knowledge is, enabling 
+the firm to plan ahead for the retirement of key employees. 
+ 
+Embedded knowledge organization:  Job/workplace design, workflow analyses 
+and performance measures (Gamble & Blackwell 2001) can be used to organize 
+and assess embedded knowledge. Mapping is also useful here, and knowledge 
+maps outlining embedded knowledge can be formulated under the guidance of 
+knowledge brokers (Horvath 2000). 
+Liebowitz emphasizes the determination of how important certain knowledge is 
+to the organization. The two key factors to are knowledge severity or criticality and 
+knowledge availability. The more critical the knowledge and the more unavailable 
+it is (e.g. if only one or a few experts exist and/or if they are near retirement age), 
+the more attention this knowledge deserves. 
+Knowledge organization and assessment can seem like an expensive endeavor, 
+particularly since the return on investment is indirect. In other words, there is lit tle 
+visible gain from meticulously classifying and organizing knowledge assets. 
+However, it is an important step in the knowledge management and reuse 
+process. As discussed in the subsection on knowledge detection, the organization 
+can put systems in place that facilitate the detection and organization of 
+knowledge. These depend on the situation within which the knowledge was 
+created, and the possible recipients. A closer look at this specific aspect is 
+presented in the recommendations segment of the knowledge reuse subsection. 
+  
+ 
+82 
+Act: Knowledge Sharing 
+ 
+As stated earlier, knowledge management is fundamentally about making the 
+right knowledge or the right knowledge sources (including people) available to the 
+right people at the right time. Knowledge sharing is therefore perhaps the single 
+most important aspect in this process, since the vast majority of KM initiatives 
+depend upon it. Knowledge sharing can be described as either push or pull. The 
+latter is when the knowledge worker actively seeks out knowledge sources (e.g. 
+library search, seeking out an expert, collaborating with a coworker etc.), while 
+knowledge push is when knowledge is "pushed onto" the user (e.g. newsletters, 
+unsolicited publications, etc.). 
+Knowledge sharing depends on the habit and willingness of the knowledge 
+worker to seek out and/or be receptive to these knowledge sources. The right 
+culture, incentives, and so on must therefore be present. 
+In the rest of this section I will discuss the concepts of knowledge sharing 
+according to the different types of knowledge. The role of IT will also be explored 
+and discussed from a general perspective. 
+Explicit Knowledge and Knowledge Sharing 
+Successful explicit knowledge sharing is determined by the following criteria 
+(Bukowitz and Williams 1999): 
+● Articulation: The ability of the user to define what he needs. 
+● Awareness: Awareness of the knowledge available. The provider is 
+encouraged to make use of directories, maps, corporate yellow pages, etc. 
+● Access: Access to the knowledge. 
+● Guidance: Knowledge managers are often considered key in the build-up of 
+a knowledge sharing system (Davenport & Prusak 2000, Gamble & 
+Blackwell 2001). They must help define the areas of expertise of the 
+members of the firm, guide their contributions, assist users, and be 
+responsible for the language used in publications and other 
+ 
+83 
+communication material. This is so as to avoid an information/knowledge 
+overload. 
+● Completeness: Access to both centrally managed and self-published 
+knowledge. The former is often more scrutinized but takes longer to 
+publish and is not as hands-on (and potentially relevant). Self-published 
+information on the other hand runs the risk of not being as reliable. 
+IT systems have proved extremely useful in aiding or performing many of these 
+functions. 
+Explicit Knowledge Sharing and IT 
+IT is useful in most stages of the knowledge sharing process, and it is used for 
+content management as well as data and text mining (looking for hidden 
+knowledge, relationships, etc. within data and documents). 
+Content management systems are used to update, distribute, tag, and otherwise 
+manage content. They may include a wide range of functions, including web 
+content management and document management systems (which I consider 
+separately). They may be used to (based on Wikipedia entry): 
+● Import and create documents and multimedia material. 
+● Identify key users and their roles. 
+● Assign roles and responsibilities to different instances of content 
+categories or types. 
+● Define workflow tasks. Content managers can be alerted when changes in 
+content are made. 
+● Track and manage multiple versions of content. 
+● Publish content to a repository to support access. Increasingly, the 
+repository is a part of the system, incorporating search and retrieval. 
+Document management systems use numerous advanced indexing, searching, 
+and retrieval mechanisms (e.g. using meta data or content from the actual 
+document) to facilitate explicit knowledge sharing. 
+To take advantage of all of these functions, it is a foregone conclusion that the 
+system was chosen and implemented appropriately. This aspect is discussed in the 
+section on knowledge management systems. 
+ 
+84 
+All in all, IT is a very useful tool in the management of explicit knowledge and 
+information. This is not to say that humans no longer play a part. They certainly 
+do, and knowledge and content managers are instrumental in ensuring that the 
+knowledge is relevant, up to date, and presented correctly. 
+ 
+ 
+Can Explicit Knowledge Sharing Systems Yield Competitive Advantage? 
+For the actual storage and retrieval, there is very little disagreement on the 
+value of IT as a means of sharing, sorting, and accessing explicit knowledge. Where 
+one does find disagreement is on the value placed on this function. KM and 
+organizational learning theorists have sometimes downplayed the value of explicit 
+knowledge and focused largely on tacit knowledge (Brown & Duguid, Cook & 
+Brown 1999). However, it has also been argued that in a world where we have an 
+overflow of explicit knowledge and information, the ability to manage it, and thus 
+to provide continuous streams of relevant knowledge and information, can be a 
+source of competitive advantage in itself (Maier 2002, Botha et al 2008). The latter 
+view appears to be gaining support, although one important point should be 
+considered: explicit knowledge management systems are quite transparent and 
+therefore fairly easy to replicate. This means that they cannot be the source of 
+sustained long term competitive advantage (Jackson et al 2003). 
+All this being said, in most cases, implementing a solid system that enables 
+explicit knowledge sharing is crucial for the following reasons: 
+● Not doing so would almost certainly become a source of competitive 
+disadvantage (for lack of a better word). 
+● They may well provide a short-term advantage, which may be extended 
+through continuous improvements and new technologies. 
+● With proper care, such systems will also play a limited role in the sharing of 
+tacit knowledge, as will be discussed in the next section. 
+ 
+85 
+Tacit Knowledge Sharing 
+Sharing tacit knowledge requires socialization. This can take many different 
+forms. Davenport & Prusak (2000) outline a few relevant factors: 
+● Informal networks, which involve the day to day interaction between 
+people within work environments are considered very important 
+● Unlike the formalized structure of the firm, these networks span functions 
+and hierarchies. They are therefore difficult to identify and monitor. 
+● Management should support these networks by providing the means for 
+communication. Japanese firms have created talk rooms where employees 
+can engage in unstructured, unmonitored discussions. A specific location is 
+useful but not mandatory - this process also occurs in cafeterias etc. 
+Management must simply provide the means for employees to foster 
+informal networks and "trade" tacit knowledge. 
+● Management must also understand the value of chaos. This refers to the 
+value of unstructured work practices that encourage experimentation and 
+social interaction. Within a more chaotic environment, individuals are 
+given the freedom to solve problems creatively and, in so doing, must tap 
+into and evolve their social networks. This is closely linked to the notion of 
+theory in use vs espoused theory. The value of less structured work 
+environments is also well known within innovation management. 
+Codification of tacit knowledge is difficult and sometimes outright impossible. 
+There will often be a resulting knowledge loss (Bukowitz and Williams 1999, 
+Davenport & Prusak 2000). Often, it is much more reasonable to simply externalize 
+the sources of tacit knowledge rather than the knowledge itself (Davenport & 
+Prusak 2000). This means that often it is better for experts to externalize what 
+they know rather than how they know it. The main role of KM then becomes 
+making sure that experts can be found so that tacit knowledge can be passed on 
+through practice, mentoring, and networking (socialization), and that the firm 
+supports and encourages the networking that is necessary for these functions to 
+occur. 
+To share tacit knowledge requires a culture conducive to this type of sharing. 
+Furthermore, knowledge managers (generalists that understand the types of 
+ 
+86 
+knowledge that exist in the communities) must be used to locate and translate 
+knowledge elements, thus facilitating their integration into other communities. 
+This endeavor is very much about people and managing organizational culture 
+change. 
+Tacit Knowledge Sharing and IT 
+It is important for tacit sharing of knowledge to be people focused. However, 
+increasingly, IT systems are becoming useful in this area as well. They can support 
+interaction between people that are not in the same location and some tools are 
+designed to capture unstructured thoughts and ideas. The important factor to 
+remember is that tacit knowledge cannot always be made explicit (and may lose 
+some of its richness in the process). Therefore, IT systems should not attempt or 
+pretend that they can carry out this process, but instead act as an important 
+support to existing practices. 
+ 
+IT can be useful as a forum for externalization of tacit knowledge. For example, 
+groupware systems that support brainstorming can help in the codification process 
+(Botha et al 2008). Online discussion databases and forums can also be sources of 
+externalized knowledge (Botha et al 2008), although the richness of this 
+knowledge should be questioned. 
+While IT is crucial for information management, it is important not to confuse 
+information with knowledge. Using IT to move tacit knowledge is difficult since 
+knowledge represents the shared understanding and the sense making that is 
+deeply rooted in the social practice of the community. The focus for the successful 
+sharing of tacit knowledge must be on social interaction, problem solving, 
+mentoring, and teaching, and IT systems must be used to support these processes 
+intelligently. 
+IT's contribution to OL therefore depends on its fit to the social context of the 
+communities. Technology must not be seen as the superior solution and should 
+not be used to structure organizational practice (at most to supplement it). There 
+is also the danger that IT may limit the participation of some members of the 
+community. It may make it more difficult for individuals to become accepted 
+ 
+87 
+members of the community by limiting socialization channels. The challenge is to 
+extend the reach of communication without sacrificing reciprocity in regard to 
+knowledge sharing or socialization. 
+During KM's boom at the turn of the century, IT-driven KM initiatives turned out 
+to be a major pitfall. Today you still see a divide between technologically-centric 
+views and people-oriented approaches (Bali et al 2009). Increasingly however, IT is 
+being recognised for its ability to provide support to sound KM initiatives, within 
+knowledge sharing, creation, etc. In different capacities, IT should be regarded as a 
+critical tool (though not as the initiative itself). 
+The role of IT for tacit knowledge sharing can thus be summarized as follows: 
+● As an expert finder:  To locate the source of the tacit knowledge through 
+systems like corporate yellow pages. 
+● As providing support in the socialization of tacit knowledge:  If IT systems 
+support varied, formal and informal forms of communication then they can 
+help tacit knowledge sharing by supporting teams, projects, communities, 
+etc. Functions like being able to attach notes to documents, or video 
+conferencing can support work environments over long distances to some 
+degree. It is important not to replace existing socialization functions with 
+IT; instead socialization should be enhanced and extended between people 
+who would otherwise be unable to participate. 
+● As providing some support in the externalization of tacit knowledge:  
+Through groupware applications that support the codification process, 
+discussion forums etc. However, not only is this aspect limited, but 
+externalization itself is only rarely feasible. 
+Embedded Knowledge Sharing 
+As a reminder, embedded knowledge refers to knowledge locked in products, 
+processes, routines, etc. 
+Embedded knowledge can be shared when the knowledge from one product or 
+process is incorporated into another. Management must understand what 
+knowledge is locked within those sources, and they must transfer the relevant 
+ 
+88 
+parts into a different system. To do this, Gamble and Blackwell advocate the use 
+of: 
+● Scenario planning:  The practice of creating a set of scenarios and 
+hypothesizing how they might unfold by drawing upon the perspectives of 
+experts, the firm's knowledge asserts, and so on. For more on this see here 
+http://www.valuebasedmanagement.net/methods_scenario_planning.htm
+l 
+● After action reviews: "is a structured review or de-brief process for 
+analyzing what happened, why it happened, and how it can be done 
+better" (Wikipedia). 
+● Management training 
+Embedded knowledge could theoretically be transferred as is, simply by testing 
+the effects of procedures or design features transferred from one area to another. 
+However, often it will have to be made explicit, or partially explicit, at least to the 
+responsible managers. This way they can hypothesize the effects that embedded 
+knowledge has in a given situation and use simulation and experimentation to 
+implement it in a new area. 
+Beyond the knowledge mapping functions described in the subsection on 
+organization and assessment, IT's use is usually more indirect. It can be used as 
+support in the design of simulations, experiments, and product design, and it can 
+also provide modeling tools used in reverse engineering of products. However, 
+these tools are not typically considered as being knowledge management systems 
+and are thus beyond the scope of this website. 
+ 
+One direct role of IT systems is as an embedded knowledge repository where 
+procedures, guidelines, etc. are stored and retrieved. If implemented properly, 
+with the IT system complementing rather than disrupting existing processes an d 
+culture, then it can support practices and routines, and eventually become an 
+embedded knowledge artifact in its own right. 
+ 
+89 
+Conclusion 
+To facilitate knowledge sharing, KM must understand the requirements of the 
+users, as well as the complexities and potential problems with managing 
+knowledge and knowledge sources. Very broadly speaking, management must 
+therefore implement the right processes, frameworks, and systems that enable 
+knowledge sharing. They must also foster a knowledge sharing culture that 
+ensures that these investments are fully utilized. 
+ 
+For explicit knowledge, seven issues have been identified that KM must 
+consider, these are: articulation, awareness, access, guidance, completeness. IT 
+has been identified as a key component of this type of knowledge sharing, 
+facilitating and lowering the cost of the storage, access, retrieval, and variety of 
+explicit knowledge. 
+Tacit knowledge sharing depends on socialization and practice. KM must offer 
+the means for this to take place by providing the right forums (primarily physical, 
+but also virtual), supporting networks and communities, and accepting 
+unstructured work environments. Generalists, known as knowledge managers, 
+should be used to gain an understanding of the location of knowledge sources and 
+to bridge the gaps between communities and networks. 
+
+ 
+90 
+In order to support the transfer of tacit knowledge, KMS must support the 
+socialization functions, while at the same time not enforcing strict managerial 
+practices/routines/hierarchies/etc. One of its roles is as an expert finder, and it can 
+also help in the direct transfer of tacit knowledge through the support of rich and 
+varied methods of communication, which preferably include informal 
+communication channels. 
+Embedded knowledge sharing is a process whereby embedded knowledge is 
+passed on from one product, routine, or process to another. Several tools have 
+been described that can help management understand the effects of embedded 
+knowledge and help in its transfer. These were: scenario planning, after action 
+reviews, and management training. 
+  
+ 
+91 
+Act: Managing Knowledge Reuse 
+ 
+In previous subsections, I have identified how knowledge is identified, 
+organized, and shared. These issues were discussed from a broad perspective, 
+relevant to both knowledge reuse and knowledge creation (as will be discussed 
+later). In this subsection, I will look at the specific situations involved in knowledge 
+reuse and discuss the different managerial challenges. At the end I summarize the 
+findings and present recommendations. 
+In this subsection I will focus primarily on the explicit and tacit knowledge 
+distinctions as defined in the subsection on the different types of knowledge. 
+Three Roles for Knowledge Reuse 
+First, a quick overview of the knowledge reuse process, and some useful 
+definitions. Markus (2001) identifies three roles in the reuse of knowledge: 
+● Knowledge producer: The original creator of the knowledge 
+● Knowledge intermediary:  The one who packages and prepares the 
+knowledge so that it may be stored, retrieved, and shared. This may 
+involve any number of functions such as indexing, categorization, 
+standardizing, publishing, mapping, etc. 
+● Knowledge consumer:  The person who is the recipient and user of the 
+knowledge in question. 
+As Markus points out, these three functions may involve different people, or 
+they may all be done by the same person. e.g. knowledge reuse by a person 
+accessing the documented (explicit) research of someone in a different part of the 
+organization requires that the producer created the documents, that either he or 
+someone else prepared them so that they may be understood and retrieved, and 
+that the knowledge consumer retrieved and used it. In other words, the roles were 
+filled by two or three people and the process included explicit knowledge capture 
+and sharing across the organization. Alternatively, in another scenario someone 
+may want to use their own documentation later on. This process involves just one 
+ 
+92 
+person in all three roles and the only function performed is capturing the 
+knowledge in a way that will allow retrieval at a later point. 
+I would add that for tacit knowledge, the role of intermediary could be defined 
+as the expert himself - since he must present the knowledge (through practice and 
+socialization) in a useable way to his student, team mates, etc. It may also fall 
+upon the person who identified this expert and made it possible for others to 
+reach him, e.g. if a knowledge manager creates an expert profile for publishing on 
+the intranet; this way, the knowledge manager creates an explicit account of what 
+the expert knows rather than promoting externalization of the knowledge itself. 
+To sum up, someone has to produce the knowledge, someone has to make this 
+knowledge available, and someone has to search for and use this knowledge. This 
+implies not just the capability, but also the willingness to share, to search, and to 
+retrieve. 
+Knowledge Reuse Situations 
+Fruchter and Demian (2002) identify two very general types of knowledge reuse: 
+● Internal: Where the knowledge producer uses his own knowledge at some 
+future point. 
+● External: Where the knowledge consumer uses someone else's knowledge. 
+The authors point out that the latter has a much higher failure rate for 
+reasons that include the loss of contextual knowledge and information, 
+and knowledge that is not properly captured due to the costs involved. A 
+more detailed framework is offered by Markus (2001) who identifies four 
+knowledge reuse situations. These are defined below, drawing also upon 
+the work of Timbrell and Jewels (2002) who found support for Markus's 
+work through their study. The recommendation segments also draw upon 
+some of the issues discussed under knowledge-sharing, as well as some of 
+my own insights. 
+● Shared Work Producers:  People working in teams producing knowledge 
+for their own reuse. They are closest in knowledge-distance. They generally 
+will have a good understanding of what they need and where to find it 
+(including both documents and experts). Knowledge reuse will however be 
+ 
+93 
+harder within cross functional teams. Markus also warns that the rationale 
+for the decision making is often forgotten. They need knowledge about 
+how/what/why it was done, what improvements could be made. 
+● Shared Work Practitioners:  People who perform similar work in different 
+settings (e.g. same position in different locations). Knowledge is produced 
+for someone else's use. Defining the knowledge needs is usually easy, as is 
+locating the right experts within the network (which is used frequently). 
+Basically, they need to know how to do something or why something 
+works. 
+● Expertise-Seeking Novices:  People who seek out knowledge they do not 
+normally work with. They are furthest in knowledge-distance. They have 
+great difficulty "defining the questions, locating and judging, the quality of 
+the knowledge sources, and applying the expertise." (Timbrell & Jewels 
+2002). 
+● Miners Secondary Knowledge:  People who try to find knowledge in work 
+produced in different contexts, so as to apply it in other situations. The 
+knowledge and context of the consumer may be very different to the 
+producer. The main challenge here is defining the question. Often requires 
+complex search algorithms which are hard to create (such as those used 
+within text and data mining). 
+Problems and Recommendations for Managing knowledge reuse 
+In the article above, I presented several situations of knowledge re-use that have 
+different advantages, disadvantages, and requirements. I also discussed some 
+general issues that affect the process of reuse. 
+Drawing upon the work thus far, and bringing in the knowledge sharing issues 
+discussed in the previous subsection, the managerial issues regarding knowledge 
+reuse can be summarized as follows: 
+● Cost: The time and money necessary to organize, package, store, and 
+retrieve the knowledge. This is particularly true in the cases when tacit 
+knowledge is externalized into explicit knowledge such as documents. A 
+great deal of cost is associated with capturing context (something that is 
+often impossible) and with preparing the document for retrieval. Even with 
+ 
+94 
+IT, the latter includes categorization, summarizing, use of metadata, etc. 
+Content management is also necessary to check language and 
+presentation, and also to keep the repositories relevant and up to date. 
+The cost associated with the re-use of tacit knowledge involves setting up 
+the right circumstances for it to take place e.g. teams, mentoring, teaching, 
+projects, etc., as well as the systems that support communication and 
+expertise location. 
+● Specific requirements of specific individuals and groups:  Presented in 
+Markus's four roles above. Management must be aware of the different 
+requirements and support each situation accordingly. Articles on 
+knowledge reuse are still dominated by IT theories which focus largely on 
+organizing, presenting, and retrieving explicit knowledge. Again, I draw the 
+reader's attention to the importance of socialization and informal 
+networks, which serve as the backbone of the sharing of rich tacit 
+knowledge (expertise). Below I present the recommendations for each re-
+use category, drawing again on the work of Markus (2001), on the 
+knowledge sharing principles outlined in the previous subsection, as well 
+as some of my own insights. 
+● Shared work producers, recommendations:  For explicit knowledge, try to 
+maintain context; pay attention to indexing, categorization, and other 
+search related functions; document rationale behind the knowledge. For 
+cross-functional teams assign a generalist to bring the knowledge together 
+and to ensure consistency. For tacit knowledge support communication 
+and informal networks (e.g. between former team members). For cross-
+functional teams, use the generalist to help define non-codified tacit 
+expertise with individual team members. Record this expertise together 
+with the individual team roles. 
+● Shared work practitioners, recommendations:  If explicit, decontextualize 
+knowledge and provide all relevant information regarding indexing, 
+searching, and relevance. Use knowledge push to make potential 
+recipients aware of it. For tacit knowledge, create the right situations for 
+socialization, e.g. teamwork, projects, informal communication, etc. Use IT 
+as an expertise locater and communication support but understand its 
+limitations in tacit knowledge transfer. 
+ 
+95 
+● Expertise-seeking novices, recommendations:  For explicit knowledge 
+decontextualize knowledge but support recontextualization in the context 
+used by the novice. For both knowledge types, try to codify the contents of 
+the knowledge source e.g. by defining the content of a document or the 
+knowledge of an expert. Provide awareness training. For tacit knowledge 
+do as for shared work practitioners. 
+● Miners Secondary Knowledge:  Record context information such as 
+metadata. Provide relevant training regarding knowledge, data, and 
+information repositories, as well as analysis and search techniques. 
+Implement IT systems that match the needs of the consumer e.g. data 
+mining and analysis tools, text mining tools, etc. 
+● Willingness: Both to package knowledge on the part of the producer or to 
+seek it out on the part of the consumer. This brings us back to issues like 
+culture, which promote knowledge reuse and knowledge sharing. The 
+cultural aspect will be dealt with in the section on organizational culture 
+change. 
+  
+ 
+96 
+Act: Knowledge Creation 
+ 
+The ability to create new knowledge is often at the heart of the organization's 
+competitive advantage. Sometimes this issue is not treated as part of knowledge 
+management since it borders and overlaps with innovation management (Wellman 
+2009). Since I chose a broader knowledge management definition, I very much 
+regard it as a part of the process, and I will refer (albeit superficially) to some 
+theories that pertain to innovation. 
+Knowledge creation according to the Nonaka's SECI model is about continuous 
+transfer, combination, and conversion of the different types of knowledge, as 
+users practice, interact, and learn. Cook and Brown (1999) distinguish between 
+knowledge and knowing and suggest that knowledge creation is a product of the 
+interplay between them. The shift in condition between the possession of 
+knowledge and the act of knowing - something that comes about through practice, 
+action, and interaction- is the driving force in the creation of new knowledge. 
+Furthermore, in order for this interplay to be most fruitful, it is important to 
+support unstructured work environments in areas where creativity and innovation 
+are important. 
+Knowledge sharing, and knowledge creation thus go hand in hand. Knowledge is 
+created through practice, collaboration, interaction, and education, as the 
+different knowledge types are shared and converted. Beyond this, knowledge 
+creation is also supported by relevant information and data which can improve 
+decisions and serve as building blocks in the creation of new knowledge. 
+Managing Knowledge Creation 
+The role of management in the knowledge creation process is thus as follows: 
+To enable and encourage knowledge sharing:  On the tactical side, as described 
+in the previous subsection, management must understand where and in what 
+forms knowledge exists. They must then provide the right forums for knowledge to 
+be shared. For tacit knowledge this implies a particular emphasis on informal 
+ 
+97 
+communication, while for explicit knowledge this implies a focus on a variety of IT 
+systems. On the strategic side (to be discussed in-depth later), management must 
+create/design the right environments, processes, and systems that provide the 
+means and willingness for it to take place. 
+To create a suitable work environment:  This includes the notion of creating an 
+interplay between knowledge and knowing. It implies offering relevant courses 
+and education, but most importantly allowing new knowledge to be created 
+through interaction, practice, and experimentation. Botha et al (2008) point to the 
+importance of shared experiences in the knowledge creation process when dealing 
+with tacit knowledge, and the need for an environment where these can be 
+formed. March (1988) discusses how our cultural norms often stifle innovation and 
+new knowledge creation. He advocates environments where we recognize that 
+goals can be created through action, where intuition is accepted and valued, and 
+where experience is nothing more than a theory. These concepts bring us back to 
+the concept of theory in use (referring to work environments that do not follow 
+strict, "official" rules and procedures), and the acceptance and support of 
+environments that allow brainstorming, trial and error, and unstructured 
+interaction. 
+As an example, from innovation theory, one can refer to the practice of 
+establishing teams to solve problems, unhindered by the bureaucracy that may 
+exist in the firm. Peters (1988) refers to the value of chaos and the advantage of 
+smaller, fast-acting teams. One common alternative is the use of cross-functional 
+project teams. These are usually a group of experts from different parts of the 
+organization, led by a "generalist" project leader. If these teams are allowed the 
+freedom to experiment and work in an autonomous, or virtually autonomous 
+environment, it can be a great catalyst for innovation and new knowledge 
+creation. Then, once the task is complete, the members return to their role in the 
+organization, helping to spread this knowledge back into their own community of 
+practice. The project team itself can also facilitate the creation of bridges between 
+communities of practice, and at times may even serve as a way to extend them. 
+Variations of this concept can be seen in several places in innovation theory, 
+notably in Nonaka and Takeuchi's self-organizing project teams in the hypertext 
+organization. 
+ 
+98 
+To provide systems that support the work process:  These can be groupware 
+systems that facilitate communication or brainstorming. However, they must not 
+interfere with creative processes or communities of practice or enforce rigid 
+organizational practices (espoused theory). 
+ 
+To provide knowledge workers with timely, relevant information and data.  In 
+today's fast paced environment this is virtually synonymous with the 
+implementation of IT systems which can store, retrieve, organize, and present 
+information and data in a helpful way.  
+IT and Knowledge Creation 
+The use of IT is very much the same as it is for knowledge sharing, allowing for 
+some degree of support in the transfer of all knowledge types. One important 
+aspect is that it must support, and not interfere with, informal collaboration. For 
+example, groupware systems can be used to enhance communication between 
+communities or teams, particularly if they support varied (e.g. video, audio, text - 
+according to the needs of the individual firm), informal communication. 
+Apart from this, IT also has an important role through information management, 
+by providing access to data and information, and allowing the manager to perform 
+in-depth analyses. More than that, IT systems can also be programmed to spot 
+trends in data and information and present that to the manager. This essentially 
+enables the manager to make better decisions and aids knowledge creation by 
+providing some of the building blocks for new knowledge. 
+IT tools can also be used in the innovation process (e.g. tools used in the actual 
+product design), but these are outside the scope of knowledge management. 
+Conclusion 
+In conclusion, knowledge creation depends upon the mechanisms described in 
+the subsection on knowledge sharing, combined with the ability to put knowledge 
+into practice in an environment which supports interaction and experimentation. 
+The creative process is a delicate one, and it is easily ruined by strict adherence to 
+rules and regulations, or by bureaucracy. Similarly, IT systems must be 
+ 
+99 
+implemented with care (as discussed above), and not attempt to replace processes 
+vital to knowledge creation. 
+  
+ 
+100 
+Knowledge Acquisition 
+ 
+ 
+Knowledge acquisition refers to the knowledge that a firm can try to obtain from 
+external sources. External knowledge sources are important, and one should 
+therefore take a holistic view of the value chain (Gamble & Blackwell 2001). 
+Sources include suppliers, competitors, partners/alliances, customers, and external 
+experts. Communities of practice can extend well outside the firm. 
+Knowledge acquisition is a topic that could fill books and extend well outside the 
+knowledge management (KM) focus. For this reason, detailed descriptions of how 
+to manage external relationships are beyond the scope of this topic. However, 
+since KM is inextricably linked to corporate strategy, an overview of the options 
+available to the organization will be helpful to understanding the full potential KM 
+role. 
+This subsection will discuss the knowledge available from the different sources, 
+and the managerial issues that must be considered. In the subsection titled 
+"External Knowledge Network", I will tie this back to the overall strategic level and 
+look at the process behind external knowledge acquisition. 
+The main sources are of knowledge acquisition are: 
+Customers 
+Customer knowledge comes in different forms. Gerbert et al (2002) identify 
+three different types: 
+● Knowledge for customer:  The knowledge that the customers can gain in 
+order to satisfy their knowledge needs. It can include product, market, and 
+supplier knowledge. It can be sourced from our company or from other 
+external sources like other customers and competitors (Zanjani 2008). 
+● Knowledge about customer:  The kind of knowledge that enables us to 
+know the customer better, to understand their motivations, and to address 
+ 
+101 
+them better. Includes requirements, expectations, and purchasing 
+activities. 
+● Knowledge from customer:  The kind of knowledge that deals with 
+products, suppliers, and markets. It can be used to improve our products 
+and services. 
+These three categories apply to actual knowledge acquisition as well as to data 
+and information, which can be processed and used to create knowledge (Zanjani 
+2008); e.g. data on purchasing habits could be analyzed to create knowledge that 
+could improve marketing or design decisions. 
+Knowledge sharing is thus important, although it may take many different forms 
+depending on the area of business. KM is particularly important for B2B 
+relationships where the buyers are usually more prominent (i.e. either buy many 
+products or buy expensive products) and the products are more likely to be 
+customized to the needs of the customer. This can, and often should result in a 
+closer relationship with more detailed communication and feedback, where the 
+customers are involved as partners when discussing modifications and 
+improvements (Gerbert et al 2002). 
+Some possible KM initiatives thus include: 
+● Collecting feedback 
+● Collecting and processing marketing related information 
+● Collecting suggestions 
+● Involvement in development/design 
+Effective acquisition of customer knowledge is dependent on customer 
+relationship management. IT can be used in this context both as a means of 
+collecting feedback and enhancing communication and cooperation between 
+partners (the principles of knowledge sharing apply here within the confines of the 
+specific relationship). It is also useful as a way to gather data and information 
+regarding sales, trends, feedback, and so on, which can then be used to create new 
+knowledge within the organization. 
+ 
+102 
+Suppliers 
+Chan (2009) presents a classification for supplier knowledge based on the 
+concepts outlined by Gerbert et al (2002) regarding customer knowledge. These 
+are: 
+● Knowledge for suppliers: This is the knowledge that suppliers require and 
+includes "production needs and forecasts, inventory, products, customers, 
+and markets" (Chan 2009). 
+● Knowledge about suppliers: This is knowledge that is used to understand 
+how the supplier can match the requirements of the organization; provide 
+insight regarding quality, delivery, defects, financial risks etc. 
+● Knowledge from suppliers: This refers to the knowledge that suppliers 
+have gathered from their dealings with the organization. 
+The KM initiatives and the role of IT are similar to the ones presented in the 
+customer segment, with the organization now taking on the role of customer. 
+Knowledge acquisition in this case also includes data and information which can be 
+processed and used as building blocks for new knowledge creation. 
+Gamble and Blackwell (2001) refer to compatible goals, cultural alignment, and 
+leadership commitment amongst the key factors for sustained, productive, long-
+term relationships. 
+Competitors 
+This deserves mention, but it is a fairly straightforward aspect of KM. It simply 
+involves collecting, organizing and presenting the data, information, and 
+knowledge that the firm has acquired in such a way that one can search, retrieve, 
+and analyze it. Some of this falls within the scope of information management, but 
+it is particularly the process of using these components to create better decisions 
+and new knowledge that is of interest here. 
+IT systems are very useful in this case, since the sources are largely explicit an d 
+presumably require frequent updating and manipulation. Data mining and 
+analysis, document management systems with suitable search functions, and 
+expert systems are most relevant here. 
+ 
+103 
+Partners/alliances 
+Alliances intended to increase knowledge are a valuable potential resource. 
+However, these must be properly managed. Key success factors include fostering 
+trust, learning from your partner, and effectively managing the creation of 
+knowledge relevant to both parties. Knowledge transfer can be facilitated by 
+personnel exchanges, common projects and other forms of regular interaction, 
+technology sharing, etc. (Gamble & Blackwell 2001). Focusing on informal 
+communication, collaboration, and socialization is of paramount importance for 
+valuable tacit knowledge acquisition and for extending communities of practice 
+beyond the firm's borders. 
+Chan (2009) once again formulates a set of knowledge types based around the 
+work of Gerbert et al (2002): 
+● Knowledge for partners:  Knowledge which satisfies their needs, including 
+"knowledge about products, markets, and suppliers" (Chan 2009). 
+● Knowledge about partners:  Knowledge acquisition focused on 
+understanding the ability of partners to perform their role in the 
+relationship. Includes distribution channels, products, services, etc. 
+● Knowledge from partners: The knowledge that partners have accumulated 
+from dealing with the organization. 
+IT can be used in this case very similarly to the way it is used inside the 
+organization for knowledge sharing and knowledge creation (including 
+data/information analysis) - in other words supporting communication, 
+collaboration, experimentation, expertise location, analysis tools, etc. The exact 
+system has to fit the nature of the relationship and the business model. 
+What is of particular importance in this case is to safeguard the system so that 
+only that knowledge which the firm is willing to share becomes available. In the 
+80s, joint ventures between American and Japanese firms often resulted in a 
+lopsided endeavor favoring the latter, since the Japanese were far more willing to 
+listen, and the Americans were far more willing to talk. It is important to 
+remember that the goal here is two-way learning; that a relationship will not last 
+forever; and that a partner today may be a competitor tomorrow. KM must 
+ 
+104 
+therefore be very aware of what knowledge is being shared, and the IT systems 
+must reflect this policy. 
+Merges & Acquisitions 
+This aspect deserves mention, but as a general discipline it is well beyond the 
+scope of this paper. Dealing with mergers and acquisitions (M&A) is an extremely 
+complex task that has led to numerous failures. Within the scope of knowledge 
+acquisition, the area related to KM is how to pass on the most amount of relevant 
+knowledge from the previous two organizations to the new, combined firm. 
+Very broadly speaking there are a couple of roles where KM efforts should 
+feature heavily once the target has been acquired: 
+To identify the valuable/redundant knowledge sources in the target 
+organization: This is a very difficult process since it involves understanding of the 
+target company's tacit and embedded knowledge locked within people, 
+communities, processes, networks, procedures, etc. One of the major causes of 
+failure in M&A is that during the restructuring process, key people are let go by 
+mistake or key communities are disrupted. The old adage that the company should 
+be seen more like a living organism than a machine holds very true here. 
+ 
+To combine this (relevant) knowledge with the organization's knowledge 
+assets to achieve synergy: This is the essence of many M&A; the notion that the 
+whole should be greater than the sum of its parts. Integrating acquired companies 
+is a difficult task, heavy on people management and the creation of a common 
+culture. It is hard to say how much of this falls within KM specifically, and there 
+certainly are no universal rules on this topic. Fundamentally, the same principles 
+on knowledge sharing, reuse, and creation apply here, with a particular focus on 
+culture, networks, and incentives, within a different and potentially hostile 
+environment. 
+Other expertise 
+This refers to the other sources of external knowledge available to a firm and 
+includes hiring new personnel or acquiring the services of consultants. 
+ 
+105 
+The role of KM in these cases is to make sure that the right knowledge is 
+acquired. Essentially the process has two parts, on the one hand the strategic and 
+tactical requirements of the firm must be taken into account, and on the other 
+these must be compared to the knowledge assets of the organization. 
+If external services are acquired from consultants or other temporary service 
+providers, KM must work together with strategic management to determine if this 
+knowledge is worth integrating into the firm by assessing the need to reuse it in 
+the future vs the cost of transferring it into the organization. If it is deemed as 
+something that should be integrated, then the right learning situations must be 
+established to transfer the knowledge into the firm. These could be mentoring 
+relationships, use of project teams that include organizational members, courses 
+and education, etc. 
+  
+ 
+106 
+ 
+Knowledge 
+Management Strategy 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+107 
+  
+  
+ 
+108 
+Introduction to Knowledge Management Strategy 
+ 
+While the knowledge management processes section dealt with the general 
+ways knowledge can be managed, this section tackles long-term knowledge 
+management strategy. Strategic investments represent the company ’s 
+choices/options so as to enable and enhance the processes outlined earlier (e.g. 
+knowledge sharing) and to offer help define which knowledge is relevant (i.e. in 
+line with strategic objectives) and which is not. 
+This section is based on the strategic part of the integrated knowledge 
+management model, which includes: 
+● Knowledge management strategic initiatives: 
+● Invest: Support of existing structures, competencies, knowledge retention 
+mechanisms, culture, external network, and knowledge management 
+systems 
+● Invest: Implement changes to structures, competencies, knowledge 
+retention mechanisms, culture, external network, and knowledge 
+management systems 
+● Divest: Remove obsolete knowledge 
+The articles that follow are based solely on the points under "invest". Based on 
+that we arrive at the following headings: 
+● KM and Organizational Structures 
+● KM and Organizational Culture 
+● KM and Knowledge Retention 
+● KM and Core Competencies 
+● KM and External Knowledge Network 
+● KM and Knowledge Management Systems 
+● Summary: Knowledge Management Best Practices 
+As many of you might realize, many of the strategic initiatives deal with aspects 
+that extend into different branches of management. I will endeavor to stick to the 
+scope of this subsection and, for the most part, limit my discussion only to aspects 
+relevant to knowledge management strategy. Furthermore, at all stages of the 
+ 
+109 
+following discussion on knowledge management strategy, I will also refer to 
+different knowledge types and to IT systems, whenever necessary. However, the 
+subsection dealing with knowledge management systems will be the first that 
+focuses specifically on IT. It will discuss the general implementation issues, leading 
+to the subsequent section that looks at some specific systems and tools. 
+At the end, I will present a summary of all the conclusions and 
+recommendations made throughout this section and the one on knowledge 
+management processes, in a subsection titled Knowledge Management Best 
+Practices. This will serve as a way to provide a quick overview of knowledge 
+management strategy and could be read on its own by readers who are not 
+interested in a more detailed account. 
+  
+ 
+110 
+Invest: Managing Organizational Structures 
+ 
+This discussion deals with the physical and non-physical divisions and barriers 
+that influence the way knowledge management (KM) operate. By "organizational 
+structure", I refer to the layout of the company itself and also to the various bodies 
+that exist within it. 
+It is important to note that many elements within this topic stretch well outside 
+our focus, and volumes could be written on it alone. The focus here will be only on 
+the general elements that are directly related to KM. 
+Types of Organizational Structures 
+Organizational structures deal with the way the firm is organized, and the way 
+people relate to one another. Broadly speaking, there are two types of 
+organizational structure, namely formal and informal. These two concepts are not 
+independent, and the formal structure may greatly influence informal networks, 
+both positively and negatively. 
+Formal: The official structure of the organization, which is normally displayed on 
+an organizational chart, and which denotes the hierarchical relationships between 
+members of the firm. It is beyond the scope of this site to offer a discussion on the 
+various formal organizational structures. However, there are a few things that are 
+relevant to KM: 
+1. The formal organizational structure must not be so rigidly enforced so as to 
+stifle informal structures such as communities of practice, where 
+knowledge sharing, and creation may take place. It is the knowledge 
+manager's job to understand the knowledge dynamics of the organization 
+and to recognize how the formal and informal structures coexist. 
+2. The formal organizational structure, particularly in a larger firm with 
+separate departments, will impact knowledge flows. There is no set 
+structure that is best, since most have advantages and disadvantages 
+depending upon the business type, firm size, etc. However, studies seem to 
+ 
+111 
+indicate that flatter, decentralized structures are more effective for KM 
+(Choi & Lee 2000, Claver-Cortés et al 2007, Chen & Huang 2007). This also 
+makes sense logically, since knowledge flows would be less hindered in 
+such a structure. 
+Implementing changes to formal structures can thus mean restructuring the 
+organization, but it can also mean enforcing existing structures to a lesser or 
+greater degree. 
+Informal: The unofficial organizational structures are the ones that are created 
+through informal networks, as a result of working within the organization. They 
+represent the way people actually interact. Brown and Duguid (1992) advocated 
+looking at the firm as a community of communities. Increasingly, the value of 
+these informal structures is being understood, and the knowledge manager must 
+learn to identify and support these networks. This process is closely related to KM, 
+since knowledge flows and repositories (particularly tacit) are dependent upon 
+these structures. KM therefore must play a central role in their management, 
+including identification of the structures and the knowledge they hold, 
+implementing changes, bridging gaps between communities, and so on. 
+Unfortunately, implementing changes to informal social networks is difficult 
+without running the risk of disrupting them. There are however several ways that 
+managers can influence social networks: 
+● Generalists (sometimes referred to as gatekeepers) can be used to identify 
+communities and their expert know-how, and to help coordinate activities 
+such as cross-functional projects. 
+● Project teams and other teamwork can serve as a means to bridge the gap 
+between communities. 
+● Common physical meeting areas can allow communities to grow and 
+flourish. 
+● Virtual socialization and people finders can support communities of 
+practice. 
+● Common vision, goals, ideals, social gatherings etc. and a climate of trust 
+can serve as a way to lessen the distance between organizational members 
+and communities. 
+  
+ 
+112 
+Invest: Corporate Culture Change 
+ 
+The concept of organizational/corporate culture has already been discussed in a 
+previous subsection. I will therefore keep my introduction to the subject to a 
+minimum, and instead focus almost exclusively on corporate culture change. 
+Organizational culture represents the way things are done in an organization, 
+encompassing the values, beliefs, and attitude that generate a common 
+framework for interpreting events. 
+Knowledge sharing, and thus all aspects related to knowledge management 
+(KM), depend upon organizational culture. Trust is a particularly important issue, 
+since workers need to feel secure that they are not jeopardizing themselves by 
+engaging in knowledge sharing. In order for proper cooperation to take place, 
+management must create a culture where knowledge sharing is seen as beneficial 
+for the individual as well as the organization. Managing corporate culture change 
+is therefore at the very core of KM and organizational learning processes. 
+Defining and Mapping Organizational Culture 
+Johnson (2001) presents a model called the cultural web (see below), outlining 
+the various components of organizational culture. 
+
+ 
+113 
+The paradigm:  The set of assumptions shared and taken for granted by the 
+organization. 
+Rituals and Routines:  These represent "the way we do things around here". 
+They point to what is valued and include behaviors that are taken for granted as 
+being correct. 
+Stories and myths:  The organization's folklore that passes on the common 
+perception of past events, thus reinforcing beliefs and passing them on to 
+newcomers. 
+Symbols: All the symbolic elements of the firm, including titles and dress codes. 
+Control Systems:  Systems that are designed to promote certain activities by 
+rewarding correct behavior and monitoring performance. 
+Org. Structures:  The formal structure of the organization, as explained in the 
+subsection on organizational structures (though in this case it is considered solely 
+in regards to its influence on culture). 
+Power structures: The more powerful groups are also most likely to be involved 
+in shaping the paradigm. A big problem arises when "the main targets for change 
+are also those who hold the power." (Bali et al 2009). 
+Johnson (2001) advocates culture mapping according to this framework so as to 
+assess the culture as a whole and be able to determine its compatibility with 
+strategy. 
+Managing Corporate Culture Change 
+Wellman (2009) presents a series of leadership roles that will help facilitate 
+corporate culture change towards a knowledge friendly culture: 
+● Acknowledge the existence and influence of organizational culture: It must 
+be brought into the open so people can see and understand how it affects 
+activities 
+● Have a clear and persistent vision of what the culture should be and of 
+what changes need to be applied: This vision must be understood by 
+management at all levels and spread across the organization. 
+ 
+114 
+● Consciously manage culture: Wellman suggests the using health 
+assessments and employee surveys to evaluate progress and direction. 
+Expanding upon this, one might add the use of incentives (whatever is 
+suitable within that particular organization) and of using managers as 
+intermediaries between different cultures within the organization. 
+Management must strive to create a culture where knowledge sharing is 
+perceived as beneficial to the whole and also to the individual. In other 
+words, through shared vision, incentives, etc. they must foster an 
+atmosphere of trust to ensure that individuals have faith in the principle of 
+reciprocity. They must also bridge cultural differences that exist between 
+different communities and power structures within the organization. 
+Gardner presents a somewhat more concrete approach to corporate culture 
+change. He states that it is dependent on redefining the assumptions that shape 
+the common understanding, or in other words the paradigm. It thus involves 
+introducing "anomalies" that present a reality that cannot be true under the old 
+assumptions. As more and more anomalies are presented, people will eventually 
+abandon old beliefs and frames of understanding and eventually be willing to 
+adopt new ones. 
+No matter what, corporate culture change is a difficult process that is likely to 
+meet significant resistance. Its stubbornness is due in part to the fact that it is 
+history dependent, woven into everyday practice, and used as socializing 
+mechanism for newcomers (Beitler 2005). However, as Beitler argues, despite all 
+the hurdles, managing culture simply must be done. 
+  
+ 
+115 
+Invest: Knowledge Retention 
+ 
+Knowledge retention involves capturing knowledge in the organization so that it 
+can be used later. In a previous section on organizational memory, Walsh and 
+Ungson (1991) defined five knowledge repositories, namely individuals, culture, 
+transformations (i.e. procedures & formalized systems), structures (e.g. formal and 
+informal networks), and external activities. This is where knowledge can exist or be 
+retained in an organization. In this section, we are interested in the managerial 
+side, so as to answer the question: How can management promote the retention 
+of (crucial) knowledge? 
+Most often, one hears of knowledge retention in the context of losing key 
+employees and using techniques such as exit interviews to try to capture their 
+knowledge. In reality, knowledge retention should be integrated into how the 
+organization operates and start well before a key employee is about to depart. 
+Although it is considered crucial for long term organizational success, few 
+organizations have formal knowledge retention strategies (Liebowitz 2011). 
+ 
+116 
+ 
+A knowledge retention strategy as a part of knowledge management (KM) will 
+identify the knowledge resources that are at risk and must be retained, and then 
+implement specific initiatives so as to keep these resources in the firm. Like most 
+other KM-related processes and strategies, success depends upon successful 
+knowledge sharing and having a knowledge sharing & learning organizational 
+culture. 
+Apart from the more general knowledge sharing initiatives that a firm may use - 
+e.g. support of formal & informal knowledge networks (social areas, social media, 
+meetings, company functions, knowledge fairs, expertise locator, etc.), changing 
+the organization culture, etc. - examples of tools & techniques which can be used 
+specifically for knowledge retention include (adapted from Smith 2007, Liebowitz 
+2009, and Liebowitz 2011): 
+● Implementing reward structures to encourage sharing of key knowledge. 
+● Use of project teams and cross-functional project teams. 
+● After-action reviews. 
+● Storytelling. 
+
+ 
+117 
+● Mentoring programs & job shadowing. 
+● Interviews & exit interviews. 
+● Job rotation. 
+● Company procedures/processes manuals. 
+● Taking advantage of the knowledge of retirees. 
+Knowledge Retention Strategy 
+Doan et al (2011) identify three basic questions that must be asked when 
+considering knowledge retention: 
+● What knowledge may be lost? 
+● What are the organizational consequences of losing that knowledge? 
+● What actions can be taken to retain that knowledge? 
+Expanding upon these questions, one can outline several concrete steps 
+necessary in the formulation of a knowledge retention strategy: 
+Step 1 : Understand your risk factor: Liebowitz (2011) identified the following 
+risks: 
+● he average age of your employees is high 
+● The company has placed insufficient focus on: 
+o knowledge capture 
+o mentoring program 
+o employee training and development 
+● Information is difficult to find or is often misplaced. 
+● There is little informal communication in the organization. 
+● Many knowledgeable employees are leaving the organization. 
+Step 2: Understand which knowledge is critical and focus on this (Corney 2018) 
+(read more about this under Knowledge Organization & Assessment) 
+Step 3: Formulate a strategy using the pillars of knowledge retention (Liebowitz 
+2009 & 2011): Knowledge retention consists of a wide range of tools, some easy 
+and some hard to implement. Liebowitz identifies four categories which 
+encompass all the initiatives within knowledge retention. These are: 
+● Recognition and reward structure: Management has the choice to use 
+either intrinsic motivators (i.e. which make the job itself more satisfying, 
+ 
+118 
+such as praise or recognition) or extrinsic motivators (i.e. which offer 
+benefits unrelated to the job, such as money) (Gamelgaard 2007). These 
+must take organizational as well as national cultural factors into account 
+(Gamelgaard 2007), but overall the most effective and longer lasting 
+appear to be intrinsic motivators (Gamelgaard 2007 & Liebowitz 2009). 
+However, a combination of both is usually the way to go. 
+● Bidirectional knowledge flow: Establishing a two-way system of knowledge 
+capture, where knowledge is not only passed down from the senior 
+employee to the junior employee, but also vice versa. 
+● Personalization and codification: Personalization refers to connecting 
+people and includes tools such as mentoring, jon rotation, knowledge fairs, 
+communities, and so on, while codification includes tools like after action 
+reviews, various knowledge repositories, lessons learned systems, etc. 
+(Liebowitz 2009). 
+● The golden gem: Bringing back important retirees in various capacities. 
+This includes rehire programs, consultancy, part-time work, temporary 
+jobs, etc. (Corporate Executive Board 2005). Using a phased retirement 
+system (e.g. leave of absence – part time work – casual rehire) can also 
+help to slowly lose a key employee and to gradually transfer all his key 
+knowledge to the organization (Corporate Executive Board 2005). 
+Success Factors and DOs and DON'Ts of KR 
+Doan et al (2011), following a comprehensive review of knowledge retention 
+literature, arrive at the following key success factors: 
+● Top management support 
+● Knowledge retention strategy 
+● Learning culture 
+● Human resource practices (since knowledge resides in people, knowledge 
+retention is closely linked to HR practices including recruitment, education, 
+rewards, and performance management) 
+● Information and communication technology tools 
+Similarly, Corney (2018) outlines some basic DOs and DON'Ts of knowledge 
+retention: 
+ 
+119 
+● Do not capture "just in case". This leads to repositories of unused 
+information. 
+● Make sure that you are focusing on capturing Critical Knowledge, i.e. 
+knowledge that the organization would struggle without. 
+● When departures occur, offer them the chance to "leave a legacy" in an 
+alumni network. 
+● Make sure that knowledge retention and capture is the "way we do things 
+around here" and that it is part of any work process and at all stages of the 
+employment cycle. 
+  
+ 
+120 
+Invest: Knowledge Management and Core 
+Competencies 
+ 
+The knowledge management definition presented earlier, involved the reuse 
+and creation of relevant knowledge. The word relevant links knowledge 
+management (KM) to the concept of organizational core competencies. Once 
+again, the challenge here is to discuss this subject without diverging too much into 
+related topics that are not directly relevant to KM. 
+Core competencies:  Definitions vary greatly. The term was originally coined by 
+Pralahad and Hamel (1990) who defined it as "the collective learning of the 
+organization, especially how to coordinate different production skills and integrate 
+multiple streams of technologies". Since then it has been defined in multiple ways, 
+but very generally, core competencies refer to the firm's primary expertise, which 
+is a source of sustained competitive advantage. Arriving at a more precise 
+definition is not necessary for our purpose here. Suffice it to say, that these are 
+key capabilities, which, from the resource-based perspective of the firm, are the 
+primary drivers of innovation and competitive advantage. 
+Core competencies thus have a large knowledge component, and managing 
+them is, in the very least, a product of corporate strategy working with KM and 
+innovation management. This simplified model has strategy dictating the overall 
+direction, KM managing the knowledge dynamics, and innovation management 
+turning core competencies into profitable core products. To understand the role of 
+KM let us look at a brief overview of how core competencies are managed: 
+1. Identifying and assessing core competencies: The firm should map out its 
+key competencies, possibly linking them directly to specific core products. 
+Then, an evaluation must take place, assessing what one has vs. what one 
+needs to have (as determined by strategy and the competitive 
+environment). KM is responsible for identifying where the key knowledge 
+is located, including the tacit expertise and knowledge embedded in 
+products, routines, etc., as well as identifying knowledge gaps. 
+ 
+121 
+2. Sustaining core competencies: Organizational core competencies, like all 
+knowledge assets, have the virtue of improving rather than depreciating 
+through use. Conversely, lack of use will lead to erosion of any skill set. The 
+role of KM here is twofold, on the one hand, it must keep stock of the state 
+of key knowledge assets and, on the other, it must leverage key knowledge 
+assets across the organization. 
+3. Building core competencies: Building new core competencies involves an 
+interplay between knowledge, practice, coordination, and refinement. 
+Knowledge assets must be built, enhanced, combined, and coordinated in 
+an environment that supports experimentation and improvement. Building 
+core competencies can be a complicated endeavor since sustained 
+competitive advantage is derived from assets that are hard to imitate 
+(Dierickx and Cool 1989). From a KM perspective, this implies the buildup 
+of specific tacit knowledge and expertise (i.e. uncodified knowledge that is 
+generally more valuable, and inherently more difficult to copy and 
+transfer), often across multiple departments or functions. 
+4. Unlearning core competencies: Organizations have a habit of trying to 
+keep doing what they have always been doing. Unlearning a competency 
+when it is no longer useful is one of the key aspects of a successful firm, 
+and history is riddled with examples of companies that have failed to do 
+so. In the process of unlearning, KM again plays an important role by 
+identifying and managing the firm's knowledge assets in the right direction. 
+This may be done through re-training, restructuring, creating new 
+knowledge flows, external knowledge acquisition, outright removal, etc. 
+The specific dynamics of the processes of knowledge creation, knowledge 
+acquisition, knowledge sharing, and knowledge reuse, which are central to the 
+management of core competencies, have been discussed earlier. The purpose of 
+this section is to emphasize that KM is not just a collection of individual initiatives.  
+The buildup of skills and competencies, involving the coordination of multiple KM 
+disciplines with other organizational functions, must often be managed according 
+to long-term strategic goals and coordinated across the organization. 
+  
+ 
+122 
+Invest: Managing the External Knowledge Network 
+ 
+Having explored the dynamics of knowledge acquisition from external sources, I 
+will now briefly look at the role knowledge management (KM) has in the broader, 
+long-term process of building an external knowledge network. Once again, I want 
+to underline that this presentation is only intended as a broad overview of the 
+potential roles of KM and will not go into any detail on specific topics such as 
+customer or supplier relationship management. 
+In the previous subsection, the major potential external knowledge sources 
+were identified as: 
+● Customers 
+● Suppliers 
+● Competitors 
+● Partners 
+● Mergers & Acquisitions 
+Each of these categories offer a different set of potential knowledge, as well as 
+different challenges in the acquisition process. 
+Without looking specifically at KM, the general steps for extending the external 
+knowledge network are as follows: 
+● Identification of potential partner/target: This would depend largely on the 
+corporate strategic goals assessed against the perceived benefit of the 
+potential partners. 
+● Evaluation of potential partner/target: This process is particularly 
+important for high investment ventures like mergers and acquisitions or 
+joint ventures. The process would be driven by the estimated contribution 
+of the target (this includes knowledge and core competencies but also 
+potentially other assets), the estimated cost of establishing the 
+relationship, and the estimated cost of acquiring similar knowledge from 
+other sources (including building it in-house). The word "estimated" plays a 
+ 
+123 
+key role here, since the information required to make accurate decisions is 
+often hard to come by. 
+● Establishing the relationship/acquisition of target: The process of actually 
+establishing cooperation/acquisition. For customer, supplier, or competitor 
+relationships this may involve setting up procedures, rules, and intentions 
+regarding the nature of the relationship and the things that will be 
+reported or shared. For mergers and acquisitions it could take any number 
+of forms and may include defining a new structure, integration into a 
+common locale, merging corporate cultures/identities, and so on. 
+● Knowledge transferal/integration: The actual processes that are put in 
+place to gather and use the knowledge and know-how from the 
+relationship/acquisition. These may involve reporting procedures, 
+feedback mechanisms, common IT systems, common projects etc. 
+The role of KM in building the external knowledge network would thus be to: 
+● Provide all the relevant information regarding internal knowledge assets: 
+This includes identifying what the firm has, what it does not have, and the 
+costs associated with building new knowledge. 
+● Help in the evaluation process: help evaluate the potential value and 
+difficulty to integrate of the knowledge that the firm expects to acquire. 
+● Encourage knowledge sharing & integration: On the one hand it could 
+involve working with top management so as to devise the best procedures 
+and systems relating to knowledge transfer. On the other, it could involve 
+introducing incentives, systems, managing organizational culture change, 
+etc. that facilitate, support, and encourage knowledge sharing. 
+● Gather, integrate, and share relevant external knowledge and information: 
+Managing the knowledge transfer process so as to ensure that the 
+knowledge is relevant and that it is available whenever and wherever 
+necessary. Analyzation of data and information so as to provide the 
+building blocks of new knowledge. 
+As one can see, KM plays a supporting role in all areas and is instrumental in the 
+learning process. Its importance will be greater the more knowledge intensive the 
+industry and nature of the relationship. 
+ 
+124 
+Due to the complexity of these topics and the vastly different managerial 
+requirements, I will end this discussion with just these general considerations. 
+  
+ 
+125 
+Invest: Knowledge Management Systems 
+ 
+The issue of knowledge management systems has probably always been the 
+most discussed and debated topic within knowledge management (KM). However, 
+in modern KM, few people would disagree with the notion that knowledge 
+management systems are an absolutely critical part of a KM initiative. 
+On this site, I have considered the impact of IT in all the knowledge management 
+strategy subsections, with particular emphasis on its role in knowledge sharing. 
+From this point on, the discussion will be organized as follows: 
+● This subsection will discuss the theoretical implementation of knowledge 
+management systems and its impact on the organization. 
+● The section titled "KM Tools" will look at some of the main categories of 
+systems available. 
+What are Knowledge Management Systems? 
+Knowledge management systems refer to any kind of IT system that stores and 
+retrieves knowledge, improves collaboration, locates knowledge sources, mines 
+repositories for hidden knowledge, captures and uses knowledge, or in some other 
+way enhances the KM process. 
+If my explanation above makes the definition of these systems seem vague, that 
+is because there is no consensus as to what constitutes a knowledge management 
+system, much like there is no consensus regarding KM. Furthermore, since KM is 
+involved in all areas of the firm, drawing a line is very difficult. 
+James Robertson (2007) goes as far as to argue that organizations should not 
+even think in terms of knowledge management systems. He argues that KM, 
+though enhanced by technology, is not a technology discipline, and thinking in 
+terms of knowledge management systems leads to expectations of "silver bullet" 
+solutions. Instead, the focus should be determining the functionality of the IT 
+systems that are required for the specific activities and initiatives within the firm. 
+ 
+126 
+However, with proper implementation, IT systems have become a critical 
+component of KM today. 
+ 
+For the purpose of this site (intended to be useful for those people that do 
+search for terms like knowledge management systems), I will break these down 
+into the following general categories (adapted from the work of Gupta and Sharma 
+2005, in Bali et al 2009): 
+● Groupware systems & KM 2.0 
+● The intranet and extranet 
+● Data warehousing, data mining, & OLAP 
+● Decision Support Systems 
+● Content management systems 
+● Document management systems 
+● Artificial intelligence tools 
+● Simulation tools 
+● Semantic networks 
+These categories will cover the vast majority of the systems that people would 
+normally associate with a KM system. 
+Problems and Failure Factors 
+Too often, the effects of technology on the organization are not given enough 
+thought prior to the introduction of a new system. There are two sets of 
+knowledge necessary for the design and implementation of a knowledge 
+management system (Newell et al., 2000): 
+1. The technical programming and design know-how 
+2. Organizational know-how based on the understanding of knowledge flows 
+The problem is that rarely are both these sets of knowledge known by a single 
+person. Moreover, technology is rarely designed by the people who use it. 
+Therefore, firms are faced with the issue of fit between IT systems and 
+organizational practices, as well as with acceptance within organizational culture 
+(Gamble & Blackwell 2001). 
+ 
+127 
+Botha et al (2008) stress the importance of understanding what knowledge 
+management systems cannot do. They point to the fact that introducing 
+knowledge sharing technologies does not mean that experts will share knowledge 
+- other initiatives have to be in place. 
+Akhavan et al (2005) identify several additional failure factors including: lack of 
+top management support, organizational culture, lack of a separate budget, and 
+resistance to change. 
+Building upon all this, and incorporating previously discussed elements, failure 
+factors of knowledge management systems are as follows: 
+● Inadequate support: managerial and technical, during both 
+implementation and use. 
+● Expecting that the technology is a KM solution in itself. 
+● Failure to understand exactly what the firm needs (whether technologically 
+or otherwise). 
+● Not understanding the specific function and limitation of each individual 
+system. 
+● Lack of organizational acceptance, and assuming that if you build it, they 
+will come – lack of appropriate organizational culture. 
+● Inadequate quality measures (e.g. lack of content management). 
+● Lack of organizational/departmental/etc. fit - does it make working in the 
+organization. easier? Is a system appropriate in one area of the firm but 
+not another? Does it actually disrupt existing processes? 
+● Lack of understanding of knowledge dynamics and the inherent difficulty in 
+transferring tacit knowledge with IT based systems (see segment on tacit 
+knowledge under knowledge sharing). 
+● Lack of a separate budget. 
+Promoting Acceptance and Assimilation 
+According to Hecht et al. (2011) the process of successful implementation has 
+three stages: adoption, acceptance, and assimilation. Based on recognized models 
+and theories, the authors identified three comprehensive set

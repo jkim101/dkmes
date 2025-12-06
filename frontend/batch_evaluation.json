@@ -1,0 +1,37 @@
+[
+    {
+        "id": "km_eval_001",
+        "category": "Ontology_Strategy",
+        "difficulty": "Hard",
+        "question": "When building an enterprise-level Knowledge Management system, what is the core reason for adopting an Ontology over a simple Taxonomy?",
+        "ground_truth": "While a Taxonomy is limited to hierarchical classification, an Ontology defines multidimensional relationships and attributes between entities. This serves as the foundation for extending into a Knowledge Graph, enabling complex reasoning and context-aware retrieval."
+    },
+    {
+        "id": "km_eval_002",
+        "category": "GraphRAG_Implementation",
+        "difficulty": "Medium",
+        "question": "In a GraphRAG architecture, what is the primary benefit of combining Vector Search with Graph Traversal?",
+        "ground_truth": "Vector Search is effective for finding semantically similar unstructured text, while Graph Traversal excels at exploring explicitly connected structural knowledge. Combining them allows the system to identify 'hidden relationships' beyond simple keyword matching or semantic similarity, thereby increasing the completeness of the answer."
+    },
+    {
+        "id": "km_eval_003",
+        "category": "SQL_Knowledge_Extraction",
+        "difficulty": "Hard",
+        "question": "When attempting to extract 'Implicit Business Knowledge' from hundreds of thousands of legacy SQL query logs, which patterns should be analyzed most intensively?",
+        "ground_truth": "The most critical patterns are 'frequent JOIN patterns' and 'filtering conditions in WHERE clauses'. JOIN patterns reveal associations between data entities, while WHERE conditions indicate specific business logic (e.g., the definition of an 'active customer'). This allows for the reverse engineering of undocumented data relationships."
+    },
+    {
+        "id": "km_eval_004",
+        "category": "Data_Governance",
+        "difficulty": "Medium",
+        "question": "What are the minimum measures required to prevent a Data Lakehouse from failing metadata management and turning into a 'Data Swamp'?",
+        "ground_truth": "Enforcing mandatory schema validation at the data ingestion stage and automating policies for ownership and lifecycle tagging for all datasets. Additionally, policies to periodically archive or delete 'Cold Data' with low access frequency must be executed."
+    },
+    {
+        "id": "km_eval_005",
+        "category": "AI_Agent_Ecosystem",
+        "difficulty": "Hard",
+        "question": "For an AI Agent to autonomously learn dataset characteristics and execute queries without human intervention, what specific information must be included in the Semantic Layer?",
+        "ground_truth": "Beyond simple column type information, the metadata must include natural language descriptions of what the column means to the business, the range of allowed values (constraints), and logical relationships with other tables (e.g., Foreign Keys)."
+    }
+]

@@ -1,0 +1,18 @@
+[
+    {
+        "question": "What is DKMES?",
+        "answer": "Data Knowledge Management Eco-System"
+    },
+    {
+        "question": "What are the main components of DKMES?",
+        "answer": "Vector database, Graph database, and Hybrid RAG system"
+    },
+    {
+        "question": "How does the Graph RAG work?",
+        "answer": "It uses knowledge graph traversal to find related entities and relationships"
+    },
+    {
+        "question": "What is the purpose of the Evaluation Studio?",
+        "answer": "To compare and evaluate different RAG strategies side-by-side"
+    }
+]

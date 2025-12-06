@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    container_name: dkmes-falkordb
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/falkordb:/data
+    restart: unless-stopped
+
+  # Vector DB (Chroma) - Optional for now, but good to have ready
+  # chroma:
+  #   image: chromadb/chroma:latest
+  #   ports:
+  #     - "8000:8000"
