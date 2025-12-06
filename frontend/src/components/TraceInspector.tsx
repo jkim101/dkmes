@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import { Activity, Clock, Server, Database, MessageSquare, ChevronRight, CheckCircle, XCircle, Search } from 'lucide-react';
+import { Activity, Clock, Search } from 'lucide-react';
 
 interface Trace {
     id: string;
@@ -32,7 +32,6 @@ const TraceInspector: React.FC<TraceInspectorProps> = ({ activeTraceId, compact 
     const [traces, setTraces] = useState<Trace[]>([]);
     const [selectedTraceId, setSelectedTraceId] = useState<string | null>(null);
     const [selectedTraceDetail, setSelectedTraceDetail] = useState<TraceDetail | null>(null);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (!compact) {
@@ -67,7 +66,6 @@ const TraceInspector: React.FC<TraceInspectorProps> = ({ activeTraceId, compact 
     };
 
     const fetchTraceDetail = async (id: string) => {
-        setLoading(true);
         try {
             const response = await fetch(`/api/v1/traces/${id}`);
             if (response.ok) {
@@ -76,8 +74,6 @@ const TraceInspector: React.FC<TraceInspectorProps> = ({ activeTraceId, compact 
             }
         } catch (error) {
             console.error('Error fetching trace detail:', error);
-        } finally {
-            setLoading(false);
         }
     };
 

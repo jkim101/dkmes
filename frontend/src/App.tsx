@@ -1,26 +1,32 @@
-import { useState } from 'react'
-import { LayoutDashboard, Database, MessageSquare, Activity, Share2, Settings, BarChart2, Network, ChevronRight, Bell, Search } from 'lucide-react';
+import { useState, Suspense, lazy } from 'react'
+import { LayoutDashboard, Database, MessageSquare, Activity, Share2, Settings, BarChart2, Network } from 'lucide-react';
 import './App.css'
 
+// Lazy Load heavy components
+const FileUploader = lazy(() => import('./components/FileUploader'));
+// GraphVisualizer is seemingly unused directly in App.tsx or used inside others, checking usage... it was imported but not used in App.tsx rendering logic in previous view.
+// Let's keep it lazy if it was there, or remove if unused. It was unused in the previous file content view (line 7 imported, never used). I'll skip it.
+import DashboardStats from './components/DashboardStats'; // Keep eager for critical path (Dashboard)
+const Playground = lazy(() => import('./components/Playground'));
+const GraphExplorer = lazy(() => import('./components/GraphExplorer'));
+const EvaluationStudio = lazy(() => import('./components/EvaluationStudio'));
+const TraceInspector = lazy(() => import('./components/TraceInspector'));
+const AssessmentDashboard = lazy(() => import('./components/AssessmentDashboard'));
+const Orchestrator = lazy(() => import('./components/Orchestrator'));
+const SettingsComponent = lazy(() => import('./components/Settings'));
+const ActivityCharts = lazy(() => import('./components/ActivityCharts'));
 
-import FileUploader from './components/FileUploader';
-import GraphVisualizer from './components/GraphVisualizer';
-import DashboardStats from './components/DashboardStats';
-import Playground from './components/Playground';
-import GraphExplorer from './components/GraphExplorer';
-import EvaluationStudio from './components/EvaluationStudio';
-import TraceInspector from './components/TraceInspector';
-import AssessmentDashboard from './components/AssessmentDashboard';
-import Orchestrator from './components/Orchestrator';
-import SettingsComponent from './components/Settings'; // Rename import to avoid conflict with Icon
+// Simple Loading Component
+const PageLoader = () => (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', color: 'var(--text-secondary)' }}>
+        <div className="loader-spinner"></div> {/* We can add CSS for this later or just text */}
+        <p>Loading module...</p>
+    </div>
+);
 
 function App() {
     const [activeTab, setActiveTab] = useState('dashboard')
-    const [refreshStats, setRefreshStats] = useState(0)
 
-    const handleUploadSuccess = () => {
-        setRefreshStats(prev => prev + 1);
-    };
 
     return (
         <div className="app-container">
@@ -75,27 +81,27 @@ function App() {
                 </header>
 
                 <div className="content-area">
-                    {activeTab === 'dashboard' && (
-                        <div className="dashboard-view">
-                            <div className="welcome-banner">
-                                <h1>DKMES - Data Knowledge Management System</h1>
-                                <p>Here's what's happening with your knowledge base today.</p>
+                    <Suspense fallback={<PageLoader />}>
+                        {activeTab === 'dashboard' && (
+                            <div className="dashboard-view">
+                                <div className="welcome-banner">
+                                    <h1>DKMES - Data Knowledge Management System</h1>
+                                    <p>Here's what's happening with your knowledge base today.</p>
+                                </div>
+                                <DashboardStats />
+                                {/* Activity Charts */}
+                                <ActivityCharts />
                             </div>
-                            <DashboardStats />
-                            {/* Placeholder for recent activity or charts */}
-                            <div className="card" style={{ marginTop: '2rem', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}>
-                                <p>System Activity Chart (Coming Soon)</p>
-                            </div>
-                        </div>
-                    )}
-                    {activeTab === 'playground' && <Playground />}
-                    {activeTab === 'graph' && <GraphExplorer />}
-                    {activeTab === 'data' && <FileUploader />}
-                    {activeTab === 'inspector' && <TraceInspector />}
-                    {activeTab === 'evaluate' && <EvaluationStudio />}
-                    {activeTab === 'assessment' && <AssessmentDashboard />}
-                    {activeTab === 'orchestrator' && <Orchestrator />}
-                    {activeTab === 'settings' && <SettingsComponent />}
+                        )}
+                        {activeTab === 'playground' && <Playground />}
+                        {activeTab === 'graph' && <GraphExplorer />}
+                        {activeTab === 'data' && <FileUploader />}
+                        {activeTab === 'inspector' && <TraceInspector />}
+                        {activeTab === 'evaluate' && <EvaluationStudio />}
+                        {activeTab === 'assessment' && <AssessmentDashboard />}
+                        {activeTab === 'orchestrator' && <Orchestrator />}
+                        {activeTab === 'settings' && <SettingsComponent />}
+                    </Suspense>
                 </div>
             </div>
         </div>

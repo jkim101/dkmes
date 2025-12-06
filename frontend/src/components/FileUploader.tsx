@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import { Upload, FileText, Trash2, RefreshCw, Database, AlertCircle, CheckCircle2, Circle, X } from 'lucide-react';
+import { Upload, FileText, RefreshCw, Database, AlertCircle, CheckCircle2, Circle } from 'lucide-react';
 
 interface UploadedFile {
     filename: string;
@@ -102,7 +102,7 @@ const FileUploader: React.FC = () => {
                 setTimeout(() => setProcessingStep('chunking'), 1000);
                 setTimeout(() => setProcessingStep('graph'), 3000);
 
-                const response = await fetch('/api/v1/ingest/file', {
+                const response = await fetch('/api/v1/documents/upload', {
                     method: 'POST',
                     body: formData,
                 });
