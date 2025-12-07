@@ -59,3 +59,12 @@
 - [x] **엔드투엔드 테스트**
     - [x] 외부 에이전트가 질문하는 상황 시뮬레이션.
     - [x] DKMES가 맥락을 검색하고, 답안을 채점하며, 피드백을 반환하는지 검증.
+
+## 6단계: 배포 및 패키징 (Future)
+**목표**: 프로덕션 배포를 위한 애플리케이션 패키징.
+- [ ] **Dockerization (컨테이너화)**
+    - [ ] Backend (FastAPI)용 `Dockerfile` 작성.
+    - [ ] Frontend (Nginx/React)용 `Dockerfile` 작성.
+    - [ ] 전체 서비스(App, DB)를 통합 관리할 `docker-compose.yml` 업데이트.
+- [ ] **CI/CD**
+    - [ ] 자동화된 테스트 및 빌드를 위한 GitHub Actions 설정.
