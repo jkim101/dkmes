@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Gamma - Data Analytics Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-dot.online { background: #10b981; }
+        .status-dot.offline { background: #ef4444; }
+
+        .chat-container {
+            flex: 1;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.25rem;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant {
+            align-self: flex-start;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.assistant .source {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .message.assistant .source-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        .message.loading {
+            color: #888;
+        }
+
+        .message.loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .input-area {
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3b82f6;
+        }
+
+        input[type="text"]::placeholder {
+            color: #666;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .target-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .target-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .target-btn.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        .target-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Data Analytics Agent</h1>
+            <p>DKMES Alpha와 연동된 지식 기반 챗봇</p>
+        </header>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-dot online" id="gammaStatus"></div>
+                <span>Gamma :8002</span>
+            </div>
+            <div class="status-item">
+                <div class="status-dot" id="alphaStatus"></div>
+                <span>Alpha :8000</span>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message assistant">
+                    안녕하세요! 저는 Data Analytics Agent입니다. 
+                    질문을 입력하시면 DKMES Alpha의 지식 베이스를 검색하여 답변드립니다.
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="target-selector">
+                    <button class="target-btn active" data-target="alpha" onclick="setTarget('alpha')">
+                        🎯 DKMES Alpha에게 질문
+                    </button>
+                    <button class="target-btn" data-target="local" onclick="setTarget('local')">
+                        💬 Agent Gamma 직접 응답
+                    </button>
+                </div>
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="질문을 입력하세요..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()" id="sendBtn">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let targetAgent = 'alpha';
+        const ALPHA_URL = 'http://localhost:8000';
+        const GAMMA_URL = 'http://localhost:8002';
+
+        // Check agent status
+        async function checkStatus() {
+            try {
+                const res = await fetch(`${ALPHA_URL}/health`);
+                document.getElementById('alphaStatus').className = res.ok ? 'status-dot online' : 'status-dot offline';
+            } catch {
+                document.getElementById('alphaStatus').className = 'status-dot offline';
+            }
+        }
+
+        checkStatus();
+        setInterval(checkStatus, 5000);
+
+        function setTarget(target) {
+            targetAgent = target;
+            document.querySelectorAll('.target-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.target === target);
+            });
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function addMessage(content, isUser, source = null) {
+            const messagesDiv = document.getElementById('messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
+            
+            let html = content;
+            if (source) {
+                html += `<div class="source"><span class="source-tag">${source}</span> 에서 답변</div>`;
+            }
+            msgDiv.innerHTML = html;
+            
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            return msgDiv;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            input.value = '';
+            document.getElementById('sendBtn').disabled = true;
+
+            // Add user message
+            addMessage(message, true);
+
+            // Add loading message
+            const loadingMsg = addMessage('생각 중', false);
+            loadingMsg.classList.add('loading');
+
+            try {
+                let response, data, source;
+
+                if (targetAgent === 'alpha') {
+                    // Forward to DKMES Alpha via KEP
+                    response = await fetch(`${GAMMA_URL}/api/v1/ask-alpha`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message })
+                    });
+                    data = await response.json();
+                    source = 'DKMES Alpha';
+                } else {
+                    // Local Gamma response
+                    response = await fetch(`${GAMMA_URL}/api/v1/chat`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message })
+                    });
+                    data = await response.json();
+                    source = 'Agent Gamma';
+                }
+
+                loadingMsg.remove();
+                addMessage(data.answer || data.error || 'No response', false, source);
+
+            } catch (error) {
+                loadingMsg.remove();
+                addMessage(`오류: ${error.message}`, false);
+            }
+
+            document.getElementById('sendBtn').disabled = false;
+            input.focus();
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import json
 import os
@@ -126,16 +126,118 @@ def health_check():
         "port": 8000
     }
 
-from core.a2a import dkmes_agent_card
+from core.a2a import dkmes_agent_card, A2AHandler, JsonRpcRequest, JsonRpcResponse, Task, TaskStatus, TaskState, Message, Role, Part, A2A_ERRORS
+import uuid as uuid_lib
+import time as time_lib
 
 @app.get("/.well-known/agent.json")
 def get_agent_card():
     """
     Returns the A2A Agent Card for discovery.
     """
-    # Create absolute URL for the interface if needed, but relative usually works if client resolves it.
-    # For stricter compliance, we might need full URLs, but we'll start with path.
     return dkmes_agent_card.model_dump()
+
+
+@app.post("/a2a")
+async def handle_a2a_request(request: dict):
+    """
+    A2A JSON-RPC endpoint.
+    
+    Supports methods:
+    - message/send: Send a message and get response
+    - tasks/get: Get task status
+    """
+    try:
+        rpc_request = JsonRpcRequest(**request)
+    except Exception as e:
+        return JsonRpcResponse(
+            id=request.get("id", "unknown"),
+            error=A2A_ERRORS["INVALID_REQUEST"]
+        ).model_dump()
+    
+    method = rpc_request.method
+    
+    if method == "message/send":
+        try:
+            # Extract message
+            message_data = rpc_request.params.get("message", {})
+            parts = message_data.get("parts", [])
+            query_parts = [p.get("text", "") for p in parts if p.get("text")]
+            query = " ".join(query_parts)
+            
+            print(f"[A2A] Processing message: {query[:100]}...")
+            
+            # Create task
+            task_id = str(uuid_lib.uuid4())
+            
+            # Process with RAG
+            vector_results = await vector_provider.search(query, top_k=3)
+            context_parts = [doc.get("content", doc.get("text", "")) for doc in vector_results]
+            context = "\n\n".join(context_parts)
+            
+            response_text = await gemini_client.generate_answer(query, context)
+            
+            print(f"[A2A] Response generated: {response_text[:100]}...")
+            
+            # Build completed task
+            task = Task(
+                id=task_id,
+                contextId=rpc_request.params.get("contextId"),
+                status=TaskStatus(
+                    state=TaskState.COMPLETED,
+                    message=Message(
+                        messageId=str(uuid_lib.uuid4()),
+                        taskId=task_id,
+                        role=Role.AGENT,
+                        parts=[Part(text=response_text)]
+                    ),
+                    timestamp=time_lib.time()
+                ),
+                artifacts=[{"parts": [{"text": response_text}]}],
+                history=[
+                    Message(
+                        messageId=str(uuid_lib.uuid4()),
+                        taskId=task_id,
+                        role=Role.USER,
+                        parts=[Part(text=query)]
+                    ),
+                    Message(
+                        messageId=str(uuid_lib.uuid4()),
+                        taskId=task_id,
+                        role=Role.AGENT,
+                        parts=[Part(text=response_text)]
+                    )
+                ]
+            )
+            
+            return JsonRpcResponse(id=rpc_request.id, result=task.model_dump()).model_dump()
+            
+        except Exception as e:
+            print(f"[A2A] Error processing message: {e}")
+            import traceback
+            traceback.print_exc()
+            
+            # Return error task
+            task = Task(
+                id=str(uuid_lib.uuid4()),
+                status=TaskStatus(
+                    state=TaskState.FAILED,
+                    message=Message(
+                        messageId=str(uuid_lib.uuid4()),
+                        role=Role.AGENT,
+                        parts=[Part(text=str(e))]
+                    ),
+                    timestamp=time_lib.time()
+                )
+            )
+            return JsonRpcResponse(id=rpc_request.id, result=task.model_dump()).model_dump()
+    
+    else:
+        return JsonRpcResponse(
+            id=rpc_request.id,
+            error=A2A_ERRORS["METHOD_NOT_FOUND"]
+        ).model_dump()
+
 
 # ... (Ingest endpoints remain same) ...
 
@@ -243,9 +345,10 @@ async def evaluate_agent(request: EvaluationRequest):
 
 class BatchPair(BaseModel):
     question: str
-    ground_truth: str
+    ground_truth: str = Field(alias="answer")
     
     class Config:
+        populate_by_name = True
         extra = "allow"  # Allow additional fields like id, category, difficulty
 
 class BatchEvaluationRequest(BaseModel):
@@ -327,7 +430,12 @@ async def batch_evaluate(request: BatchEvaluationRequest):
                 }
             })
 
-    avg_score = total_score / len(request.pairs) if request.pairs else 0
+    # Average score is total score divided by total number of evaluations (pairs * 3 strategies)
+    # However, semantically, we probably want the average of the 'overall' scores across all pairs.
+    # total_score currently sums up 'overall_score' for EACH strategy result.
+    # So we divide by (len(request.pairs) * 3) to get the average score per strategy run.
+    num_evaluations = len(request.pairs) * 3
+    avg_score = total_score / num_evaluations if num_evaluations > 0 else 0
     
     return {
         "results": results,

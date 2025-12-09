@@ -15,6 +15,7 @@
         "react-dom": "^18.2.0",
         "react-force-graph-2d": "^1.29.0",
         "react-force-graph-3d": "^1.29.0",
+        "reactflow": "^11.11.4",
         "recharts": "^3.5.1"
     },
     "devDependencies": {
