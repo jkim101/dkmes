@@ -42,6 +42,7 @@ interface AgentConfig {
 const DEFAULT_AGENT_CONFIGS: AgentConfig[] = [
     { port: 8000, fallbackId: 'dkmes-alpha', fallbackName: 'DKMES Alpha', fallbackDomain: 'knowledge-management' },
     { port: 8001, fallbackId: 'agent-beta-aiml', fallbackName: 'AI/ML Research Agent', fallbackDomain: 'artificial-intelligence' },
+    { port: 8002, fallbackId: 'agent-gamma-analytics', fallbackName: 'CVDT Chatbot Agent', fallbackDomain: 'data-analytics' },
 ];
 
 const Orchestrator: React.FC = () => {

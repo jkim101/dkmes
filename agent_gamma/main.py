@@ -22,7 +22,7 @@ from datetime import datetime
 # =============================================================================
 
 AGENT_ID = "agent-gamma-analytics"
-AGENT_NAME = "Data Analytics Agent"
+AGENT_NAME = "CVDT Chatbot Agent"
 AGENT_DOMAIN = "data-analytics"
 PORT = 8002
 PEER_AGENTS = [

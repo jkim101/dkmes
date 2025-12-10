@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +58,7 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             font-size: 0.8rem;
         }
@@ -68,13 +69,18 @@
             border-radius: 50%;
         }
 
-        .status-dot.online { background: #10b981; }
-        .status-dot.offline { background: #ef4444; }
+        .status-dot.online {
+            background: #10b981;
+        }
+
+        .status-dot.offline {
+            background: #ef4444;
+        }
 
         .chat-container {
             flex: 1;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             display: flex;
             flex-direction: column;
@@ -100,8 +106,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.user {
@@ -112,15 +125,15 @@
 
         .message.assistant {
             align-self: flex-start;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom-left-radius: 4px;
         }
 
         .message.assistant .source {
             margin-top: 0.75rem;
             padding-top: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.75rem;
             color: #888;
         }
@@ -144,15 +157,26 @@
         }
 
         @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
+
+            0%,
+            20% {
+                content: '.';
+            }
+
+            40% {
+                content: '..';
+            }
+
+            60%,
+            100% {
+                content: '...';
+            }
         }
 
         .input-area {
             padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .input-wrapper {
@@ -163,8 +187,8 @@
         input[type="text"] {
             flex: 1;
             padding: 1rem 1.25rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             color: #fff;
             font-size: 1rem;
@@ -213,8 +237,8 @@
 
         .target-btn {
             padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #888;
             border-radius: 8px;
             cursor: pointer;
@@ -229,15 +253,16 @@
         }
 
         .target-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
-            <h1>🤖 Data Analytics Agent</h1>
+            <h1>🤖 CVDT Chatbot Agent</h1>
             <p>DKMES Alpha와 연동된 지식 기반 챗봇</p>
         </header>
 
@@ -255,7 +280,7 @@
         <div class="chat-container">
             <div class="messages" id="messages">
                 <div class="message assistant">
-                    안녕하세요! 저는 Data Analytics Agent입니다. 
+                    안녕하세요! 저는 CVDT Chatbot Agent입니다.
                     질문을 입력하시면 DKMES Alpha의 지식 베이스를 검색하여 답변드립니다.
                 </div>
             </div>
@@ -310,13 +335,13 @@
             const messagesDiv = document.getElementById('messages');
             const msgDiv = document.createElement('div');
             msgDiv.className = `message ${isUser ? 'user' : 'assistant'}`;
-            
+
             let html = content;
             if (source) {
                 html += `<div class="source"><span class="source-tag">${source}</span> 에서 답변</div>`;
             }
             msgDiv.innerHTML = html;
-            
+
             messagesDiv.appendChild(msgDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
             return msgDiv;
@@ -373,4 +398,5 @@
         }
     </script>
 </body>
+
 </html>

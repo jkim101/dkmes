@@ -37,8 +37,6 @@ function App() {
                         <div className="logo-inner"></div>
                     </div>
                     <h2>DKMES</h2>
-                    <span className="badge">Admin</span>
-
                 </div>
 
                 <nav className="nav-menu">
@@ -85,7 +83,7 @@ function App() {
                         {activeTab === 'dashboard' && (
                             <div className="dashboard-view">
                                 <div className="welcome-banner">
-                                    <h1>DKMES - Data Knowledge Management System</h1>
+                                    <h1>DKMES - Data Knowledge Management Eco-System</h1>
                                     <p>Here's what's happening with your knowledge base today.</p>
                                 </div>
                                 <DashboardStats />

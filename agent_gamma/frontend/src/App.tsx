@@ -18,7 +18,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hi! I'm the Data Analytics Agent. Ask me anything and I'll forward your question to DKMES Alpha's knowledge base for answers.",
+      content: "Hi! I'm the CVDT Chatbot Agent. Ask me anything and I'll forward your question to DKMES Alpha's knowledge base for answers.",
       isUser: false,
       timestamp: new Date()
     }
@@ -115,7 +115,7 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>🤖 Data Analytics Agent</h1>
+        <h1>🤖 CVDT Chatbot Agent</h1>
         <p>Knowledge-powered chatbot connected to DKMES Alpha</p>
       </header>
 
@@ -162,7 +162,7 @@ function App() {
               className={`target-btn ${target === 'local' ? 'active' : ''}`}
               onClick={() => setTarget('local')}
             >
-              💬 Agent Gamma Local
+              💬 Ask CVDT Chatbot
             </button>
           </div>
           <div className="input-wrapper">
