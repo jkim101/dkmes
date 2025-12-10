@@ -20,7 +20,7 @@ load_dotenv(".env.local")
 
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import documents, a2a, settings
+from api import documents, a2a, settings, prompts
 
 app = FastAPI(title="DKMES API", version="1.0.0")
 
@@ -35,6 +35,7 @@ app.add_middleware(
 
 # Include Routers
 app.include_router(documents.router, prefix="/api/v1/documents")
+app.include_router(prompts.router, prefix="/api/v1")
 app.include_router(settings.router)  # Settings API
 app.include_router(a2a.router)  # No prefix for /a2a as per A2A spec
 

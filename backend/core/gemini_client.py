@@ -8,6 +8,7 @@ import asyncio
 import json
 import hashlib
 from core.config import current_settings
+from core.prompt_manager import PromptManager
 
 class GeminiClient:
     def __init__(self, project_id: str = None, location: str = "us-central1", model_name: str = None):
@@ -17,6 +18,7 @@ class GeminiClient:
         self.api_key = os.getenv("GEMINI_API_KEY")
         self.cache_file = ".gemini_cache.json"
         self.cache = self._load_cache()
+        self.prompt_manager = PromptManager()
         
         try:
             if not self.api_key:
@@ -41,19 +43,10 @@ class GeminiClient:
         if len(context) > MAX_CONTEXT_LEN:
             context = context[:MAX_CONTEXT_LEN] + "...(truncated)"
 
-        prompt = f"""
-        You are a helpful AI assistant.
-        Answer the user's question using ONLY the provided context.
-        If the answer is not in the context, say "I don't have enough information."
-
-        Context:
-        {context}
-
-        Question:
-        {query}
-
-        Answer:
-        """
+        prompt = self.prompt_manager.get_template("answer_generation").format(
+            context=context,
+            query=query
+        )
         try:
             return await self.generate_content(prompt, temperature=current_settings.temperature)
         except Exception as e:
@@ -114,15 +107,7 @@ class GeminiClient:
         # Try Real AI first if not mock
         if not self.is_mock:
             try:
-                system_prompt = """
-                You are an expert Data Engineer and Knowledge Graph Architect.
-                Your task is to extract meaningful Entities and Relationships from the given text to build a Knowledge Graph.
-                
-                Output Format:
-                Return ONLY a list of Cypher queries to create these nodes and relationships.
-                Do not include markdown formatting like ```cypher.
-                """
-                full_prompt = f"{system_prompt}\n\nInput Text:\n{text}\n\nCypher Queries:"
+                full_prompt = self.prompt_manager.get_template("graph_extraction").format(text=text)
                 return await self.generate_content(full_prompt, temperature=0.1)
             except Exception as e:
                 print(f"Real AI extraction failed: {e}. Falling back to Mock.")
@@ -174,25 +159,12 @@ class GeminiClient:
         
         instruction = persona_instructions.get(persona, persona_instructions["Novice"])
         
-        system_prompt = f"""
-        You are an expert judge evaluating a RAG (Retrieval-Augmented Generation) system.
-        {instruction}
-        Your task is to determine if the retrieved context provides sufficient information to answer the user's query.
-
-        Evaluation Criteria:
-        1. Relevance: Is the context directly related to the query?
-        2. Completeness: Does the context contain all necessary facts to answer the query?
-        3. Persona Fit: Does the information match the needs of a {persona}?
-
-        Output Format (JSON):
-        {{
-            "score": <float between 0.0 and 1.0>,
-            "reasoning": "<concise explanation of the score, addressing the persona>",
-            "missing_info": "<what information is missing, if any>"
-        }}
-        """
-        
-        full_prompt = f"{system_prompt}\n\nUser Query: {query}\n\nRetrieved Context:\n{context_str}\n\nEvaluation JSON:"
+        full_prompt = self.prompt_manager.get_template("rag_evaluation").format(
+            instruction=instruction,
+            persona=persona,
+            query=query,
+            context_str=context_str
+        )
         
         # Try Real AI first
         if not self.is_mock:
@@ -216,13 +188,7 @@ class GeminiClient:
         if self.is_mock:
             return query.split() # Fallback
 
-        prompt = f"""
-        Extract the most important search keywords or entities from this query to search in a Knowledge Graph.
-        Remove stop words. Return only the keywords separated by commas.
-        
-        Query: {query}
-        Keywords:
-        """
+        prompt = self.prompt_manager.get_template("keyword_extraction").format(query=query)
         
         try:
             response = await self.generate_content(prompt, temperature=0.0)
@@ -239,20 +205,10 @@ class GeminiClient:
         Calculates Faithfulness: Is the answer derived from the context?
         """
         context_str = "\n".join(context)
-        prompt = f"""
-        You are an expert evaluator.
-        Task: Rate the "Faithfulness" of the Answer to the Context on a scale of 0.0 to 1.0.
-        Faithfulness means: Does the answer contain ONLY information present in the context?
-        If the answer hallucinates info not in context, score low.
-        
-        Context:
-        {context_str}
-        
-        Answer:
-        {answer}
-        
-        Return ONLY the float score (e.g., 0.9).
-        """
+        prompt = self.prompt_manager.get_template("metric_faithfulness").format(
+            context_str=context_str,
+            answer=answer
+        )
         try:
             response = await self.generate_content(prompt, temperature=0.0)
             return float(response.strip())
@@ -263,19 +219,10 @@ class GeminiClient:
         """
         Calculates Answer Relevance: Is the answer relevant to the question?
         """
-        prompt = f"""
-        You are an expert evaluator.
-        Task: Rate the "Relevance" of the Answer to the Question on a scale of 0.0 to 1.0.
-        Relevance means: Does the answer directly address the user's intent?
-        
-        Question:
-        {question}
-        
-        Answer:
-        {answer}
-        
-        Return ONLY the float score (e.g., 0.9).
-        """
+        prompt = self.prompt_manager.get_template("metric_relevance").format(
+            question=question,
+            answer=answer
+        )
         try:
             response = await self.generate_content(prompt, temperature=0.0)
             return float(response.strip())
@@ -290,20 +237,10 @@ class GeminiClient:
             return 0.0
             
         context_str = "\n".join(context)
-        prompt = f"""
-        You are an expert evaluator.
-        Task: Rate the "Context Recall" on a scale of 0.0 to 1.0.
-        Context Recall means: Does the Retrieved Context contain the information necessary to construct the Ground Truth Answer?
-        Compare the Context against the Ground Truth.
-        
-        Ground Truth:
-        {ground_truth}
-        
-        Retrieved Context:
-        {context_str}
-        
-        Return ONLY the float score (e.g., 0.9).
-        """
+        prompt = self.prompt_manager.get_template("metric_recall").format(
+            ground_truth=ground_truth,
+            context_str=context_str
+        )
         try:
             response = await self.generate_content(prompt, temperature=0.0)
             return float(response.strip())
@@ -368,28 +305,8 @@ class AgenticGeminiClient(GeminiClient):
         accumulated_context = context
         
         # System prompt for agentic behavior
-        system_prompt = """You are an intelligent AI agent with access to tools for answering questions.
-FOLLOW THIS WORKFLOW for best results:
-
-1. ANALYZE: First use `analyze_query` to understand the query type and domains
-2. SELECT STRATEGY: Use `select_strategy` to pick the best retrieval approach
-3. RETRIEVE: Based on strategy, use `search_vector`, `query_graph`, `hybrid_search`, or `ask_peer_agent`
-4. EVALUATE: Use `evaluate_context` to check if you have enough information
-5. REFINE (if needed): If context is insufficient, use `refine_query` and retry
-6. ANSWER: When you have sufficient context, provide your final answer directly (not as JSON)
-
-Available Tools:
-{tools_description}
-
-IMPORTANT RULES:
-- To call a tool, respond with ONLY a JSON object: {{"tool": "<tool_name>", "arguments": {{...}}}}
-- For ML/AI topics, use `ask_peer_agent` with domain "machine-learning" or "artificial-intelligence"
-- When ready to give final answer, just write the answer text directly (no JSON)
-- Include a brief reasoning trace showing which tools you used and why
-
-Current Context:
-{context}
-"""
+        # System prompt for agentic behavior
+        system_prompt = self.prompt_manager.get_template("agent_system")
         
         tools_description = "\n".join([
             f"- {t['name']}: {t['description']}" 
