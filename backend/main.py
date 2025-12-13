@@ -16,7 +16,13 @@ from core.gemini_client import GeminiClient
 from knowledge.graph_provider import GraphProvider
 from knowledge.vector_provider import VectorProvider
 
-load_dotenv(".env.local")
+# Load .env.local from the backend directory
+env_path = os.path.join(os.path.dirname(__file__), ".env.local")
+if os.path.exists(env_path):
+    load_dotenv(env_path)
+    print(f"Loaded environment variables from {env_path}")
+else:
+    print(f"Warning: .env.local not found at {env_path}")
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -596,6 +602,7 @@ class AgentChatResponse(BaseModel):
     tool_calls: List[Dict[str, Any]] = []
     thinking: str = ""
     reasoning_trace: str = ""
+    trace_id: Optional[str] = None
 
 
 @app.post("/api/v1/agent/chat", response_model=AgentChatResponse)
@@ -609,7 +616,7 @@ async def agent_chat(request: AgentChatRequest):
     start_time = time.time()
     trace_id = tracer.start_trace(
         query=request.message, 
-        metadata={"trace_type": "agent_chat"}
+        metadata={"trace_type": "agent_chat", "strategy": "agent"}
     )
     
     try:
@@ -661,7 +668,8 @@ async def agent_chat(request: AgentChatRequest):
                 for tc in response.tool_calls
             ],
             thinking=response.thinking,
-            reasoning_trace=response.reasoning_trace
+            reasoning_trace=response.reasoning_trace,
+            trace_id=trace_id
         )
         
     except Exception as e:
@@ -892,6 +900,7 @@ class FusedQueryResponse(BaseModel):
     sources: List[Dict] = []
     combined_confidence: float
     fusion_metadata: Dict = {}
+    trace_id: Optional[str] = None
 
 
 @app.post("/api/v1/chat/fused", response_model=FusedQueryResponse)
@@ -906,123 +915,147 @@ async def fused_chat(request: FusedQueryRequest):
     4. Generate a unified answer citing all sources
     """
     start_time = time.time()
-    all_context_parts = []
-    all_sources = []
-    peers_used = []
-    local_confidence = 0.0
-    peer_confidence = 0.0
-    
-    # 1. Get local knowledge
-    if request.use_local:
-        try:
-            local_results = await vector_provider.search(request.query, top_k=3)
-            
-            for i, doc in enumerate(local_results):
-                content = doc.get("content", doc.get("text", ""))
-                score = doc.get("score", 0.0)
-                
-                all_context_parts.append(f"[Local Source {i+1}]\n{content}")
-                all_sources.append({
-                    "agent": "dkmes-alpha",
-                    "type": "local",
-                    "excerpt": content[:150] + "..." if len(content) > 150 else content,
-                    "score": score
-                })
-                local_confidence = max(local_confidence, 1.0 - min(score, 1.0))
-        except Exception as e:
-            print(f"Local search error: {e}")
-    
-    # 2. Get peer knowledge
-    if request.use_peers:
-        for domain in request.peer_domains:
-            try:
-                peer_response = await kep_client.request_from_best_peer(
-                    query=request.query,
-                    domain=domain
-                )
-                
-                if peer_response and peer_response.status == "success":
-                    knowledge = peer_response.knowledge
-                    answer = knowledge.get("answer", "")
-                    sources = knowledge.get("sources", [])
-                    conf = knowledge.get("confidence", 0.0)
-                    
-                    # Add peer knowledge to context
-                    if sources:
-                        for src in sources[:2]:  # Limit to 2 sources per peer
-                            excerpt = src.get("excerpt", "")
-                            all_context_parts.append(f"[Peer Agent: {domain}]\n{excerpt}")
-                            all_sources.append({
-                                "agent": "agent-beta-aiml",
-                                "type": "peer",
-                                "domain": domain,
-                                "excerpt": excerpt[:150] + "..." if len(excerpt) > 150 else excerpt,
-                                "score": src.get("relevance_score", 0.5)
-                            })
-                    
-                    peers_used.append(domain)
-                    peer_confidence = max(peer_confidence, conf)
-                    break  # Only use first matching peer per domain
-                    
-            except Exception as e:
-                print(f"Peer query error for {domain}: {e}")
-    
-    # 3. Generate fused answer
-    combined_context = "\n\n---\n\n".join(all_context_parts)
-    
-    if combined_context:
-        # Create prompt emphasizing source diversity
-        fusion_prompt = f"""You are answering a question using knowledge from multiple sources.
-        
-Sources include:
-- Local knowledge base (knowledge management expertise)
-- Peer AI agent (machine learning / AI expertise)
-
-Question: {request.query}
-
-Available Context:
-{combined_context}
-
-Instructions:
-1. Synthesize information from ALL available sources
-2. If sources have different perspectives, present both
-3. Be accurate and cite which type of source provided each piece of information
-4. If knowledge is limited, say so
-
-Answer:"""
-        
-        answer = await gemini_client.generate_answer(
-            query=request.query,
-            context=fusion_prompt
-        )
-    else:
-        answer = "No relevant knowledge found from local or peer sources."
-    
-    # 4. Calculate combined confidence
-    if local_confidence > 0 and peer_confidence > 0:
-        combined_confidence = (local_confidence * 0.6 + peer_confidence * 0.4)
-    elif local_confidence > 0:
-        combined_confidence = local_confidence * 0.8
-    elif peer_confidence > 0:
-        combined_confidence = peer_confidence * 0.8
-    else:
-        combined_confidence = 0.0
-    
-    processing_time = (time.time() - start_time) * 1000
-    
-    return FusedQueryResponse(
-        answer=answer,
-        local_used=request.use_local and local_confidence > 0,
-        peers_used=peers_used,
-        sources=all_sources,
-        combined_confidence=combined_confidence,
-        fusion_metadata={
-            "local_confidence": local_confidence,
-            "peer_confidence": peer_confidence,
-            "processing_time_ms": processing_time,
-            "source_count": len(all_sources)
-        }
+    trace_id = tracer.start_trace(
+        query=request.query, 
+        metadata={"trace_type": "fused_chat", "strategy": "fusion", "use_local": request.use_local, "use_peers": request.use_peers}
     )
+    
+    try:
+        all_context_parts = []
+        all_sources = []
+        peers_used = []
+        local_confidence = 0.0
+        peer_confidence = 0.0
+        
+        # 1. Get local knowledge
+        if request.use_local:
+            try:
+                tracer.log_step(trace_id, "Fusion Start", "Local Search", "Searching Vector DB")
+                local_results = await vector_provider.search(request.query, top_k=3)
+                
+                for i, doc in enumerate(local_results):
+                    content = doc.get("content", doc.get("text", ""))
+                    score = doc.get("score", 0.0)
+                    
+                    all_context_parts.append(f"[Local Source {i+1}]\n{content}")
+                    all_sources.append({
+                        "agent": "dkmes-alpha",
+                        "type": "local",
+                        "excerpt": content[:150] + "..." if len(content) > 150 else content,
+                        "score": score
+                    })
+                    local_confidence = max(local_confidence, 1.0 - min(score, 1.0))
+            except Exception as e:
+                print(f"Local search error: {e}")
+        
+        # 2. Get peer knowledge
+        if request.use_peers:
+            for domain in request.peer_domains:
+                try:
+                    tracer.log_step(trace_id, "Peer Request", f"Domain: {domain}", "Requesting...")
+                    peer_response = await kep_client.request_from_best_peer(
+                        query=request.query,
+                        domain=domain
+                    )
+                    
+                    if peer_response and peer_response.status == "success":
+                        knowledge = peer_response.knowledge
+                        answer = knowledge.get("answer", "")
+                        sources = knowledge.get("sources", [])
+                        conf = knowledge.get("confidence", 0.0)
+                        
+                        # Add peer knowledge to context
+                        if sources:
+                            for src in sources[:2]:  # Limit to 2 sources per peer
+                                excerpt = src.get("excerpt", "")
+                                all_context_parts.append(f"[Peer Agent: {domain}]\n{excerpt}")
+                                all_sources.append({
+                                    "agent": "agent-beta-aiml",
+                                    "type": "peer",
+                                    "domain": domain,
+                                    "excerpt": excerpt[:150] + "..." if len(excerpt) > 150 else excerpt,
+                                    "score": src.get("relevance_score", 0.5)
+                                })
+                        
+                        peers_used.append(domain)
+                        peer_confidence = max(peer_confidence, conf)
+                        tracer.log_step(trace_id, "Peer Response", f"Domain: {domain}", "Success")
+                        break  # Only use first matching peer per domain
+                    else:
+                        tracer.log_step(trace_id, "Peer Response", f"Domain: {domain}", "No response/Excluded")
+                        
+                except Exception as e:
+                    print(f"Peer query error for {domain}: {e}")
+                    tracer.log_step(trace_id, "Peer Error", f"Domain: {domain}", str(e))
+        
+        # 3. Generate fused answer
+        combined_context = "\n\n---\n\n".join(all_context_parts)
+        
+        tracer.log_step(trace_id, "Context Fusion", "Combining Sources", f"{len(all_sources)} sources")
+        
+        if combined_context:
+            # Create prompt emphasizing source diversity
+            fusion_prompt = f"""You are answering a question using knowledge from multiple sources.
+            
+    Sources include:
+    - Local knowledge base (knowledge management expertise)
+    - Peer AI agent (machine learning / AI expertise)
+    
+    Question: {request.query}
+    
+    Available Context:
+    {combined_context}
+    
+    Instructions:
+    1. Synthesize information from ALL available sources
+    2. If sources have different perspectives, present both
+    3. Be accurate and cite which type of source provided each piece of information
+    4. If knowledge is limited, say so
+    
+    Answer:"""
+            
+            tracer.log_step(trace_id, "Generation Start", "Sending to Gemini", "...")
+            answer = await gemini_client.generate_answer(
+                query=request.query,
+                context=fusion_prompt
+            )
+            tracer.log_step(trace_id, "Generation End", "Gemini Response", answer[:200])
+        else:
+            answer = "No relevant knowledge found from local or peer sources."
+        
+        # 4. Calculate combined confidence
+        if local_confidence > 0 and peer_confidence > 0:
+            combined_confidence = (local_confidence * 0.6 + peer_confidence * 0.4)
+        elif local_confidence > 0:
+            combined_confidence = local_confidence * 0.8
+        elif peer_confidence > 0:
+            combined_confidence = peer_confidence * 0.8
+        else:
+            combined_confidence = 0.0
+        
+        processing_time = (time.time() - start_time) * 1000
+        
+        tracer.end_trace(trace_id, status="success", latency=time.time() - start_time)
+        
+        return FusedQueryResponse(
+            answer=answer,
+            local_used=request.use_local and local_confidence > 0,
+            peers_used=peers_used,
+            sources=all_sources,
+            combined_confidence=combined_confidence,
+            fusion_metadata={
+                "local_confidence": local_confidence,
+                "peer_confidence": peer_confidence,
+                "processing_time_ms": processing_time,
+                "source_count": len(all_sources)
+            },
+            trace_id=trace_id
+        )
+
+    except Exception as e:
+        tracer.end_trace(trace_id, status="error", latency=time.time() - start_time)
+        tracer.log_step(trace_id, "Fusion Error", str(e), "Failed")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 

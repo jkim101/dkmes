@@ -4,7 +4,8 @@ from core.tools.base import (
     ToolParameter, 
     get_tool_registry,
     ToolResult,
-    Tool
+    Tool,
+    ToolRegistry
 )
 
 # Import submodules to trigger registration

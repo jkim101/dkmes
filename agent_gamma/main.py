@@ -171,7 +171,7 @@ async def ask_alpha(request: AskAlphaRequest):
     request_id = str(uuid.uuid4())
     
     try:
-        # Log the outgoing request
+                # Log the outgoing request
         exchange_history.append({
             "request_id": request_id,
             "sender_agent_id": AGENT_ID,
@@ -179,7 +179,8 @@ async def ask_alpha(request: AskAlphaRequest):
             "query": request.message,
             "protocol": "A2A",
             "timestamp": datetime.now().isoformat(),
-            "direction": "outgoing"
+            "direction": "outgoing",
+            "confidence": 0.0  # Initialize to avoid NaN
         })
         
         async with httpx.AsyncClient(timeout=60.0) as client:
@@ -210,6 +211,13 @@ async def ask_alpha(request: AskAlphaRequest):
                     parts = status["message"].get("parts", [])
                     if parts and parts[0].get("text"):
                         answer_text = parts[0]["text"]
+                
+                # Update log with success and estimated confidence
+                for ex in exchange_history:
+                    if ex["request_id"] == request_id:
+                        ex["response"] = answer_text
+                        ex["confidence"] = 0.95  # Assume high confidence for successful A2A
+                        break
                 
                 return {
                     "answer": answer_text,

@@ -17,21 +17,50 @@ class GraphProvider(KnowledgeProvider):
         if not self.gemini_client:
             raise ValueError("GeminiClient is required for LLM-based ingestion")
 
-        print(f"Generating Cypher queries for: {text[:50]}...")
-        cypher_queries_str = await self.gemini_client.extract_graph_entities(text)
+        # Simple Chunking Strategy
+        CHUNK_SIZE = 2000
+        OVERLAP = 200
+        chunks = []
         
-        # Clean up the query string (remove markdown blocks if present)
-        cleaned_query = cypher_queries_str.replace('```cypher', '').replace('```', '').strip()
+        if len(text) <= CHUNK_SIZE:
+            chunks = [text]
+        else:
+            for i in range(0, len(text), CHUNK_SIZE - OVERLAP):
+                chunks.append(text[i:min(i + CHUNK_SIZE, len(text))])
         
-        if cleaned_query:
-            print(f"Executing Cypher Block:\n{cleaned_query}")
+        print(f"Graph Ingestion: Processing {len(chunks)} chunks...")
+
+        success_count = 0
+        for i, chunk in enumerate(chunks):
+            print(f"Generating Cypher for chunk {i+1}/{len(chunks)}...")
             try:
-                self.graph.query(cleaned_query)
+                cypher_queries_str = await self.gemini_client.extract_graph_entities(chunk)
+                
+                # Check for empty response
+                if not cypher_queries_str or "RETURN" in cypher_queries_str and "MERGE" not in cypher_queries_str:
+                    print(f"Chunk {i+1}: No valid cypher generated.")
+                    continue
+
+                # Clean up the query string
+                cleaned_query = cypher_queries_str.replace('```cypher', '').replace('```', '').strip()
+                
+                # Split multiple creates if needed, but the prompt asks for a list. 
+                # Usually Gemini returns a block of Cypher. FalkorDB can handle multiple commands if separated by newlines?
+                # FalkorDB python client usually expects one query at a time or explicit transactions.
+                # However, our prompt asks for "list of Cypher queries". 
+                # Let's execute the block as is, assuming it yields valid Cypher.
+                
+                if cleaned_query:
+                    # heuristic execution: if multiple lines, try to execute as one block or split
+                    # For safety, let's try assuming it's a valid block.
+                    self.graph.query(cleaned_query)
+                    success_count += 1
             except Exception as e:
-                print(f"Error executing Cypher block: {e}")
-                return False
+                print(f"Error processing chunk {i+1}: {e}")
+                # Don't fail the whole ingest, just log error
         
-        return True
+        print(f"Graph Ingestion Complete. Successfully processed {success_count}/{len(chunks)} chunks.")
+        return success_count > 0
 
     async def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
         """

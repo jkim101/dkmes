@@ -62,8 +62,13 @@ const Playground: React.FC = () => {
                         `[${s.type === 'local' ? 'Local' : 'Peer'}] ${s.excerpt}`
                     ),
                     strategy: `Fusion (${data.peers_used?.length || 0} peers)`,
-                    timestamp: Date.now()
+                    timestamp: Date.now(),
+                    traceId: data.trace_id
                 }]);
+
+                if (data.trace_id) {
+                    setActiveTraceId(data.trace_id);
+                }
             } else if (agentMode) {
                 // Use Agent endpoint with tool calling
                 const response = await fetch('/api/v1/agent/chat', {
@@ -82,8 +87,13 @@ const Playground: React.FC = () => {
                     content: data.answer,
                     toolCalls: data.tool_calls,
                     reasoningTrace: data.reasoning_trace,
-                    timestamp: Date.now()
+                    timestamp: Date.now(),
+                    traceId: data.trace_id
                 }]);
+
+                if (data.trace_id) {
+                    setActiveTraceId(data.trace_id);
+                }
             } else {
                 // Use regular RAG endpoint
                 const response = await fetch('/api/v1/chat', {

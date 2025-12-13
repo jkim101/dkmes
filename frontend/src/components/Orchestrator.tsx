@@ -48,7 +48,7 @@ const DEFAULT_AGENT_CONFIGS: AgentConfig[] = [
 const Orchestrator: React.FC = () => {
     const [agentConfigs, setAgentConfigs] = useState<AgentConfig[]>(DEFAULT_AGENT_CONFIGS);
     const [agents, setAgents] = useState<AgentStatus[]>([]);
-    const [allExchanges, setAllExchanges] = useState<ExchangeLog[]>([]);
+    const [exchangesByPort, setExchangesByPort] = useState<Record<number, ExchangeLog[]>>({});
     const [activeTasks, setActiveTasks] = useState<A2ATask[]>([]);
     const [selectedAgent, setSelectedAgent] = useState<AgentStatus | null>(null);
     const [loading, setLoading] = useState(false);
@@ -83,17 +83,17 @@ const Orchestrator: React.FC = () => {
         };
     };
 
-    const fetchExchanges = async (port: number): Promise<ExchangeLog[]> => {
+    const fetchExchanges = async (port: number): Promise<{ port: number, exchanges: ExchangeLog[] }> => {
         try {
             const response = await fetch(`http://localhost:${port}/api/v1/kep/history?limit=10`);
             if (response.ok) {
                 const data = await response.json();
-                return data.exchanges || [];
+                return { port, exchanges: data.exchanges || [] };
             }
         } catch (e) {
             // console.log(`Failed to fetch exchanges from port ${port}`);
         }
-        return [];
+        return { port, exchanges: [] };
     };
 
     const fetchTasks = async (): Promise<A2ATask[]> => {
@@ -134,9 +134,15 @@ const Orchestrator: React.FC = () => {
 
         setAgents(agentResults);
 
-        // Merge all exchanges
-        const mergedExchanges = exchangeResults.flat();
-        setAllExchanges(mergedExchanges);
+        setAgents(agentResults);
+
+        // Store exchanges by port
+        const newExchangesByPort: Record<number, ExchangeLog[]> = {};
+        exchangeResults.forEach(res => {
+            newExchangesByPort[res.port] = res.exchanges;
+        });
+        setExchangesByPort(newExchangesByPort);
+
         setActiveTasks(tasks);
 
         setLoading(false);
@@ -190,15 +196,15 @@ const Orchestrator: React.FC = () => {
         }
     };
 
-    // Get exchanges for a specific agent
-    const getAgentExchanges = (agentId: string): ExchangeLog[] => {
-        return allExchanges.filter(ex =>
-            ex.sender_agent_id === agentId || ex.receiver_agent_id === agentId
-        );
+    // Get exchanges for a specific agent based on its port
+    const getAgentExchanges = (agent: AgentStatus): ExchangeLog[] => {
+        // Return exchanges fetched from this agent's port directly
+        // This represents requests RECEIVED by this agent (processed by it)
+        return exchangesByPort[agent.port] || [];
     };
 
     const AgentCard = ({ agent }: { agent: AgentStatus }) => {
-        const exchanges = getAgentExchanges(agent.agent_id);
+        const exchanges = getAgentExchanges(agent);
         return (
             <div className="card" style={{ padding: '1rem', display: 'flex', flexDirection: 'column', minWidth: '280px' }}>
                 {/* Agent Header */}
@@ -411,7 +417,7 @@ const Orchestrator: React.FC = () => {
                     </div>
                     <AgentNetworkGraph
                         agents={agents}
-                        exchanges={allExchanges}
+                        exchanges={Object.values(exchangesByPort).flat()}
                         onAgentSelect={(agent) => setSelectedAgent(agent)}
                     />
                 </div>
