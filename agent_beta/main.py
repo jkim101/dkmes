@@ -15,7 +15,12 @@ import time
 from datetime import datetime
 
 # Add parent directory to path for shared modules
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
+BACKEND_DIR = os.path.join(os.path.dirname(__file__), '..', 'backend')
+sys.path.insert(0, BACKEND_DIR)
+
+# Load .env from backend directory (shares GEMINI_API_KEY with Alpha)
+from dotenv import load_dotenv
+load_dotenv(os.path.join(BACKEND_DIR, '.env.local'))
 
 from core.kep import KEPHandler, KEPRequest, KEPResponse, KEPFeedback, AgentInfo
 from core.feedback import get_feedback_store, get_feedback_aggregator
@@ -127,6 +132,109 @@ async def root():
         "peer_agent": PEER_AGENT_URL,
         "status": "running"
     }
+
+
+# =============================================================================
+# A2A (Agent-to-Agent) Protocol Endpoints
+# =============================================================================
+
+# Agent Card for A2A discovery
+BETA_AGENT_CARD = {
+    "protocolVersion": "0.3.0",
+    "name": AGENT_NAME,
+    "description": "AI/ML Research Agent. Specializes in machine learning, deep learning, and artificial intelligence topics.",
+    "version": "1.0.0",
+    "supportedInterfaces": [{"url": "/a2a", "protocolBinding": "JSONRPC"}],
+    "provider": {"organization": "Antigravity Team", "url": "https://github.com/jkim101/dkmes"},
+    "skills": [
+        {
+            "id": "ml-research",
+            "name": "ML Research",
+            "description": "Research and answer questions about machine learning and AI",
+            "tags": ["ml", "ai", "deep-learning"],
+            "examples": ["What is a neural network?", "Explain gradient descent"]
+        }
+    ],
+    "capabilities": {"streaming": False, "pushNotifications": False, "stateTransitionHistory": True}
+}
+
+
+@app.get("/.well-known/agent.json")
+def get_agent_card():
+    """Returns the A2A Agent Card for discovery."""
+    return BETA_AGENT_CARD
+
+
+@app.post("/a2a")
+async def handle_a2a_request(request: dict):
+    """
+    A2A JSON-RPC endpoint.
+    
+    Supports methods:
+    - message/send: Send a message and get response
+    """
+    import uuid as uuid_lib
+    import time as time_lib
+    
+    # Parse JSON-RPC request
+    try:
+        jsonrpc = request.get("jsonrpc", "2.0")
+        req_id = request.get("id", str(uuid_lib.uuid4()))
+        method = request.get("method", "")
+        params = request.get("params", {})
+    except Exception:
+        return {"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "Parse error"}}
+    
+    if method == "message/send":
+        try:
+            # Extract query from message parts
+            message = params.get("message", {})
+            parts = message.get("parts", [])
+            query = " ".join([p.get("text", "") for p in parts if p.get("text")])
+            
+            if not query:
+                return {"jsonrpc": "2.0", "id": req_id, "error": {"code": -32602, "message": "No text in message"}}
+            
+            # Process with local RAG
+            results = await vector_provider.search(query, top_k=3)
+            context = "\n\n".join([doc.get("content", doc.get("text", "")) for doc in results])
+            
+            answer = await gemini_client.generate_answer(query, context)
+            
+            # Build A2A Task response
+            task_id = str(uuid_lib.uuid4())
+            task = {
+                "id": task_id,
+                "contextId": params.get("contextId"),
+                "status": {
+                    "state": "TASK_STATE_COMPLETED",
+                    "message": {
+                        "messageId": str(uuid_lib.uuid4()),
+                        "taskId": task_id,
+                        "role": "ROLE_AGENT",
+                        "parts": [{"text": answer}]
+                    },
+                    "timestamp": time_lib.time()
+                },
+                "artifacts": [{"parts": [{"text": answer}]}],
+                "history": []
+            }
+            
+            return {"jsonrpc": "2.0", "id": req_id, "result": task}
+            
+        except Exception as e:
+            task = {
+                "id": str(uuid_lib.uuid4()),
+                "status": {
+                    "state": "TASK_STATE_FAILED",
+                    "message": {"role": "ROLE_AGENT", "parts": [{"text": str(e)}]},
+                    "timestamp": time_lib.time()
+                }
+            }
+            return {"jsonrpc": "2.0", "id": req_id, "result": task}
+    
+    else:
+        return {"jsonrpc": "2.0", "id": req_id, "error": {"code": -32601, "message": f"Method not found: {method}"}}
 
 
 @app.get("/health", response_model=HealthResponse)

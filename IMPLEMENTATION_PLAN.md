@@ -53,9 +53,18 @@
         - Show the JSON feedback returned.
 
 ## Phase 5: Pilot & Refinement
-- [ ] **Pilot Data Ingestion**
-    - [ ] Ingest a sample "Connected Vehicle" dataset schema into the Graph.
-    - [ ] Upload sample documentation to the Vector Store.
-- [ ] **End-to-End Test**
-    - [ ] Simulate an External Agent asking a question.
-    - [ ] Verify DKMES retrieves context, judges the answer, and returns feedback.
+- [x] **Pilot Data Ingestion**
+    - [x] Ingest sample datasets (e.g., General knowledge PDFs) into the Graph.
+    - [x] Upload sample documentation to the Vector Store.
+- [x] **End-to-End Test**
+    - [x] Simulate an External Agent asking a question.
+    - [x] Verify DKMES retrieves context, judges the answer, and returns feedback.
+
+## Phase 6: Deployment & Packaging (Future)
+**Goal**: Package the application for production deployment.
+- [ ] **Dockerization**
+    - [ ] Create `Dockerfile` for Backend (FastAPI).
+    - [ ] Create `Dockerfile` for Frontend (Nginx/React).
+    - [ ] Update `docker-compose.yml` to orchestrate all services (App, DBs).
+- [ ] **CI/CD**
+    - [ ] Set up GitHub Actions for automated testing and building.

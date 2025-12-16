@@ -1,37 +1,56 @@
 [
     {
-        "id": "km_eval_001",
-        "category": "Ontology_Strategy",
-        "difficulty": "Hard",
-        "question": "When building an enterprise-level Knowledge Management system, what is the core reason for adopting an Ontology over a simple Taxonomy?",
-        "ground_truth": "While a Taxonomy is limited to hierarchical classification, an Ontology defines multidimensional relationships and attributes between entities. This serves as the foundation for extending into a Knowledge Graph, enabling complex reasoning and context-aware retrieval."
+        "id": 1,
+        "category": "Foundational Concepts",
+        "question": "What is Knowledge Management (KM) and why is it critical for an organization?",
+        "answer": "Knowledge Management is the systematic process of identifying, creating, representing, distributing, and applying information to support organizational objectives. It is critical because it prevents redundant work, accelerates decision-making, and fosters innovation by leveraging the organization's collective intelligence."
     },
     {
-        "id": "km_eval_002",
-        "category": "GraphRAG_Implementation",
-        "difficulty": "Medium",
-        "question": "In a GraphRAG architecture, what is the primary benefit of combining Vector Search with Graph Traversal?",
-        "ground_truth": "Vector Search is effective for finding semantically similar unstructured text, while Graph Traversal excels at exploring explicitly connected structural knowledge. Combining them allows the system to identify 'hidden relationships' beyond simple keyword matching or semantic similarity, thereby increasing the completeness of the answer."
+        "id": 2,
+        "category": "Types of Knowledge",
+        "question": "What is the difference between Tacit Knowledge and Explicit Knowledge?",
+        "answer": "Tacit knowledge is intuitive, rooted in personal experience, and difficult to codify (e.g., know-how, insights). Explicit knowledge is codified information that can be easily documented, stored, and shared (e.g., manuals, databases). A key challenge in KM is converting tacit knowledge into explicit knowledge."
     },
     {
-        "id": "km_eval_003",
-        "category": "SQL_Knowledge_Extraction",
-        "difficulty": "Hard",
-        "question": "When attempting to extract 'Implicit Business Knowledge' from hundreds of thousands of legacy SQL query logs, which patterns should be analyzed most intensively?",
-        "ground_truth": "The most critical patterns are 'frequent JOIN patterns' and 'filtering conditions in WHERE clauses'. JOIN patterns reveal associations between data entities, while WHERE conditions indicate specific business logic (e.g., the definition of an 'active customer'). This allows for the reverse engineering of undocumented data relationships."
+        "id": 3,
+        "category": "Frameworks",
+        "question": "Explain the four stages of the SECI model.",
+        "answer": "The SECI model describes the knowledge creation spiral: 1) Socialization (Tacit to Tacit), 2) Externalization (Tacit to Explicit), 3) Combination (Explicit to Explicit), and 4) Internalization (Explicit to Tacit). This process illustrates how knowledge expands through continuous conversion."
     },
     {
-        "id": "km_eval_004",
-        "category": "Data_Governance",
-        "difficulty": "Medium",
-        "question": "What are the minimum measures required to prevent a Data Lakehouse from failing metadata management and turning into a 'Data Swamp'?",
-        "ground_truth": "Enforcing mandatory schema validation at the data ingestion stage and automating policies for ownership and lifecycle tagging for all datasets. Additionally, policies to periodically archive or delete 'Cold Data' with low access frequency must be executed."
+        "id": 4,
+        "category": "Data & Structure",
+        "question": "What roles do Ontologies and Knowledge Graphs play in Knowledge Management?",
+        "answer": "An Ontology defines the semantic relationships between concepts, while a Knowledge Graph applies this structure to link actual data in a network. They enable AI agents to go beyond keyword search to understand context and uncover hidden relationships between disparate data points for more accurate reasoning."
     },
     {
-        "id": "km_eval_005",
-        "category": "AI_Agent_Ecosystem",
-        "difficulty": "Hard",
-        "question": "For an AI Agent to autonomously learn dataset characteristics and execute queries without human intervention, what specific information must be included in the Semantic Layer?",
-        "ground_truth": "Beyond simple column type information, the metadata must include natural language descriptions of what the column means to the business, the range of allowed values (constraints), and logical relationships with other tables (e.g., Foreign Keys)."
+        "id": 5,
+        "category": "AI Integration",
+        "question": "What are the benefits of integrating Retrieval-Augmented Generation (RAG) with a Knowledge Management System?",
+        "answer": "RAG allows LLMs to reference an organization's internal, up-to-date knowledge base in real-time when generating responses. This significantly reduces hallucinations, ensures answers reflect the latest internal data, and eliminates the need to constantly retrain the model."
+    },
+    {
+        "id": 6,
+        "category": "Lifecycle",
+        "question": "What are the typical stages of the Knowledge Lifecycle?",
+        "answer": "The lifecycle typically includes: 1) Creation/Capture, 2) Storage & Organization, 3) Sharing & Dissemination, 4) Application/Utilization, and 5) Update & Archiving/Disposal."
+    },
+    {
+        "id": 7,
+        "category": "Challenges",
+        "question": "What are the main barriers (silos) to knowledge sharing in an organization, and how can they be mitigated?",
+        "answer": "Major barriers include departmental protectionism, lack of incentives, and complex tools. Mitigation strategies include establishing reward systems for sharing, fostering a collaborative culture, and implementing a unified, user-friendly knowledge platform (Single Source of Truth)."
+    },
+    {
+        "id": 8,
+        "category": "Evaluation Metrics",
+        "question": "What are key KPIs (Key Performance Indicators) for measuring the success of Knowledge Management?",
+        "answer": "Key KPIs include Knowledge Contribution Rate (docs created), Knowledge Utilization (views/downloads), reduction in search time, reduction in redundant inquiries, and the success rate of problem-solving using the knowledge base."
+    },
+    {
+        "id": 9,
+        "category": "Governance",
+        "question": "Why are Knowledge Curation and Data Stewardship important for AI-driven KM?",
+        "answer": "They ensure the accuracy, recency, and quality of the knowledge base. Since AI agents rely on this data, poor quality ('garbage in') leads to poor performance ('garbage out')"
     }
 ]

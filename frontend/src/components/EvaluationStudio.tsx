@@ -61,7 +61,7 @@ const EvaluationStudio: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     // Batch State
-    const [batchData, setBatchData] = useState<string>('[{"question": "What is DKMES?", "answer": "Data Knowledge Management Eco-System"}]');
+    const [batchData, setBatchData] = useState<string>('[{"question": "What is DKMES?", "ground_truth": "Data Knowledge Management Eco-System"}]');
     const [batchResults, setBatchResults] = useState<BatchResult[]>([]);
     const [batchLoading, setBatchLoading] = useState(false);
     const [avgScore, setAvgScore] = useState<number | null>(null);
@@ -97,12 +97,18 @@ const EvaluationStudio: React.FC = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ pairs }),
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.detail || 'Server error');
+            }
+
             const data = await response.json();
             setBatchResults(data.results);
             setAvgScore(data.average_score);
         } catch (error) {
             console.error('Batch eval failed:', error);
-            alert('Invalid JSON or Server Error');
+            alert(`Batch evaluation failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
         } finally {
             setBatchLoading(false);
         }

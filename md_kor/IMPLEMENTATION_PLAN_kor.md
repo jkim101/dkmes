@@ -59,3 +59,20 @@
 - [x] **엔드투엔드 테스트**
     - [x] 외부 에이전트가 질문하는 상황 시뮬레이션.
     - [x] DKMES가 맥락을 검색하고, 답안을 채점하며, 피드백을 반환하는지 검증.
+
+## 6단계: 문서화 (Documentation)
+**목표**: 시스템 사용법 및 기술 명세 문서화.
+- [x] **종합 설명서 작성** (`DKMES_Documentation_Kor.md`)
+    - [x] **사용자 매뉴얼 (User Manual)**: 대시보드, 데이터 매니저, 플레이그라운드 등 UI 사용법.
+    - [x] **기능 상세 가이드 (Feature Guide)**: 하이브리드 검색, 지식 그래프 구축, 지식 교환 프로토콜.
+    - [x] **지표 및 평가 기술서 (Metrics Reference)**: 신뢰성, 답변 적절성, 문맥 재현율 등 RAGAS 기반 지표.
+    - [x] **기술 명세서 (Technology Specification)**: 프론트엔드/백엔드 스택, 인프라, 포트 설정 등.
+
+## 7단계: 배포 및 패키징 (Future)
+**목표**: 프로덕션 배포를 위한 애플리케이션 패키징.
+- [ ] **Dockerization (컨테이너화)**
+    - [ ] Backend (FastAPI)용 `Dockerfile` 작성.
+    - [ ] Frontend (Nginx/React)용 `Dockerfile` 작성.
+    - [ ] 전체 서비스(App, DB)를 통합 관리할 `docker-compose.yml` 업데이트.
+- [ ] **CI/CD**
+    - [ ] 자동화된 테스트 및 빌드를 위한 GitHub Actions 설정.

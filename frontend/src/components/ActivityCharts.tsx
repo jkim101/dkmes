@@ -4,6 +4,7 @@ import {
     PieChart, Pie, Cell,
     LineChart, Line, AreaChart, Area
 } from 'recharts';
+import { Activity } from 'lucide-react';
 
 interface ActivityStats {
     query_timeline: { period: string; count: number }[];
@@ -66,7 +67,10 @@ const ActivityCharts: React.FC = () => {
         <div style={{ marginTop: '2rem' }}>
             {/* Time Range Toggle */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <h3 style={{ margin: 0, fontSize: '1.1rem' }}>📊 System Activity</h3>
+                <h3 style={{ margin: 0, fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Activity size={18} />
+                    System Activity
+                </h3>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <button
                         onClick={() => setTimeRange(1)}

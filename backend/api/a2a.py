@@ -34,6 +34,7 @@ from core.a2a import Message, Part, Role, TaskState
 from core.gemini_client import GeminiClient
 
 async def handle_message_send(req: JsonRpcRequest, request: Request) -> JsonRpcResponse:
+    """Process A2A message synchronously using RAG."""
     params = req.params
     message_data = params.get("message", {})
     context_id = params.get("contextId")
@@ -46,28 +47,53 @@ async def handle_message_send(req: JsonRpcRequest, request: Request) -> JsonRpcR
     user_message.taskId = task.id
     task_manager.add_message_to_task(task.id, user_message)
 
-    # 3. Update Task to Working
+    # 3. Extract query text
+    query = ""
+    if user_message.parts:
+        query = " ".join([p.text for p in user_message.parts if p.text])
+    
+    if not query:
+        task_manager.update_task_status(task.id, TaskState.FAILED, 
+            message=Message(taskId=task.id, role=Role.AGENT, parts=[Part(text="No text input provided")]))
+        return JsonRpcResponse(id=req.id, result=task_manager.get_task(task.id).model_dump())
+    
+    # 4. Update to Working state
     task_manager.update_task_status(task.id, TaskState.WORKING)
-
-    # 4. Get GeminiClient from app.state
-    gemini_client: GeminiClient = request.app.state.gemini_client
-    # Note: VectorProvider and GraphProvider are attached to GeminiClient in main.py logic if needed,
-    # or GeminiClient is passed to them.
-    # Actually, main.py initialized providers:
-    # graph_provider(gemini_client=...)
-    # But AgenticGeminiClient usually needs tools or access to providers to use them.
-    # In Phase 13, tools were registered to a global registry or the client was given access.
-    # We should assume tools are already registered in 'backend/core/tools.py'.
-    # So using the global 'gemini_client' which is initialized in 'main.py' is sufficient.
-
-    # 5. Async Process
-    asyncio.create_task(process_task_background(task.id, user_message, gemini_client))
-
-    # 6. Return Task
-    return JsonRpcResponse(
-        id=req.id,
-        result=task.model_dump()
-    )
+    
+    try:
+        # 5. Get providers from app state
+        vector_provider = request.app.state.vector_provider
+        gemini_client = request.app.state.gemini_client
+        
+        # 6. Process with RAG (synchronous)
+        vector_results = await vector_provider.search(query, top_k=3)
+        context_parts = [doc.get("content", doc.get("text", "")) for doc in vector_results]
+        context = "\n\n".join(context_parts)
+        
+        response_text = await gemini_client.generate_answer(query, context)
+        
+        # 7. Create response message
+        response_message = Message(
+            taskId=task.id,
+            role=Role.AGENT,
+            parts=[Part(text=response_text)]
+        )
+        
+        # 8. Update to COMPLETED
+        task_manager.update_task_status(task.id, TaskState.COMPLETED, message=response_message)
+        
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        error_message = Message(
+            taskId=task.id,
+            role=Role.AGENT,
+            parts=[Part(text=f"Error: {str(e)}")]
+        )
+        task_manager.update_task_status(task.id, TaskState.FAILED, message=error_message)
+    
+    # 9. Return completed task
+    return JsonRpcResponse(id=req.id, result=task_manager.get_task(task.id).model_dump())
 
 # Start with task logic
 import asyncio

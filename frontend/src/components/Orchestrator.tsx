@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, Server, RefreshCw, MessageSquare, ArrowLeftRight, List, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { Activity, Server, RefreshCw, MessageSquare, List, CheckCircle, Clock, AlertCircle, Plus } from 'lucide-react';
+import AgentNetworkGraph from './AgentNetworkGraph';
 import '../App.css';
 
 interface AgentStatus {
@@ -7,12 +8,14 @@ interface AgentStatus {
     name: string;
     domain: string;
     status: 'online' | 'offline';
+    port: number;
     timestamp: string;
 }
 
 interface ExchangeLog {
     request_id: string;
     sender_agent_id: string;
+    receiver_agent_id?: string;
     domain: string;
     query: string;
     confidence: number;
@@ -28,45 +31,69 @@ interface A2ATask {
     history: any[];
 }
 
+interface AgentConfig {
+    port: number;
+    fallbackId: string;
+    fallbackName: string;
+    fallbackDomain: string;
+}
+
+// Default agent configurations - easily extendable
+const DEFAULT_AGENT_CONFIGS: AgentConfig[] = [
+    { port: 8000, fallbackId: 'dkmes-alpha', fallbackName: 'DKMES Alpha', fallbackDomain: 'knowledge-management' },
+    { port: 8001, fallbackId: 'agent-beta-aiml', fallbackName: 'AI/ML Research Agent', fallbackDomain: 'artificial-intelligence' },
+    { port: 8002, fallbackId: 'agent-gamma-analytics', fallbackName: 'CVDT Chatbot Agent', fallbackDomain: 'data-analytics' },
+];
+
 const Orchestrator: React.FC = () => {
-    const [alphaStatus, setAlphaStatus] = useState<AgentStatus | null>(null);
-    const [betaStatus, setBetaStatus] = useState<AgentStatus | null>(null);
-    const [alphaExchanges, setAlphaExchanges] = useState<ExchangeLog[]>([]);
-    const [betaExchanges, setBetaExchanges] = useState<ExchangeLog[]>([]);
+    const [agentConfigs, setAgentConfigs] = useState<AgentConfig[]>(DEFAULT_AGENT_CONFIGS);
+    const [agents, setAgents] = useState<AgentStatus[]>([]);
+    const [exchangesByPort, setExchangesByPort] = useState<Record<number, ExchangeLog[]>>({});
     const [activeTasks, setActiveTasks] = useState<A2ATask[]>([]);
+    const [selectedAgent, setSelectedAgent] = useState<AgentStatus | null>(null);
     const [loading, setLoading] = useState(false);
     const [autoRefresh, setAutoRefresh] = useState(true);
+    const [showAddAgent, setShowAddAgent] = useState(false);
+    const [newAgentPort, setNewAgentPort] = useState('');
 
-    const fetchAgentStatus = async (port: number): Promise<AgentStatus | null> => {
+    const fetchAgentStatus = async (config: AgentConfig): Promise<AgentStatus> => {
         try {
-            const response = await fetch(`http://localhost:${port}/health`);
+            const response = await fetch(`http://localhost:${config.port}/health`);
             if (response.ok) {
                 const data = await response.json();
                 return {
-                    agent_id: data.agent_id,
-                    name: data.agent_name || (port === 8000 ? 'DKMES Alpha' : 'Agent Beta'),
-                    domain: data.domain,
+                    agent_id: data.agent_id || config.fallbackId,
+                    name: data.agent_name || config.fallbackName,
+                    domain: data.domain || config.fallbackDomain,
+                    port: config.port,
                     status: 'online',
                     timestamp: data.timestamp
                 };
             }
         } catch (e) {
-            // console.log(`Agent on port ${port} offline`);
+            // Agent offline
         }
-        return null;
+        return {
+            agent_id: config.fallbackId,
+            name: config.fallbackName,
+            domain: config.fallbackDomain,
+            port: config.port,
+            status: 'offline',
+            timestamp: ''
+        };
     };
 
-    const fetchExchanges = async (port: number): Promise<ExchangeLog[]> => {
+    const fetchExchanges = async (port: number): Promise<{ port: number, exchanges: ExchangeLog[] }> => {
         try {
             const response = await fetch(`http://localhost:${port}/api/v1/kep/history?limit=10`);
             if (response.ok) {
                 const data = await response.json();
-                return data.exchanges || [];
+                return { port, exchanges: data.exchanges || [] };
             }
         } catch (e) {
             // console.log(`Failed to fetch exchanges from port ${port}`);
         }
-        return [];
+        return { port, exchanges: [] };
     };
 
     const fetchTasks = async (): Promise<A2ATask[]> => {
@@ -95,31 +122,58 @@ const Orchestrator: React.FC = () => {
     const refreshAll = async () => {
         setLoading(true);
 
-        const [alpha, beta, alphaEx, betaEx, tasks] = await Promise.all([
-            fetchAgentStatus(8000),
-            fetchAgentStatus(8001),
-            fetchExchanges(8000),
-            fetchExchanges(8001),
+        // Fetch all agents dynamically
+        const agentPromises = agentConfigs.map(config => fetchAgentStatus(config));
+        const exchangePromises = agentConfigs.map(config => fetchExchanges(config.port));
+
+        const [agentResults, exchangeResults, tasks] = await Promise.all([
+            Promise.all(agentPromises),
+            Promise.all(exchangePromises),
             fetchTasks()
         ]);
 
-        setAlphaStatus(alpha || { agent_id: 'dkmes-alpha', name: 'DKMES Alpha', domain: 'knowledge-management', status: 'offline', timestamp: '' });
-        setBetaStatus(beta || { agent_id: 'agent-beta-aiml', name: 'AI/ML Research Agent', domain: 'artificial-intelligence', status: 'offline', timestamp: '' });
-        setAlphaExchanges(alphaEx);
-        setBetaExchanges(betaEx);
+        setAgents(agentResults);
+
+        setAgents(agentResults);
+
+        // Store exchanges by port
+        const newExchangesByPort: Record<number, ExchangeLog[]> = {};
+        exchangeResults.forEach(res => {
+            newExchangesByPort[res.port] = res.exchanges;
+        });
+        setExchangesByPort(newExchangesByPort);
+
         setActiveTasks(tasks);
 
         setLoading(false);
+    };
+
+    const addAgent = () => {
+        const port = parseInt(newAgentPort);
+        if (port && !agentConfigs.some(c => c.port === port)) {
+            setAgentConfigs([...agentConfigs, {
+                port,
+                fallbackId: `agent-${port}`,
+                fallbackName: `Agent :${port}`,
+                fallbackDomain: 'unknown'
+            }]);
+            setNewAgentPort('');
+            setShowAddAgent(false);
+        }
+    };
+
+    const removeAgent = (port: number) => {
+        setAgentConfigs(agentConfigs.filter(c => c.port !== port));
     };
 
     useEffect(() => {
         refreshAll();
 
         if (autoRefresh) {
-            const interval = setInterval(refreshAll, 3000); // Faster refresh for task monitoring
+            const interval = setInterval(refreshAll, 3000);
             return () => clearInterval(interval);
         }
-    }, [autoRefresh]);
+    }, [autoRefresh, agentConfigs]);
 
     const getStatusColor = (status: string) => status === 'online' ? '#10b981' : '#ef4444';
 
@@ -142,68 +196,74 @@ const Orchestrator: React.FC = () => {
         }
     };
 
-    const AgentCard = ({ agent, exchanges, port }: { agent: AgentStatus | null, exchanges: ExchangeLog[], port: number }) => (
-        <div className="card" style={{ padding: '1.5rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
-            {/* Agent Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <Server size={20} />
-                    <div>
-                        <div style={{ fontWeight: '600', fontSize: '1rem' }}>{agent?.name || 'Unknown'}</div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Port {port}</div>
-                    </div>
-                </div>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '20px',
-                    background: agent?.status === 'online' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                    color: getStatusColor(agent?.status || 'offline'),
-                    fontSize: '0.75rem',
-                    fontWeight: '600'
-                }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: getStatusColor(agent?.status || 'offline') }} />
-                    {agent?.status === 'online' ? 'Online' : 'Offline'}
-                </div>
-            </div>
+    // Get exchanges for a specific agent based on its port
+    const getAgentExchanges = (agent: AgentStatus): ExchangeLog[] => {
+        // Return exchanges fetched from this agent's port directly
+        // This represents requests RECEIVED by this agent (processed by it)
+        return exchangesByPort[agent.port] || [];
+    };
 
-            {/* Agent Info */}
-            <div style={{ padding: '0.75rem', background: 'var(--bg-secondary)', borderRadius: '8px', marginBottom: '1rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.8rem' }}>
-                    <div>
-                        <span style={{ color: 'var(--text-secondary)' }}>Domain: </span>
-                        <span style={{ fontWeight: '500' }}>{agent?.domain}</span>
+    const AgentCard = ({ agent }: { agent: AgentStatus }) => {
+        const exchanges = getAgentExchanges(agent);
+        return (
+            <div className="card" style={{ padding: '1rem', display: 'flex', flexDirection: 'column', minWidth: '280px' }}>
+                {/* Agent Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Server size={18} />
+                        <div>
+                            <div style={{ fontWeight: '600', fontSize: '0.9rem' }}>{agent.name}</div>
+                            <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>:{agent.port}</div>
+                        </div>
                     </div>
-                    <div>
-                        <span style={{ color: 'var(--text-secondary)' }}>Exchanges: </span>
-                        <span style={{ fontWeight: '500' }}>{exchanges.length}</span>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        padding: '0.2rem 0.5rem',
+                        borderRadius: '12px',
+                        background: agent.status === 'online' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                        color: getStatusColor(agent.status),
+                        fontSize: '0.7rem',
+                        fontWeight: '600'
+                    }}>
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: getStatusColor(agent.status) }} />
+                        {agent.status === 'online' ? 'Online' : 'Offline'}
                     </div>
                 </div>
-            </div>
 
-            {/* Recent Exchanges */}
-            <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: '600', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <MessageSquare size={14} /> Recent Exchanges
+                {/* Agent Info */}
+                <div style={{ padding: '0.5rem', background: 'var(--bg-secondary)', borderRadius: '6px', marginBottom: '0.75rem', fontSize: '0.75rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span style={{ color: 'var(--text-secondary)' }}>Domain</span>
+                        <span style={{ color: 'var(--accent-color)' }}>{agent.domain}</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.25rem' }}>
+                        <span style={{ color: 'var(--text-secondary)' }}>Exchanges</span>
+                        <span style={{ color: '#10b981' }}>{exchanges.length}</span>
+                    </div>
                 </div>
-                <div style={{ flex: 1, overflowY: 'auto' }}>
+
+                {/* Recent Exchanges */}
+                <div style={{ fontSize: '0.8rem', fontWeight: '600', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <MessageSquare size={12} /> Recent
+                </div>
+                <div style={{ flex: 1, overflowY: 'auto', maxHeight: '120px' }}>
                     {exchanges.length > 0 ? (
-                        exchanges.slice(0, 5).map((ex) => (
+                        exchanges.slice(0, 3).map((ex) => (
                             <div key={ex.request_id} style={{
-                                padding: '0.5rem',
-                                borderLeft: '3px solid var(--accent-color)',
+                                padding: '0.35rem',
+                                borderLeft: '2px solid var(--accent-color)',
                                 background: 'var(--bg-secondary)',
-                                borderRadius: '0 6px 6px 0',
-                                marginBottom: '0.5rem',
-                                fontSize: '0.75rem'
+                                borderRadius: '0 4px 4px 0',
+                                marginBottom: '0.35rem',
+                                fontSize: '0.7rem'
                             }}>
                                 <div style={{ fontWeight: '500', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                     {ex.query}
                                 </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.25rem', color: 'var(--text-secondary)' }}>
-                                    <span>From: {ex.sender_agent_id}</span>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.15rem', color: 'var(--text-secondary)' }}>
+                                    <span>{ex.sender_agent_id}</span>
                                     <span style={{ color: ex.confidence > 0.7 ? '#10b981' : '#f59e0b' }}>
                                         {(ex.confidence * 100).toFixed(0)}%
                                     </span>
@@ -211,14 +271,33 @@ const Orchestrator: React.FC = () => {
                             </div>
                         ))
                     ) : (
-                        <div style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '1rem', fontSize: '0.8rem' }}>
-                            No exchanges yet
+                        <div style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '0.5rem', fontSize: '0.7rem' }}>
+                            No exchanges
                         </div>
                     )}
                 </div>
+
+                {/* Remove button for non-default agents */}
+                {!DEFAULT_AGENT_CONFIGS.some(c => c.port === agent.port) && (
+                    <button
+                        onClick={() => removeAgent(agent.port)}
+                        style={{
+                            marginTop: '0.5rem',
+                            padding: '0.25rem',
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            color: '#ef4444',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '0.7rem'
+                        }}
+                    >
+                        Remove
+                    </button>
+                )}
             </div>
-        </div>
-    );
+        );
+    };
 
     return (
         <div className="orchestrator-dashboard fade-in" style={{ padding: '1.5rem', height: '100%', overflow: 'auto' }}>
@@ -229,7 +308,7 @@ const Orchestrator: React.FC = () => {
                         <Activity size={24} /> Multi-Agent Orchestrator
                     </h1>
                     <p style={{ margin: '0.25rem 0 0 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                        Monitor and manage knowledge exchange between agents
+                        {agents.length} agents • {agents.filter(a => a.status === 'online').length} online
                     </p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -241,6 +320,23 @@ const Orchestrator: React.FC = () => {
                         />
                         Auto-refresh
                     </label>
+                    <button
+                        onClick={() => setShowAddAgent(!showAddAgent)}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.5rem 1rem',
+                            background: 'var(--bg-secondary)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '0.85rem'
+                        }}
+                    >
+                        <Plus size={14} /> Add Agent
+                    </button>
                     <button
                         onClick={refreshAll}
                         disabled={loading}
@@ -263,46 +359,71 @@ const Orchestrator: React.FC = () => {
                 </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr)', gap: '1.5rem', marginBottom: '1.5rem' }}>
-                {/* Connection Diagram */}
-                <div className="card" style={{ padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{
-                            width: '60px', height: '60px', borderRadius: '50%',
-                            background: alphaStatus?.status === 'online' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: `2px solid ${getStatusColor(alphaStatus?.status || 'offline')}`,
-                            margin: '0 auto'
-                        }}>
-                            <Server size={24} color={getStatusColor(alphaStatus?.status || 'offline')} />
-                        </div>
-                        <div style={{ marginTop: '0.5rem', fontWeight: '600', fontSize: '0.85rem' }}>Alpha</div>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>:8000</div>
-                    </div>
+            {/* Add Agent Modal */}
+            {showAddAgent && (
+                <div className="card" style={{ padding: '1rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <input
+                        type="number"
+                        placeholder="Port number (e.g., 8002)"
+                        value={newAgentPort}
+                        onChange={(e) => setNewAgentPort(e.target.value)}
+                        style={{
+                            padding: '0.5rem',
+                            background: 'var(--bg-secondary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '6px',
+                            color: 'var(--text-primary)',
+                            fontSize: '0.85rem',
+                            width: '200px'
+                        }}
+                    />
+                    <button
+                        onClick={addAgent}
+                        style={{
+                            padding: '0.5rem 1rem',
+                            background: '#10b981',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '0.85rem'
+                        }}
+                    >
+                        Add
+                    </button>
+                    <button
+                        onClick={() => setShowAddAgent(false)}
+                        style={{
+                            padding: '0.5rem 1rem',
+                            background: 'var(--bg-secondary)',
+                            color: 'var(--text-secondary)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '0.85rem'
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </div>
+            )}
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <div style={{ width: '40px', height: '2px', background: 'var(--border-color)' }} />
-                        <ArrowLeftRight size={20} color="var(--accent-color)" />
-                        <div style={{ width: '40px', height: '2px', background: 'var(--border-color)' }} />
+            {/* Network Graph and Task Monitor */}
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                {/* Interactive Agent Network Graph */}
+                <div className="card" style={{ padding: '1rem' }}>
+                    <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Activity size={18} /> Agent Network
                     </div>
-
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{
-                            width: '60px', height: '60px', borderRadius: '50%',
-                            background: betaStatus?.status === 'online' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            border: `2px solid ${getStatusColor(betaStatus?.status || 'offline')}`,
-                            margin: '0 auto'
-                        }}>
-                            <Server size={24} color={getStatusColor(betaStatus?.status || 'offline')} />
-                        </div>
-                        <div style={{ marginTop: '0.5rem', fontWeight: '600', fontSize: '0.85rem' }}>Beta</div>
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>:8001</div>
-                    </div>
+                    <AgentNetworkGraph
+                        agents={agents}
+                        exchanges={Object.values(exchangesByPort).flat()}
+                        onAgentSelect={(agent) => setSelectedAgent(agent)}
+                    />
                 </div>
 
                 {/* A2A Task Monitor */}
-                <div className="card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', height: '200px' }}>
+                <div className="card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', height: '460px' }}>
                     <div style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <List size={18} /> Active A2A Tasks
                         <span style={{ fontSize: '0.75rem', fontWeight: 'normal', color: 'var(--text-secondary)', marginLeft: 'auto' }}>
@@ -348,13 +469,57 @@ const Orchestrator: React.FC = () => {
                 </div>
             </div>
 
-            {/* Agent Cards Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                <AgentCard agent={alphaStatus} exchanges={alphaExchanges} port={8000} />
-                <AgentCard agent={betaStatus} exchanges={betaExchanges} port={8001} />
+            {/* Agent Cards - Dynamic Grid */}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(auto-fill, minmax(280px, 1fr))`,
+                gap: '1rem'
+            }}>
+                {agents.map(agent => (
+                    <AgentCard key={agent.agent_id} agent={agent} />
+                ))}
             </div>
+
+            {/* Selected Agent Detail Panel */}
+            {selectedAgent && (
+                <div
+                    className="card"
+                    style={{
+                        position: 'fixed',
+                        bottom: '2rem',
+                        right: '2rem',
+                        padding: '1rem',
+                        width: '300px',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+                        zIndex: 1000
+                    }}
+                >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                        <div style={{ fontWeight: '600' }}>{selectedAgent.name}</div>
+                        <button
+                            onClick={() => setSelectedAgent(null)}
+                            style={{
+                                background: 'none',
+                                border: 'none',
+                                color: 'var(--text-secondary)',
+                                cursor: 'pointer',
+                                fontSize: '1.2rem'
+                            }}
+                        >
+                            ×
+                        </button>
+                    </div>
+                    <div style={{ fontSize: '0.8rem' }}>
+                        <div><strong>Agent ID:</strong> {selectedAgent.agent_id}</div>
+                        <div><strong>Port:</strong> {selectedAgent.port}</div>
+                        <div><strong>Domain:</strong> {selectedAgent.domain}</div>
+                        <div><strong>Status:</strong> <span style={{ color: getStatusColor(selectedAgent.status) }}>{selectedAgent.status}</span></div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default Orchestrator;
+

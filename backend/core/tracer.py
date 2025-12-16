@@ -197,17 +197,20 @@ class TraceLogger:
             SELECT metadata FROM traces WHERE timestamp > ?
         """, (cutoff,))
         
-        strategy_counts = {"vector": 0, "graph": 0, "hybrid": 0, "unknown": 0}
+        strategy_counts = {}
         for row in cursor.fetchall():
             try:
                 meta = json.loads(row["metadata"]) if row["metadata"] else {}
                 strategy = meta.get("strategy", meta.get("rag_strategy", "unknown"))
-                if strategy in strategy_counts:
-                    strategy_counts[strategy] += 1
+                # Normalize to lowercase for consistent matching
+                strategy_lower = strategy.lower() if isinstance(strategy, str) else "unknown"
+                
+                if strategy_lower in strategy_counts:
+                    strategy_counts[strategy_lower] += 1
                 else:
-                    strategy_counts["unknown"] += 1
+                    strategy_counts[strategy_lower] = 1
             except:
-                strategy_counts["unknown"] += 1
+                strategy_counts["unknown"] = strategy_counts.get("unknown", 0) + 1
         
         strategy_distribution = [
             {"name": k, "value": v} for k, v in strategy_counts.items() if v > 0
